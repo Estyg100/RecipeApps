@@ -34,6 +34,7 @@
             txtReipeName = new TextBox();
             btnSearch = new Button();
             gRecipes = new DataGridView();
+            btnNew = new Button();
             tblMain.SuspendLayout();
             tblSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gRecipes).BeginInit();
@@ -58,19 +59,20 @@
             // tblSearch
             // 
             tblSearch.AutoSize = true;
-            tblSearch.ColumnCount = 3;
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30.9954758F));
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.0678749F));
-            tblSearch.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.1628952F));
+            tblSearch.ColumnCount = 4;
+            tblSearch.ColumnStyles.Add(new ColumnStyle());
+            tblSearch.ColumnStyles.Add(new ColumnStyle());
+            tblSearch.ColumnStyles.Add(new ColumnStyle());
+            tblSearch.ColumnStyles.Add(new ColumnStyle());
             tblSearch.Controls.Add(lblRecipeName, 0, 0);
             tblSearch.Controls.Add(txtReipeName, 1, 0);
             tblSearch.Controls.Add(btnSearch, 2, 0);
+            tblSearch.Controls.Add(btnNew, 3, 0);
             tblSearch.Location = new Point(3, 3);
             tblSearch.Name = "tblSearch";
             tblSearch.RowCount = 1;
             tblSearch.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblSearch.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblSearch.Size = new Size(466, 54);
+            tblSearch.Size = new Size(495, 54);
             tblSearch.TabIndex = 0;
             // 
             // lblRecipeName
@@ -89,7 +91,7 @@
             // 
             txtReipeName.Anchor = AnchorStyles.Left;
             txtReipeName.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtReipeName.Location = new Point(147, 11);
+            txtReipeName.Location = new Point(124, 11);
             txtReipeName.Name = "txtReipeName";
             txtReipeName.Size = new Size(125, 31);
             txtReipeName.TabIndex = 1;
@@ -99,9 +101,9 @@
             btnSearch.AutoSize = true;
             btnSearch.Dock = DockStyle.Fill;
             btnSearch.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSearch.Location = new Point(310, 3);
+            btnSearch.Location = new Point(255, 3);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(153, 48);
+            btnSearch.Size = new Size(131, 48);
             btnSearch.TabIndex = 2;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
@@ -115,6 +117,17 @@
             gRecipes.RowHeadersWidth = 51;
             gRecipes.Size = new Size(671, 509);
             gRecipes.TabIndex = 1;
+            // 
+            // btnNew
+            // 
+            btnNew.AutoSize = true;
+            btnNew.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNew.Location = new Point(392, 3);
+            btnNew.Name = "btnNew";
+            btnNew.Size = new Size(100, 48);
+            btnNew.TabIndex = 3;
+            btnNew.Text = "New";
+            btnNew.UseVisualStyleBackColor = true;
             // 
             // frmSearch
             // 
@@ -140,5 +153,6 @@
         private TextBox txtReipeName;
         private Button btnSearch;
         private DataGridView gRecipes;
+        private Button btnNew;
     }
 }

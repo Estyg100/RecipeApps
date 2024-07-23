@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CPUFramework;
+using CPUWindowsFormsFramework;
 
 namespace RecipeWinForms
 {
@@ -18,8 +19,10 @@ namespace RecipeWinForms
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
             gRecipes.CellDoubleClick += GRecipes_CellDoubleClick;
-            FormatGrid();
+            btnNew.Click += BtnNew_Click;
+            WindowsFormsUtility.FormatGridForSearchResults(gRecipes);
         }
+
         private void SearchForPresident(string recipename)
         {
             string sql = "Select RecipeId, RecipeName from Recipe r where r.RecipeName like '%" + recipename + "%'";
@@ -31,16 +34,13 @@ namespace RecipeWinForms
 
         private void ShowRecipeForm(int rowindex)
         {
-            int id = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
+            int recipeid = 0;
+            if (rowindex > -1)
+            {
+                recipeid = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
+            }
             frmRecipe frm = new frmRecipe();
-            frm.ShowForm(id);
-        }
-
-        private void FormatGrid()
-        {
-            gRecipes.AllowUserToAddRows = false;
-            gRecipes.ReadOnly = true;
-            gRecipes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            frm.ShowForm(recipeid);
         }
 
         private void GRecipes_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -52,5 +52,11 @@ namespace RecipeWinForms
         {
             SearchForPresident(txtReipeName.Text);
         }
+
+        private void BtnNew_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeForm(-1);
+        }
+
     }
 }
