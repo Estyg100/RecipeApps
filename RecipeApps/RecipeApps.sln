@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUWindowsFormsFramework", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSystem", "RecipeSystem\RecipeSystem.csproj", "{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTest", "RecipeTest\RecipeTest.csproj", "{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
