@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CPUFramework;
-using CPUWindowsFormsFramework;
 
 namespace RecipeWinForms
 {
@@ -25,8 +23,7 @@ namespace RecipeWinForms
 
         private void SearchForPresident(string recipename)
         {
-            string sql = "Select RecipeId, RecipeName from Recipe r where r.RecipeName like '%" + recipename + "%'";
-            DataTable dt = SQLUtility.GetDataTable(sql);
+            DataTable dt = Recipe.SearchRecipe(recipename);
             gRecipes.DataSource = dt;
             gRecipes.Columns["RecipeId"].Visible = false;
             gRecipes.AutoResizeColumns();
