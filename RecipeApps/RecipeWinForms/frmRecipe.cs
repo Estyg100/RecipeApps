@@ -25,7 +25,7 @@ namespace RecipeWinForms
 
         public void ShowForm(int recipeid)
         {
-            DataTable dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = Recipe.Load(recipeid);
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
