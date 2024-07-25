@@ -49,7 +49,12 @@ namespace RecipeTest
             string datedraft = dtRecipe.Rows[0]["DateDraft"].ToString();
             TestContext.WriteLine("Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + userid + Environment.NewLine + "RecipeName = " + recipename + Environment.NewLine + "CuisineId = " + cuisineid + Environment.NewLine + "CaloriesPerServing = " + calories + Environment.NewLine + "DateDraft = " + datedraft);
             userid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 UsersId from Users where UsersId <> " + userid);
-            recipename = recipename.Substring(0, 25) + " - m";
+            int recipenamelength = recipename.Length;
+            if (recipenamelength >= 25)
+            {
+                recipenamelength = 25;
+            }
+            recipename = recipename.Substring(0, recipenamelength) + " - m";
             cuisineid = SQLUtility.GetFirstColumnFirstRowValue("select top 1 CuisineId from Cuisine where CuisineId <> " + cuisineid);
             calories = calories + 1;
             datedraft = "1800-01-01 12:00:00 AM";
