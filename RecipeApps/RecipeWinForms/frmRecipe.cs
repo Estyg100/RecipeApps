@@ -44,7 +44,7 @@ namespace RecipeWinForms
 
         private void Save()
         {
-            if ((int)dtRecipe.Rows[0]["RecipeId"] == 0)
+            if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && txtDateDraft.Text == "")
             {
                 txtDateDraft.Text = DateTime.Now.ToString();
             }
