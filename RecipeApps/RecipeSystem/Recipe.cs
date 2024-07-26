@@ -45,7 +45,7 @@ namespace RecipeSystem
 
         public static void Save(DataTable dtRecipe)
         {
-            SQLUtility.DEbugPrintDataTable(dtRecipe);
+            //SQLUtility.DEbugPrintDataTable(dtRecipe);
             DataRow r = dtRecipe.Rows[0];
             string sql = "";
             int id = (int)r["RecipeId"];

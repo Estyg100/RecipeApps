@@ -44,17 +44,42 @@ namespace RecipeWinForms
 
         private void Save()
         {
-            if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && txtDateDraft.Text == "")
+            Application.UseWaitCursor = true;
+            try
             {
-                txtDateDraft.Text = DateTime.Now.ToString();
+                if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && txtDateDraft.Text == "")
+                {
+                    txtDateDraft.Text = DateTime.Now.ToString();
+                }
+                Recipe.Save(dtRecipe);
             }
-            Recipe.Save(dtRecipe);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hearty Hearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+            
         }
 
         private void Delete()
         {
-            Recipe.Delete(dtRecipe);
-            this.Close();
+            Application.UseWaitCursor = true;
+            try
+            {
+                Recipe.Delete(dtRecipe);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "HeartyHearth");
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)
