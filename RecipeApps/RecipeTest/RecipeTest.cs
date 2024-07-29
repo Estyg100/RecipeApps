@@ -140,7 +140,18 @@ namespace RecipeTest
         [Test]
         public void DeleteRecipe()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeId, r.RecipeName from Recipe r left join RecipeIngredient i on i.RecipeId = r.RecipeId left join RecipeDirections d on d.RecipeId = r.RecipeId left join CookbookRecipe c on c.RecipeId = r.RecipeId where i.RecipeIngredientId is null and d.RecipeDirectionsId is null and c.CookbookRecipeId is null");
+            string sql = @"
+            select top 1 r.RecipeId, r.RecipeName
+            from Recipe r
+            left join MealCourseRecipe mcr 
+            on mcr.RecipeId = r.RecipeId
+            left join CookbookRecipe cr
+            on cr.RecipeId = r.RecipeId
+            where mcr.MealCourseRecipeId is null
+            and cr.CookbookRecipeId is null
+            order by r.RecipeId
+            ";
+            DataTable dt = SQLUtility.GetDataTable(sql);
             int recipeid = 0;
             string recipename = "";
             if (dt.Rows.Count > 0)
@@ -158,9 +169,9 @@ namespace RecipeTest
         }
 
         [Test]
-        public void DeleteRecipeWithCookbook()
+        public void DeleteRecipeWithRelatedRecords()
         {
-            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeId, r.RecipeName from Recipe r join CookbookRecipe c on c.RecipeId = r.RecipeId where c.CookbookRecipeId is not null");
+            DataTable dt = SQLUtility.GetDataTable("select top 1 r.RecipeId, r.RecipeName from Recipe r join CookbookRecipe c on c.RecipeId = r.RecipeId join MealCourseRecipe mcr on mcr.RecipeId = r.RecipeId");
             int recipeid = 0;
             string recipename = "";
             if (dt.Rows.Count > 0)
@@ -168,8 +179,8 @@ namespace RecipeTest
                 recipeid = (int)dt.Rows[0]["RecipeId"];
                 recipename = dt.Rows[0]["RecipeName"].ToString();
             }
-            Assume.That(recipeid > 0, "No recipes with cookbooks in DB, can't run test");
-            TestContext.WriteLine("Existing recipe with cookbooks, with id = " + recipeid + " " + recipename);
+            Assume.That(recipeid > 0, "No recipes with cookbooks or Meals in DB, can't run test");
+            TestContext.WriteLine("Existing recipe with cookbooks and meals, with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app cannot delete " + recipeid);
             Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
             TestContext.WriteLine(ex.Message);
