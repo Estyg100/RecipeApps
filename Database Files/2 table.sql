@@ -59,8 +59,8 @@ create table dbo.Recipe (
     CurrentStatus as 
         case 
         when DateDraft <= DatePublished and DateArchived is null then 'Published'
-        when DateDraft <= DatePublished and DatePublished <= DateArchived then 'Archived'
-        else 'Draft'
+        when DatePublished is null and DateArchived is null then 'Draft'
+        else 'Archived'
         end 
         persisted,
     RecipePicture as concat('Recipe_', replace(RecipeName, ' ', '_'), '.jpg') persisted,
