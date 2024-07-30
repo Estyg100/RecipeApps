@@ -66,7 +66,7 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-            var response = MessageBox.Show("Are you sure you want to permenantly delete this president?", "Record Keeper", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;
@@ -79,7 +79,7 @@ namespace RecipeWinForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "HeartyHearth");
+                MessageBox.Show(ex.Message, "Hearty Hearth");
             }
             finally
             {
