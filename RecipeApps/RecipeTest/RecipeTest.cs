@@ -31,8 +31,15 @@ namespace RecipeTest
             r["DateDraft"] = datedraft;
             Recipe.Save(dt);
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from Recipe where RecipeName = " + "'" + recipename + "'");
+            int pkid = 0;
+            if (r["RecipeId"] != DBNull.Value)
+            {
+                pkid = (int)r["RecipeId"];
+            }
             Assert.IsTrue(newid > 0, "Recipe with RecipeName: " + recipename + " is not found in DB");
+            Assert.IsTrue(pkid > 0, "Primary key not updated in data table");
             TestContext.WriteLine("Recipe with RecipeName: " + recipename + " is found in DB with pk value = " + newid);
+            TestContext.WriteLine("new primary key = " + pkid);
         }
 
         [Test]
@@ -147,8 +154,14 @@ namespace RecipeTest
             on mcr.RecipeId = r.RecipeId
             left join CookbookRecipe cr
             on cr.RecipeId = r.RecipeId
-            where mcr.MealCourseRecipeId is null
+            where  
+            mcr.MealCourseRecipeId is null
             and cr.CookbookRecipeId is null
+            and
+            (
+            r.Currentstatus = 'Draft' 
+            or getdate() - r.DateArchived > 30
+            )
             order by r.RecipeId
             ";
             DataTable dt = SQLUtility.GetDataTable(sql);
@@ -159,8 +172,8 @@ namespace RecipeTest
                 recipeid = (int)dt.Rows[0]["RecipeId"];
                 recipename = dt.Rows[0]["RecipeName"].ToString();
             }
-            Assume.That(recipeid > 0, "No recipes without ingrideients and cookbooks in DB, can't run test");
-            TestContext.WriteLine("Existing recipe without ingridients and cookbooks, with id = " + recipeid + " " + recipename);
+            Assume.That(recipeid > 0, "No recipes without ingrideients and cookbooks in DB that are either in draft or archived for over 30 days, can't run test");
+            TestContext.WriteLine("Existing recipe without ingridients and cookbooks that is in draft or archived for over 30 days, with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app can delete " + recipeid);
             Recipe.Delete(dt);
             DataTable dtafterdelete = SQLUtility.GetDataTable("select * from Recipe where RecipeId = " + recipeid);
