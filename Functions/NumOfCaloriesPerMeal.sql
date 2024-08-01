@@ -13,7 +13,6 @@ begin
     join Recipe r 
     on mcr.RecipeId = r.RecipeId
     where m.MealId = @MealId
-    group by m.MealName
 
     return @value
 end
