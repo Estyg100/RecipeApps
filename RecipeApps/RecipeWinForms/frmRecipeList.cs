@@ -1,9 +1,9 @@
 ﻿
 namespace RecipeWinForms
 {
-    public partial class frmSearch : Form
+    public partial class frmRecipeList : Form
     {
-        public frmSearch()
+        public frmRecipeList()
         {
             InitializeComponent();
             btnSearch.Click += BtnSearch_Click;
@@ -27,7 +27,7 @@ namespace RecipeWinForms
             {
                 recipeid = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
             }
-            frmRecipe frm = new frmRecipe();
+            frmRecipeDetails frm = new frmRecipeDetails();
             frm.ShowForm(recipeid);
         }
 

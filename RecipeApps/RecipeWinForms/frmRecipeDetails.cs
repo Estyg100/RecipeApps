@@ -12,12 +12,12 @@ using System.Windows.Forms;
 namespace RecipeWinForms
 {
     
-    public partial class frmRecipe : Form
+    public partial class frmRecipeDetails : Form
     {
         DataTable dtRecipe;
         BindingSource bindsource = new();
         
-        public frmRecipe()
+        public frmRecipeDetails()
         {
             InitializeComponent();
             btnSave.Click += BtnSave_Click;
