@@ -44,7 +44,7 @@
             tblMain.Controls.Add(btnNewRecipe, 0, 0);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
-            tblMain.Margin = new Padding(4, 4, 4, 4);
+            tblMain.Margin = new Padding(4);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 2;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 10.4444447F));
@@ -57,8 +57,9 @@
             gRecipes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gRecipes.Dock = DockStyle.Fill;
             gRecipes.Location = new Point(4, 74);
-            gRecipes.Margin = new Padding(4, 4, 4, 4);
+            gRecipes.Margin = new Padding(4);
             gRecipes.Name = "gRecipes";
+            gRecipes.RowHeadersVisible = false;
             gRecipes.RowHeadersWidth = 51;
             gRecipes.Size = new Size(742, 593);
             gRecipes.TabIndex = 1;
@@ -83,7 +84,7 @@
             ClientSize = new Size(750, 671);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmRecipeList";
             Text = "Recipe List";
             tblMain.ResumeLayout(false);

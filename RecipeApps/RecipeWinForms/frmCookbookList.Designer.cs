@@ -43,7 +43,7 @@
             tblMain.Controls.Add(gCookbookList, 0, 1);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
-            tblMain.Margin = new Padding(4, 4, 4, 4);
+            tblMain.Margin = new Padding(4);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 2;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.225997F));
@@ -69,6 +69,7 @@
             gCookbookList.Dock = DockStyle.Fill;
             gCookbookList.Location = new Point(3, 79);
             gCookbookList.Name = "gCookbookList";
+            gCookbookList.RowHeadersVisible = false;
             gCookbookList.RowHeadersWidth = 51;
             gCookbookList.Size = new Size(692, 595);
             gCookbookList.TabIndex = 1;
@@ -80,7 +81,7 @@
             ClientSize = new Size(698, 677);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmCookbookList";
             Text = "Cookbook List";
             tblMain.ResumeLayout(false);

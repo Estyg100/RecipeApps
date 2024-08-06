@@ -30,7 +30,7 @@
         {
             mnuMain = new MenuStrip();
             mnuFile = new ToolStripMenuItem();
-            mnuDashvoard = new ToolStripMenuItem();
+            mnuDashboard = new ToolStripMenuItem();
             mnuRecipes = new ToolStripMenuItem();
             mnuRecipeList = new ToolStripMenuItem();
             mnuNewRecipe = new ToolStripMenuItem();
@@ -44,6 +44,7 @@
             mnuDataMaintenance = new ToolStripMenuItem();
             mnuEditData = new ToolStripMenuItem();
             mnuWindows = new ToolStripMenuItem();
+            tsMain = new ToolStrip();
             mnuMain.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,22 +56,22 @@
             mnuMain.Location = new Point(0, 0);
             mnuMain.Name = "mnuMain";
             mnuMain.Padding = new Padding(8, 3, 0, 3);
-            mnuMain.Size = new Size(713, 38);
+            mnuMain.Size = new Size(971, 38);
             mnuMain.TabIndex = 1;
             mnuMain.Text = "menuStrip1";
             // 
             // mnuFile
             // 
-            mnuFile.DropDownItems.AddRange(new ToolStripItem[] { mnuDashvoard });
+            mnuFile.DropDownItems.AddRange(new ToolStripItem[] { mnuDashboard });
             mnuFile.Name = "mnuFile";
             mnuFile.Size = new Size(56, 32);
             mnuFile.Text = "File";
             // 
-            // mnuDashvoard
+            // mnuDashboard
             // 
-            mnuDashvoard.Name = "mnuDashvoard";
-            mnuDashvoard.Size = new Size(194, 32);
-            mnuDashvoard.Text = "Dashboard";
+            mnuDashboard.Name = "mnuDashboard";
+            mnuDashboard.Size = new Size(194, 32);
+            mnuDashboard.Text = "Dashboard";
             // 
             // mnuRecipes
             // 
@@ -107,7 +108,7 @@
             // mnuMealList
             // 
             mnuMealList.Name = "mnuMealList";
-            mnuMealList.Size = new Size(224, 32);
+            mnuMealList.Size = new Size(127, 32);
             mnuMealList.Text = "List";
             // 
             // mnuCookbooks
@@ -145,7 +146,7 @@
             // mnuEditData
             // 
             mnuEditData.Name = "mnuEditData";
-            mnuEditData.Size = new Size(224, 32);
+            mnuEditData.Size = new Size(178, 32);
             mnuEditData.Text = "Edit Data";
             // 
             // mnuWindows
@@ -154,16 +155,26 @@
             mnuWindows.Size = new Size(107, 32);
             mnuWindows.Text = "Windows";
             // 
+            // tsMain
+            // 
+            tsMain.ImageScalingSize = new Size(20, 20);
+            tsMain.Location = new Point(0, 38);
+            tsMain.Name = "tsMain";
+            tsMain.Size = new Size(971, 25);
+            tsMain.TabIndex = 3;
+            tsMain.Text = "toolStrip1";
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(713, 630);
+            ClientSize = new Size(971, 831);
+            Controls.Add(tsMain);
             Controls.Add(mnuMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             IsMdiContainer = true;
             MainMenuStrip = mnuMain;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmMain";
             Text = "Hearty Hearth";
             mnuMain.ResumeLayout(false);
@@ -176,7 +187,7 @@
 
         private MenuStrip mnuMain;
         private ToolStripMenuItem mnuFile;
-        private ToolStripMenuItem mnuDashvoard;
+        private ToolStripMenuItem mnuDashboard;
         private ToolStripMenuItem mnuRecipes;
         private ToolStripMenuItem mnuRecipeList;
         private ToolStripMenuItem mnuNewRecipe;
@@ -190,5 +201,6 @@
         private ToolStripMenuItem mnuDataMaintenance;
         private ToolStripMenuItem mnuEditData;
         private ToolStripMenuItem mnuWindows;
+        private ToolStrip tsMain;
     }
 }

@@ -53,7 +53,7 @@
             tblMain.Controls.Add(tblData, 1, 0);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
-            tblMain.Margin = new Padding(4, 4, 4, 4);
+            tblMain.Margin = new Padding(4);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 1;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -182,6 +182,7 @@
             gData.Dock = DockStyle.Fill;
             gData.Location = new Point(3, 3);
             gData.Name = "gData";
+            gData.RowHeadersVisible = false;
             gData.RowHeadersWidth = 51;
             gData.Size = new Size(426, 569);
             gData.TabIndex = 1;
@@ -193,7 +194,7 @@
             ClientSize = new Size(644, 649);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmDataMaintenance";
             Text = "Data Maintenance";
             tblMain.ResumeLayout(false);

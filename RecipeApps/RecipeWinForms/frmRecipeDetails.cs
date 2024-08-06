@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
-    
+
     public partial class frmRecipeDetails : Form
     {
         DataTable dtRecipe;
         BindingSource bindsource = new();
-        
+
         public frmRecipeDetails()
         {
             InitializeComponent();
@@ -24,7 +13,7 @@ namespace RecipeWinForms
             btnDelete.Click += BtnDelete_Click;
         }
 
-        public void ShowForm(int recipeid)
+        public void LoadForm(int recipeid)
         {
             dtRecipe = Recipe.Load(recipeid);
             bindsource.DataSource = dtRecipe;
@@ -34,14 +23,14 @@ namespace RecipeWinForms
             }
             DataTable dtUserName = Recipe.GetUserList();
             DataTable dtCuisineName = Recipe.GetCuisineList();
-            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtRecipe, "users");
+            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtRecipe, "Users");
             WindowsFormsUtility.SetControlBinding(txtRecipeName, bindsource);
-            WindowsFormsUtility.SetListBinding(lstCuisineName, dtCuisineName, dtRecipe, "cuisine");
+            WindowsFormsUtility.SetListBinding(lstCuisineName, dtCuisineName, dtRecipe, "Cuisine");
             WindowsFormsUtility.SetControlBinding(txtCaloriesPerServing, bindsource);
-            WindowsFormsUtility.SetControlBinding(txtDateDraft, bindsource);
-            WindowsFormsUtility.SetControlBinding(txtDatePublished, bindsource);
-            WindowsFormsUtility.SetControlBinding(txtDateArchived, bindsource);
-            this.Show();
+            WindowsFormsUtility.SetControlBinding(lblCurrentStatus, bindsource);
+            WindowsFormsUtility.SetControlBinding(lblDateDraft, bindsource);
+            WindowsFormsUtility.SetControlBinding(lblDatePublished, bindsource);
+            WindowsFormsUtility.SetControlBinding(lblDateArchived, bindsource);
         }
 
         private void Save()
@@ -49,9 +38,9 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
-                if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && txtDateDraft.Text == "")
+                if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && lblDateDraft.Text == "")
                 {
-                    txtDateDraft.Text = DateTime.Now.ToString();
+                    lblDateDraft.Text = DateTime.Now.ToString();
                 }
                 Recipe.Save(dtRecipe);
                 bindsource.ResetBindings(false);
@@ -64,7 +53,7 @@ namespace RecipeWinForms
             {
                 Application.UseWaitCursor = false;
             }
-            
+
         }
 
         private void Delete()
@@ -99,6 +88,5 @@ namespace RecipeWinForms
         {
             Save();
         }
-
     }
 }

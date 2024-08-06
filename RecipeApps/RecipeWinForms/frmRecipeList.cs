@@ -1,20 +1,20 @@
-﻿
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
     public partial class frmRecipeList : Form
     {
         public frmRecipeList()
         {
             InitializeComponent();
-            btnSearch.Click += BtnSearch_Click;
             gRecipes.CellDoubleClick += GRecipes_CellDoubleClick;
-            btnNew.Click += BtnNew_Click;
+            gRecipes.KeyDown += GRecipes_KeyDown;
+            btnNewRecipe.Click += BtnNewRecipe_Click;
             WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
+            this.Activated += FrmRecipeList_Activated;
         }
 
-        private void SearchForPresident(string recipename)
+        private void GetRecipeList()
         {
-            DataTable dt = Recipe.SearchRecipe(recipename);
+            DataTable dt = Recipe.GetRecipeList();
             gRecipes.DataSource = dt;
             gRecipes.Columns["RecipeId"].Visible = false;
             gRecipes.AutoResizeColumns();
@@ -25,10 +25,17 @@ namespace RecipeWinForms
             int recipeid = 0;
             if (rowindex > -1)
             {
-                recipeid = (int)gRecipes.Rows[rowindex].Cells["RecipeId"].Value;
+                recipeid = WindowsFormsUtility.GetIdFromGrid(gRecipes, rowindex, "RecipeId");
             }
-            frmRecipeDetails frm = new frmRecipeDetails();
-            frm.ShowForm(recipeid);
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), recipeid);
+            }
+        }
+
+        private void FrmRecipeList_Activated(object? sender, EventArgs e)
+        {
+            GetRecipeList();
         }
 
         private void GRecipes_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)
@@ -36,12 +43,16 @@ namespace RecipeWinForms
             ShowRecipeForm(e.RowIndex);
         }
 
-        private void BtnSearch_Click(object? sender, EventArgs e)
+        private void GRecipes_KeyDown(object? sender, KeyEventArgs e)
         {
-            SearchForPresident(txtReipeName.Text);
+            if (e.KeyCode == Keys.Enter && gRecipes.SelectedRows.Count > 0)
+            {
+                ShowRecipeForm(gRecipes.SelectedRows[0].Index);
+                e.SuppressKeyPress = true;
+            }
         }
 
-        private void BtnNew_Click(object? sender, EventArgs e)
+        private void BtnNewRecipe_Click(object? sender, EventArgs e)
         {
             ShowRecipeForm(-1);
         }

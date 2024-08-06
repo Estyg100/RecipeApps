@@ -37,8 +37,9 @@
             gMealList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gMealList.Dock = DockStyle.Fill;
             gMealList.Location = new Point(0, 0);
-            gMealList.Margin = new Padding(21, 21, 21, 21);
+            gMealList.Margin = new Padding(21);
             gMealList.Name = "gMealList";
+            gMealList.RowHeadersVisible = false;
             gMealList.RowHeadersWidth = 51;
             gMealList.Size = new Size(665, 625);
             gMealList.TabIndex = 0;
@@ -50,7 +51,7 @@
             ClientSize = new Size(665, 625);
             Controls.Add(gMealList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmMealList";
             Text = "Meal List";
             ((System.ComponentModel.ISupportInitialize)gMealList).EndInit();
