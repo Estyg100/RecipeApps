@@ -9,7 +9,7 @@ namespace RecipeWinForms
             btnSearch.Click += BtnSearch_Click;
             gRecipes.CellDoubleClick += GRecipes_CellDoubleClick;
             btnNew.Click += BtnNew_Click;
-            WindowsFormsUtility.FormatGridForSearchResults(gRecipes);
+            WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
         }
 
         private void SearchForPresident(string recipename)
