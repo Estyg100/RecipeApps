@@ -1,10 +1,13 @@
-﻿namespace RecipeWinForms
+﻿using CPUFramework;
+
+namespace RecipeWinForms
 {
 
     public partial class frmRecipeDetails : Form
     {
         DataTable dtRecipe;
         BindingSource bindsource = new();
+        int recipeid = 0;
 
         public frmRecipeDetails()
         {
@@ -13,8 +16,10 @@
             btnDelete.Click += BtnDelete_Click;
         }
 
-        public void LoadForm(int recipeid)
+        public void LoadForm(int recipeval)
         {
+            recipeid = recipeval;
+            this.Tag = recipeid;
             dtRecipe = Recipe.Load(recipeid);
             bindsource.DataSource = dtRecipe;
             if (recipeid == 0)
@@ -33,17 +38,21 @@
             WindowsFormsUtility.SetControlBinding(lblDateArchived, bindsource);
         }
 
-        private void Save()
+        private bool Save()
         {
+            bool b = false;
             Application.UseWaitCursor = true;
             try
             {
-                if ((int)dtRecipe.Rows[0]["RecipeId"] == 0 && lblDateDraft.Text == "")
+                if (lblDateDraft.Text == "" && recipeid == 0)
                 {
                     lblDateDraft.Text = DateTime.Now.ToString();
                 }
                 Recipe.Save(dtRecipe);
+                b = true;
                 bindsource.ResetBindings(false);
+                recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+                this.Tag = recipeid;
             }
             catch (Exception ex)
             {
@@ -53,7 +62,7 @@
             {
                 Application.UseWaitCursor = false;
             }
-
+            return b;
         }
 
         private void Delete()

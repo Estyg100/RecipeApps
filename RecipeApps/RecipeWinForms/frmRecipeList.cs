@@ -8,16 +8,31 @@
             gRecipes.CellDoubleClick += GRecipes_CellDoubleClick;
             gRecipes.KeyDown += GRecipes_KeyDown;
             btnNewRecipe.Click += BtnNewRecipe_Click;
-            WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
             this.Activated += FrmRecipeList_Activated;
         }
 
         private void GetRecipeList()
         {
-            DataTable dt = Recipe.GetRecipeList();
-            gRecipes.DataSource = dt;
-            gRecipes.Columns["RecipeId"].Visible = false;
-            gRecipes.AutoResizeColumns();
+            try
+            {
+                DataTable dt = Recipe.GetRecipeList();
+                gRecipes.DataSource = dt;
+                WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
+                if (gRecipes.Rows.Count > 0)
+                {
+                    gRecipes.Focus();
+                    gRecipes.Rows[0].Selected = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
+
+        private void FrmRecipeList_Activated(object? sender, EventArgs e)
+        {
+            GetRecipeList();
         }
 
         private void ShowRecipeForm(int rowindex)
@@ -31,11 +46,6 @@
             {
                 ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), recipeid);
             }
-        }
-
-        private void FrmRecipeList_Activated(object? sender, EventArgs e)
-        {
-            GetRecipeList();
         }
 
         private void GRecipes_CellDoubleClick(object? sender, DataGridViewCellEventArgs e)

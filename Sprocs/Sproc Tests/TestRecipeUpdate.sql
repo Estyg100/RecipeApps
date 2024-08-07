@@ -1,7 +1,15 @@
 
 -- Update
 
-declare @Message varchar (500) = '', @return int, @recipeid int, @usersid int, @cuisineid int, @recipename varchar (30), @caloriesperserving int, @datedraft datetime, @datepublished datetime, @datearchived datetime 
+declare 
+@Message varchar (500) = '', 
+@return int, @recipeid int, 
+@usersid int, @cuisineid int, 
+@recipename varchar (30), 
+@caloriesperserving int, 
+@datedraft datetime, 
+@datepublished datetime, 
+@datearchived datetime 
 
 select top 1 
 @recipeid = r.RecipeId,
@@ -37,7 +45,15 @@ go
 
 --Insert 
 
-declare @Message varchar (500) = '', @return int, @recipeid int, @usersid int, @cuisineid int, @recipename varchar (30), @caloriesperserving int, @datedraft datetime, @datepublished datetime, @datearchived datetime
+declare 
+@Message varchar (500) = '', 
+@return int, @recipeid int, 
+@usersid int, @cuisineid int, 
+@recipename varchar (30), 
+@caloriesperserving int, 
+@datedraft datetime, 
+@datepublished datetime, 
+@datearchived datetime
 
 select top 1 @usersid = u.UsersId from Users u
 select top 1 @cuisineid = c.CuisineId from Cuisine c 
@@ -46,7 +62,7 @@ exec @return = RecipeUpdate
 @RecipeId = @recipeid output,
 @UsersId = @usersid,
 @CuisineId = @cuisineid,
-@RecipeName = 'Hello',
+@RecipeName = 'Hellot',
 @CaloriesPerServing = 100,
 @DateDraft = '1/1/2024',
 @DatePublished = '5/6/2024',
@@ -62,3 +78,6 @@ where r.RecipeId = @recipeid
 delete Recipe where RecipeId = @recipeid
 
 go
+
+select * 
+from Recipe

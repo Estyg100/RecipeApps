@@ -10,6 +10,7 @@
             mnuRecipeList.Click += MnuRecipeList_Click;
             mnuMealList.Click += MnuMealList_Click;
             mnuCookbookList.Click += MnuCookbookList_Click;
+            mnuNewRecipe.Click += MnuNewRecipe_Click;
         }
 
         private void FrmMain_Shown(object? sender, EventArgs e)
@@ -94,6 +95,11 @@
         private void MnuDashboard_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmDashboard));
+        }
+
+        private void MnuNewRecipe_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmRecipeDetails));
         }
 
     }

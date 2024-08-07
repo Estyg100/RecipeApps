@@ -157,6 +157,7 @@
             // 
             // tsMain
             // 
+            tsMain.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tsMain.ImageScalingSize = new Size(20, 20);
             tsMain.Location = new Point(0, 38);
             tsMain.Name = "tsMain";

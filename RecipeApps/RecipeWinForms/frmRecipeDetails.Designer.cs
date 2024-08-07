@@ -75,8 +75,8 @@
             // tblMain
             // 
             tblMain.ColumnCount = 2;
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 37.8986855F));
-            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 62.1013145F));
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.5249634F));
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.47504F));
             tblMain.Controls.Add(tblButtons, 0, 0);
             tblMain.Controls.Add(lblRecipeNAme, 0, 1);
             tblMain.Controls.Add(txtRecipeName, 1, 1);
@@ -172,10 +172,10 @@
             // txtRecipeName
             // 
             txtRecipeName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtRecipeName.Location = new Point(268, 63);
+            txtRecipeName.Location = new Point(231, 63);
             txtRecipeName.Margin = new Padding(3, 3, 15, 3);
             txtRecipeName.Name = "txtRecipeName";
-            txtRecipeName.Size = new Size(418, 34);
+            txtRecipeName.Size = new Size(455, 34);
             txtRecipeName.TabIndex = 2;
             // 
             // lblUser
@@ -193,10 +193,10 @@
             // 
             lstUserName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(268, 117);
+            lstUserName.Location = new Point(231, 117);
             lstUserName.Margin = new Padding(3, 3, 15, 3);
             lstUserName.Name = "lstUserName";
-            lstUserName.Size = new Size(418, 36);
+            lstUserName.Size = new Size(455, 36);
             lstUserName.TabIndex = 4;
             // 
             // lblCuisine
@@ -214,10 +214,10 @@
             // 
             lstCuisineName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lstCuisineName.FormattingEnabled = true;
-            lstCuisineName.Location = new Point(268, 169);
+            lstCuisineName.Location = new Point(231, 169);
             lstCuisineName.Margin = new Padding(3, 3, 15, 3);
             lstCuisineName.Name = "lstCuisineName";
-            lstCuisineName.Size = new Size(418, 36);
+            lstCuisineName.Size = new Size(455, 36);
             lstCuisineName.TabIndex = 6;
             // 
             // lblCaloriesPerServing
@@ -234,10 +234,10 @@
             // txtCaloriesPerServing
             // 
             txtCaloriesPerServing.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtCaloriesPerServing.Location = new Point(268, 218);
+            txtCaloriesPerServing.Location = new Point(231, 218);
             txtCaloriesPerServing.Margin = new Padding(3, 3, 15, 3);
             txtCaloriesPerServing.Name = "txtCaloriesPerServing";
-            txtCaloriesPerServing.Size = new Size(418, 34);
+            txtCaloriesPerServing.Size = new Size(455, 34);
             txtCaloriesPerServing.TabIndex = 8;
             // 
             // lblCurrentStatusText
@@ -275,13 +275,13 @@
             tblStatusDates.Controls.Add(lblDatePublished, 1, 1);
             tblStatusDates.Controls.Add(lblDateArchived, 2, 1);
             tblStatusDates.Dock = DockStyle.Fill;
-            tblStatusDates.Location = new Point(268, 325);
+            tblStatusDates.Location = new Point(231, 325);
             tblStatusDates.Margin = new Padding(3, 3, 15, 3);
             tblStatusDates.Name = "tblStatusDates";
             tblStatusDates.RowCount = 2;
             tblStatusDates.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tblStatusDates.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblStatusDates.Size = new Size(418, 75);
+            tblStatusDates.Size = new Size(455, 75);
             tblStatusDates.TabIndex = 12;
             // 
             // lblDrafted
@@ -290,7 +290,7 @@
             lblDrafted.Dock = DockStyle.Fill;
             lblDrafted.Location = new Point(3, 0);
             lblDrafted.Name = "lblDrafted";
-            lblDrafted.Size = new Size(133, 37);
+            lblDrafted.Size = new Size(145, 37);
             lblDrafted.TabIndex = 0;
             lblDrafted.Text = "Drafted";
             lblDrafted.TextAlign = ContentAlignment.MiddleCenter;
@@ -299,9 +299,9 @@
             // 
             lblPublished.AutoSize = true;
             lblPublished.Dock = DockStyle.Fill;
-            lblPublished.Location = new Point(142, 0);
+            lblPublished.Location = new Point(154, 0);
             lblPublished.Name = "lblPublished";
-            lblPublished.Size = new Size(133, 37);
+            lblPublished.Size = new Size(145, 37);
             lblPublished.TabIndex = 1;
             lblPublished.Text = "Published";
             lblPublished.TextAlign = ContentAlignment.MiddleCenter;
@@ -310,46 +310,46 @@
             // 
             lblArchived.AutoSize = true;
             lblArchived.Dock = DockStyle.Fill;
-            lblArchived.Location = new Point(281, 0);
+            lblArchived.Location = new Point(305, 0);
             lblArchived.Name = "lblArchived";
-            lblArchived.Size = new Size(134, 37);
+            lblArchived.Size = new Size(147, 37);
             lblArchived.TabIndex = 2;
             lblArchived.Text = "Archived";
             lblArchived.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDateDraft
             // 
-            lblDateDraft.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblDateDraft.AutoSize = true;
             lblDateDraft.BackColor = SystemColors.ControlDark;
             lblDateDraft.BorderStyle = BorderStyle.FixedSingle;
-            lblDateDraft.Location = new Point(3, 41);
+            lblDateDraft.Dock = DockStyle.Fill;
+            lblDateDraft.Location = new Point(3, 37);
             lblDateDraft.Name = "lblDateDraft";
-            lblDateDraft.Size = new Size(133, 30);
+            lblDateDraft.Size = new Size(145, 38);
             lblDateDraft.TabIndex = 6;
             lblDateDraft.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDatePublished
             // 
-            lblDatePublished.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblDatePublished.AutoSize = true;
             lblDatePublished.BackColor = SystemColors.ControlDark;
             lblDatePublished.BorderStyle = BorderStyle.FixedSingle;
-            lblDatePublished.Location = new Point(142, 41);
+            lblDatePublished.Dock = DockStyle.Fill;
+            lblDatePublished.Location = new Point(154, 37);
             lblDatePublished.Name = "lblDatePublished";
-            lblDatePublished.Size = new Size(133, 30);
+            lblDatePublished.Size = new Size(145, 38);
             lblDatePublished.TabIndex = 7;
             lblDatePublished.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblDateArchived
             // 
-            lblDateArchived.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblDateArchived.AutoSize = true;
             lblDateArchived.BackColor = SystemColors.ControlDark;
             lblDateArchived.BorderStyle = BorderStyle.FixedSingle;
-            lblDateArchived.Location = new Point(281, 41);
+            lblDateArchived.Dock = DockStyle.Fill;
+            lblDateArchived.Location = new Point(305, 37);
             lblDateArchived.Name = "lblDateArchived";
-            lblDateArchived.Size = new Size(134, 30);
+            lblDateArchived.Size = new Size(147, 38);
             lblDateArchived.TabIndex = 8;
             lblDateArchived.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -467,10 +467,10 @@
             lblCurrentStatus.AutoSize = true;
             lblCurrentStatus.BackColor = SystemColors.ControlDark;
             lblCurrentStatus.BorderStyle = BorderStyle.FixedSingle;
-            lblCurrentStatus.Location = new Point(268, 276);
+            lblCurrentStatus.Location = new Point(231, 276);
             lblCurrentStatus.Margin = new Padding(3, 0, 15, 0);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(418, 30);
+            lblCurrentStatus.Size = new Size(455, 30);
             lblCurrentStatus.TabIndex = 14;
             // 
             // frmRecipeDetails
