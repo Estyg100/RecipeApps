@@ -17,6 +17,8 @@
             this.FormClosing += FrmRecipeDetails_FormClosing;
             btnIngredientSave.Click += BtnIngredientSave_Click;
             btnStepsSave.Click += BtnStepsSave_Click;
+            gIngredients.CellContentClick += GIngredients_CellContentClick;
+            gSteps.CellContentClick += GSteps_CellContentClick;
         }
 
         public void LoadForm(int recipeval)
@@ -165,6 +167,48 @@
             }
         }
 
+        private void DeleteRecipeIngredients(int rowIndex)
+        {
+            int id = WindowsFormsUtility.GetIdFromGrid(gIngredients, rowIndex, "RecipeIngredientId");
+            if (id > 0)
+            {
+                try
+                {
+                    RecipeChildRecords.Delete(id, "RecipeIngredient");
+                    LoadRecipeIngredients();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id < gIngredients.Rows.Count)
+            {
+                gIngredients.Rows.RemoveAt(rowIndex);
+            }
+        }
+
+        private void DeleteRecipeSteps(int rowIndex)
+        {
+            int id = WindowsFormsUtility.GetIdFromGrid(gSteps, rowIndex, "RecipeDirectionsId");
+            if (id > 0)
+            {
+                try
+                {
+                    RecipeChildRecords.Delete(id, "RecipeDirections");
+                    LoadRecipeSteps();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id < gSteps.Rows.Count)
+            {
+                gSteps.Rows.RemoveAt(rowIndex);
+            }
+        }
+
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
             Delete();
@@ -183,6 +227,16 @@
         private void BtnStepsSave_Click(object? sender, EventArgs e)
         {
             SaveRecipeSteps();
+        }
+
+        private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            DeleteRecipeIngredients(e.RowIndex);
+        }
+
+        private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            DeleteRecipeSteps(e.RowIndex);
         }
 
         private void FrmRecipeDetails_FormClosing(object? sender, FormClosingEventArgs e)
