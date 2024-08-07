@@ -16,11 +16,11 @@ union select 'RecipeDirections', rd.RecipeDirectionsId, rd.DirectionDesc from Re
 
 exec RecipeDelete @RecipeId = @recipeid
 
-
 select TableName = 'Recipe', Id = r.RecipeId, Record = r.RecipeName from Recipe r where r.RecipeId = @recipeid
 union select 'RecipeIngredient', ri.RecipeIngredientId, i.IngredientName from RecipeIngredient ri join Ingredient i on ri.IngredientId = i.IngredientId where ri.RecipeId = @recipeid
 union select 'RecipeDirections', rd.RecipeDirectionsId, rd.DirectionDesc from RecipeDirections rd where rd.RecipeId = @recipeid
 
+go
 -- Without related records
 declare @recipeid int
 
@@ -39,7 +39,6 @@ union select 'RecipeIngredient', ri.RecipeIngredientId, i.IngredientName from Re
 union select 'RecipeDirections', rd.RecipeDirectionsId, rd.DirectionDesc from RecipeDirections rd where rd.RecipeId = @recipeid
 
 exec RecipeDelete @RecipeId = @recipeid
-
 
 select TableName = 'Recipe', Id = r.RecipeId, Record = r.RecipeName from Recipe r where r.RecipeId = @recipeid
 union select 'RecipeIngredient', ri.RecipeIngredientId, i.IngredientName from RecipeIngredient ri join Ingredient i on ri.IngredientId = i.IngredientId where ri.RecipeId = @recipeid

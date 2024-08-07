@@ -1,6 +1,4 @@
-﻿using CPUFramework;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
 
     public partial class frmRecipeDetails : Form
@@ -40,7 +38,9 @@ namespace RecipeWinForms
             WindowsFormsUtility.SetControlBinding(lblDateDraft, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateArchived, bindsource);
+            this.Text = GetRecipeDesc();
             LoadRecipeChildRecord();
+            SetButtonsEnabledBasedOnNewRecord();
         }
 
         private void LoadRecipeIngredients()
@@ -70,7 +70,23 @@ namespace RecipeWinForms
             gIngredients.AutoGenerateColumns = false;
             gSteps.AutoGenerateColumns = false;
         }
-
+        private string GetRecipeDesc()
+        {
+            string value = "New Recipe";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+            if (pkvalue > 0)
+            {
+                value = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+            }
+            return value;
+        }
+        private void SetButtonsEnabledBasedOnNewRecord()
+        {
+            bool b = recipeid == 0 ? false : true;
+            btnDelete.Enabled = b;
+            btnIngredientSave.Enabled = b;
+            btnStepsSave.Enabled = b;
+        }
         private bool Save()
         {
             bool b = false;
@@ -85,9 +101,10 @@ namespace RecipeWinForms
                 Recipe.Save(dtRecipe);
                 b = true;
                 bindsource.ResetBindings(false);
-
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
                 this.Tag = recipeid;
+                this.Text = GetRecipeDesc();
+                SetButtonsEnabledBasedOnNewRecord();
             }
             catch (Exception ex)
             {
@@ -102,7 +119,7 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-            var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe?", "Hearty Hearth", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe with all its related records?!", "Hearty Hearth", MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;
@@ -115,7 +132,7 @@ namespace RecipeWinForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Hearty Hearth");
+                MessageBox.Show(ex.Message, Application.ProductName);
             }
             finally
             {

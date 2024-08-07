@@ -20,7 +20,7 @@
 
         public void OpenForm(Type frmtype, int pkvalue = 0)
         {
-            bool b = WindowsFormsUtility.IsFormOpen(frmtype);
+            bool b = WindowsFormsUtility.IsFormOpen(frmtype, pkvalue);
             if (b == false)
             {
                 Form? frm = null;
