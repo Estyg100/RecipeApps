@@ -9,7 +9,7 @@ begin
 
 	select @All = isnull(@All,0), @RecipeId = isnull(@RecipeId, 0)
 
-	select rd.DirectionDesc, rd.DirectionStepNum
+	select rd.DirectionDesc, rd.DirectionStepNum, r.RecipeId, rd.RecipeDirectionsId
     from Recipe r
     join RecipeDirections rd 
     on r.RecipeId = rd.RecipeId

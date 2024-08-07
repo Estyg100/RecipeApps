@@ -9,7 +9,7 @@ begin
 
 	select @All = isnull(@All,0), @RecipeId = isnull(@RecipeId, 0)
 
-	select ri.Quantity, IngredientSequence = ri.ISequence, i.IngredientId, m.MeasurementTypeId
+	select ri.Quantity, IngredientSequence = ri.ISequence, i.IngredientId, m.MeasurementTypeId, r.RecipeId, ri.RecipeIngredientId
     from Recipe r
     join RecipeIngredient ri 
     on r.RecipeId = ri.RecipeId

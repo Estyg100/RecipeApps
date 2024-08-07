@@ -10,5 +10,15 @@
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
+
+        public static void SaveTable(DataTable dt, int recipeid, string paramprefix)
+        {
+            foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
+            {
+                r["RecipeId"] = recipeid;
+            }
+            SQLUtility.SaveDataTable(dt, paramprefix + "Update");
+        }
+
     }
 }

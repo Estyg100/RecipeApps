@@ -16,6 +16,7 @@
             btnDelete.Click += BtnDelete_Click;
             this.FormClosing += FrmRecipeDetails_FormClosing;
             btnIngredientSave.Click += BtnIngredientSave_Click;
+            btnStepsSave.Click += BtnStepsSave_Click;
         }
 
         public void LoadForm(int recipeval)
@@ -142,7 +143,26 @@
 
         private void SaveRecipeIngredients()
         {
+            try
+            {
+                RecipeChildRecords.SaveTable(dtRecipeIngredient, recipeid, "RecipeIngredient");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
 
+        private void SaveRecipeSteps()
+        {
+            try
+            {
+                RecipeChildRecords.SaveTable(dtRecipeSteps, recipeid, "RecipeDirections");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
         }
 
         private void BtnDelete_Click(object? sender, EventArgs e)
@@ -157,7 +177,12 @@
 
         private void BtnIngredientSave_Click(object? sender, EventArgs e)
         {
+            SaveRecipeIngredients();
+        }
 
+        private void BtnStepsSave_Click(object? sender, EventArgs e)
+        {
+            SaveRecipeSteps();
         }
 
         private void FrmRecipeDetails_FormClosing(object? sender, FormClosingEventArgs e)
