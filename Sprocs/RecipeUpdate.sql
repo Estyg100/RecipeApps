@@ -4,9 +4,9 @@ create or alter proc dbo.RecipeUpdate(
     @CuisineId int,
     @RecipeName varchar (35),
     @CaloriesPerServing int,
-    @DateDraft datetime,
-    @DatePublished datetime,
-    @DateArchived datetime,
+    @DateDraft datetime output,
+    @DatePublished datetime output,
+    @DateArchived datetime output,
     @Message varchar (500) = '' output
 )
 as 

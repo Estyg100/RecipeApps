@@ -46,11 +46,13 @@ namespace RecipeWinForms
             {
                 if (lblDateDraft.Text == "" && recipeid == 0)
                 {
-                    lblDateDraft.Text = DateTime.Now.ToString();
+                    lblDateDraft.Text = DateTime.Now.ToString("MMM d yyyy");
+                    lblCurrentStatus.Text = "Draft";
                 }
                 Recipe.Save(dtRecipe);
                 b = true;
                 bindsource.ResetBindings(false);
+                
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
                 this.Tag = recipeid;
             }
