@@ -1,6 +1,5 @@
 create or alter procedure dbo.RecipeIngredientGet(
 	@RecipeId int = 0,
-    @IngredientId int = 0 output,
 	@All bit = 0,
 	@Message varchar(500) = ''  output
 )
@@ -8,7 +7,7 @@ as
 begin
 	declare @return int = 0
 
-	select @All = isnull(@All,0), @RecipeId = isnull(@RecipeId, 0), @IngredientId = isnull(@IngredientId, 0)
+	select @All = isnull(@All,0), @RecipeId = isnull(@RecipeId, 0)
 
 	select ri.Quantity, IngredientSequence = ri.ISequence, i.IngredientId, m.MeasurementTypeId
     from Recipe r

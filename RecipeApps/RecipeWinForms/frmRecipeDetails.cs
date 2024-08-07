@@ -7,6 +7,7 @@ namespace RecipeWinForms
     {
         DataTable dtRecipe = new();
         DataTable dtRecipeIngredient = new();
+        DataTable dtRecipeSteps = new();
         BindingSource bindsource = new();
         int recipeid = 0;
 
@@ -44,7 +45,7 @@ namespace RecipeWinForms
 
         private void LoadRecipeIngredients()
         {
-            dtRecipeIngredient = RecipeIngredient.LoadByRecipeId(recipeid);
+            dtRecipeIngredient = RecipeChildRecords.LoadIngredientsByRecipeId(recipeid);
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
             WindowsFormsUtility.AddComboBoxToGrid(gIngredients, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasurementTypeName");
@@ -53,10 +54,21 @@ namespace RecipeWinForms
             WindowsFormsUtility.AddDeleteButtonToGrid(gIngredients, "Delete");
         }
 
+        private void LoadRecipeSteps()
+        {
+            dtRecipeSteps = RecipeChildRecords.LoadStepsByRecipeId(recipeid);
+            gSteps.Columns.Clear();
+            gSteps.DataSource = dtRecipeSteps;
+            WindowsFormsUtility.FormatGridForEdit(gSteps, "RecipeDirections");
+            WindowsFormsUtility.AddDeleteButtonToGrid(gSteps, "Delete");
+        }
+
         private void LoadRecipeChildRecord()
         {
             LoadRecipeIngredients();
+            LoadRecipeSteps();
             gIngredients.AutoGenerateColumns = false;
+            gSteps.AutoGenerateColumns = false;
         }
 
         private bool Save()
