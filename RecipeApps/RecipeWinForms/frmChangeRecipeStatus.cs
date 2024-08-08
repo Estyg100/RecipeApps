@@ -76,16 +76,31 @@
 
         private void BtnArchive_Click(object? sender, EventArgs e)
         {
+            var response = MessageBox.Show("Are you sure you want to change this Recipe to Archived?", Application.ProductName, MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             ArchiveRecipe();
         }
 
         private void BtnPublish_Click(object? sender, EventArgs e)
         {
+            var response = MessageBox.Show("Are you sure you want to change this Recipe to Published?", Application.ProductName, MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             PublishRecipe();
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
         {
+            var response = MessageBox.Show("Are you sure you want to change this Recipe to Drafted?", Application.ProductName, MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
             DraftRecipe();
         }
 

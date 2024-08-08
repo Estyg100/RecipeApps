@@ -21,6 +21,12 @@
             gSteps.CellContentClick += GSteps_CellContentClick;
             btnChangeStatus.Click += BtnChangeStatus_Click;
             this.Shown += FrmRecipeDetails_Shown;
+            this.Activated += FrmRecipeDetails_Activated;
+        }
+
+        private void FrmRecipeDetails_Activated(object? sender, EventArgs e)
+        {
+            LoadRecipeDetailsForm(recipeid);
         }
 
         public void LoadRecipeDetailsForm(int recipeval)
