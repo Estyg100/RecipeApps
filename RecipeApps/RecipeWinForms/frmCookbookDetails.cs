@@ -31,8 +31,9 @@ namespace RecipeWinForms
             WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtCookbook, "Users");
             WindowsFormsUtility.SetControlBinding(txtCookbookName, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateCreated, bindsource);
-            WindowsFormsUtility.SetControlBinding(ckActive, bindsource);
             WindowsFormsUtility.SetControlBinding(txtPrice, bindsource);
+            WindowsFormsUtility.SetControlBinding(ckActive, bindsource);
+            ckActive.Checked = (bool)dtCookbook.Rows[0]["CookbookActive"];
             //this.Text = GetRecipeDesc();
             //SetButtonsEnabledBasedOnNewRecord();
         }
