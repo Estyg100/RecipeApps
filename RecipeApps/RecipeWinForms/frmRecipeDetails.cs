@@ -1,6 +1,4 @@
-﻿using RecipeSystem;
-
-namespace RecipeWinForms
+﻿namespace RecipeWinForms
 {
 
     public partial class frmRecipeDetails : Form
@@ -94,6 +92,7 @@ namespace RecipeWinForms
             btnDelete.Enabled = b;
             btnIngredientSave.Enabled = b;
             btnStepsSave.Enabled = b;
+            btnChangeStatus.Enabled = b;
         }
 
         private bool Save()
@@ -102,10 +101,6 @@ namespace RecipeWinForms
             Application.UseWaitCursor = true;
             try
             {
-                if (lblDateDraft.Text == "" && recipeid == 0)
-                {
-                    lblDateDraft.Text = DateTime.Now.ToString("MMM d yyyy");
-                }
                 Recipe.Save(dtRecipe);
                 b = true;
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
@@ -116,7 +111,7 @@ namespace RecipeWinForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Hearty Hearth");
+                MessageBox.Show(ex.Message, Application.ProductName);
             }
             finally
             {
@@ -127,7 +122,7 @@ namespace RecipeWinForms
 
         private void Delete()
         {
-            var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe with all its related records?!", "Hearty Hearth", MessageBoxButtons.YesNo);
+            var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe with all its related records?!", Application.ProductName, MessageBoxButtons.YesNo);
             if (response == DialogResult.No)
             {
                 return;

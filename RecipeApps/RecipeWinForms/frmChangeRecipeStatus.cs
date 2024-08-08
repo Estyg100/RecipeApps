@@ -12,6 +12,7 @@
             btnDraft.Click += BtnDraft_Click;
             btnPublish.Click += BtnPublish_Click;
             btnArchive.Click += BtnArchive_Click;
+            this.FormClosing += FrmChangeRecipeStatus_FormClosing;
         }
 
         public void LoadChangeRecipeStatusForm(int recipeval)
@@ -44,9 +45,15 @@
             }
         }
 
+        private void ArchiveRecipe()
+        {
+            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "ArchiveRecipe", true);
+            LoadChangeRecipeStatusForm(recipeid);
+        }
+
         private void BtnArchive_Click(object? sender, EventArgs e)
         {
-            
+            ArchiveRecipe();
         }
 
         private void BtnPublish_Click(object? sender, EventArgs e)
@@ -58,6 +65,12 @@
         {
             
         }
+
+        private void FrmChangeRecipeStatus_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
 
     }
 }

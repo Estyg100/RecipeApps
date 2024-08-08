@@ -41,7 +41,6 @@ namespace RecipeSystem
             return dt;
         }
 
-
         public static void Save(DataTable dtRecipe)
         {
             if (dtRecipe.Rows.Count == 0)

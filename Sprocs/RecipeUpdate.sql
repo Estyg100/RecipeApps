@@ -17,6 +17,10 @@ begin
 
     if @RecipeId = 0
     begin 
+        if @DateDraft is null 
+        begin 
+        select @DateDraft = cast(getdate() as date)
+        end
         insert Recipe (UsersId, CuisineId, RecipeName, CaloriesPerServing, DateDraft, DatePublished, DateArchived)
         values (@UsersId, @CuisineId, @RecipeName, @CaloriesPerServing, @DateDraft, @DatePublished, @DateArchived)
         select @RecipeId = scope_identity()
