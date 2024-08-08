@@ -76,7 +76,7 @@
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 9.336942F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 9.201624F));
             tblMain.RowStyles.Add(new RowStyle());
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 11.3667116F));
+            tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 7.577808F));
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 53.1799736F));
             tblMain.Size = new Size(665, 647);
@@ -106,7 +106,7 @@
             // 
             lblUser.Anchor = AnchorStyles.Left;
             lblUser.AutoSize = true;
-            lblUser.Location = new Point(15, 130);
+            lblUser.Location = new Point(15, 131);
             lblUser.Margin = new Padding(15, 0, 3, 0);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(51, 28);
@@ -117,7 +117,7 @@
             // 
             lstUserName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lstUserName.FormattingEnabled = true;
-            lstUserName.Location = new Point(185, 130);
+            lstUserName.Location = new Point(185, 131);
             lstUserName.Margin = new Padding(3, 3, 15, 3);
             lstUserName.Name = "lstUserName";
             lstUserName.Size = new Size(465, 36);
@@ -126,18 +126,18 @@
             // tblInfo
             // 
             tblInfo.ColumnCount = 3;
-            tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.55914F));
-            tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.8924732F));
+            tblInfo.ColumnStyles.Add(new ColumnStyle());
+            tblInfo.ColumnStyles.Add(new ColumnStyle());
             tblInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 53.76344F));
             tblInfo.Controls.Add(lblDateCreatedText, 1, 0);
             tblInfo.Controls.Add(txtPrice, 0, 1);
             tblInfo.Controls.Add(lblDateCreated, 1, 1);
             tblInfo.Dock = DockStyle.Fill;
-            tblInfo.Location = new Point(185, 177);
+            tblInfo.Location = new Point(185, 178);
             tblInfo.Margin = new Padding(3, 3, 15, 3);
             tblInfo.Name = "tblInfo";
             tblInfo.RowCount = 2;
-            tblInfo.RowStyles.Add(new RowStyle(SizeType.Percent, 42.3076935F));
+            tblInfo.RowStyles.Add(new RowStyle());
             tblInfo.RowStyles.Add(new RowStyle());
             tblInfo.Size = new Size(465, 68);
             tblInfo.TabIndex = 6;
@@ -146,9 +146,9 @@
             // 
             lblDateCreatedText.AutoSize = true;
             lblDateCreatedText.Dock = DockStyle.Fill;
-            lblDateCreatedText.Location = new Point(79, 0);
+            lblDateCreatedText.Location = new Point(105, 0);
             lblDateCreatedText.Name = "lblDateCreatedText";
-            lblDateCreatedText.Size = new Size(132, 28);
+            lblDateCreatedText.Size = new Size(130, 28);
             lblDateCreatedText.TabIndex = 0;
             lblDateCreatedText.Text = "Date Created:";
             lblDateCreatedText.TextAlign = ContentAlignment.MiddleCenter;
@@ -156,8 +156,9 @@
             // txtPrice
             // 
             txtPrice.Location = new Point(3, 31);
+            txtPrice.Margin = new Padding(3, 3, 30, 3);
             txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(62, 34);
+            txtPrice.Size = new Size(69, 34);
             txtPrice.TabIndex = 1;
             // 
             // lblDateCreated
@@ -165,9 +166,10 @@
             lblDateCreated.AutoSize = true;
             lblDateCreated.BorderStyle = BorderStyle.FixedSingle;
             lblDateCreated.Dock = DockStyle.Fill;
-            lblDateCreated.Location = new Point(79, 28);
+            lblDateCreated.Location = new Point(105, 33);
+            lblDateCreated.Margin = new Padding(3, 5, 3, 0);
             lblDateCreated.Name = "lblDateCreated";
-            lblDateCreated.Size = new Size(132, 40);
+            lblDateCreated.Size = new Size(130, 35);
             lblDateCreated.TabIndex = 2;
             lblDateCreated.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -175,7 +177,7 @@
             // 
             lblPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblPrice.AutoSize = true;
-            lblPrice.Location = new Point(15, 205);
+            lblPrice.Location = new Point(15, 206);
             lblPrice.Margin = new Padding(15, 0, 3, 15);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(54, 28);
@@ -186,7 +188,7 @@
             // 
             lblActive.Anchor = AnchorStyles.Left;
             lblActive.AutoSize = true;
-            lblActive.Location = new Point(15, 258);
+            lblActive.Location = new Point(15, 259);
             lblActive.Margin = new Padding(15, 0, 3, 0);
             lblActive.Name = "lblActive";
             lblActive.Size = new Size(66, 28);
@@ -197,7 +199,7 @@
             // 
             ckActive.Anchor = AnchorStyles.Left;
             ckActive.AutoSize = true;
-            ckActive.Location = new Point(185, 264);
+            ckActive.Location = new Point(185, 265);
             ckActive.Name = "ckActive";
             ckActive.Size = new Size(18, 17);
             ckActive.TabIndex = 9;
@@ -212,19 +214,20 @@
             tblCookbookRecipeRecords.Controls.Add(btnCookbookRecipeSave, 0, 0);
             tblCookbookRecipeRecords.Controls.Add(gCookbookRecipe, 0, 1);
             tblCookbookRecipeRecords.Dock = DockStyle.Fill;
-            tblCookbookRecipeRecords.Location = new Point(3, 300);
+            tblCookbookRecipeRecords.Location = new Point(3, 328);
+            tblCookbookRecipeRecords.Margin = new Padding(3, 30, 3, 3);
             tblCookbookRecipeRecords.Name = "tblCookbookRecipeRecords";
             tblCookbookRecipeRecords.RowCount = 2;
             tblCookbookRecipeRecords.RowStyles.Add(new RowStyle());
             tblCookbookRecipeRecords.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblCookbookRecipeRecords.Size = new Size(659, 344);
+            tblCookbookRecipeRecords.Size = new Size(659, 316);
             tblCookbookRecipeRecords.TabIndex = 10;
             // 
             // btnCookbookRecipeSave
             // 
             btnCookbookRecipeSave.AutoSize = true;
-            btnCookbookRecipeSave.Location = new Point(3, 15);
-            btnCookbookRecipeSave.Margin = new Padding(3, 15, 3, 3);
+            btnCookbookRecipeSave.Location = new Point(30, 15);
+            btnCookbookRecipeSave.Margin = new Padding(30, 15, 3, 3);
             btnCookbookRecipeSave.Name = "btnCookbookRecipeSave";
             btnCookbookRecipeSave.Size = new Size(132, 38);
             btnCookbookRecipeSave.TabIndex = 0;
@@ -235,11 +238,12 @@
             // 
             gCookbookRecipe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gCookbookRecipe.Dock = DockStyle.Fill;
-            gCookbookRecipe.Location = new Point(3, 59);
+            gCookbookRecipe.Location = new Point(30, 59);
+            gCookbookRecipe.Margin = new Padding(30, 3, 30, 30);
             gCookbookRecipe.Name = "gCookbookRecipe";
             gCookbookRecipe.RowHeadersVisible = false;
             gCookbookRecipe.RowHeadersWidth = 51;
-            gCookbookRecipe.Size = new Size(653, 282);
+            gCookbookRecipe.Size = new Size(599, 227);
             gCookbookRecipe.TabIndex = 1;
             // 
             // tblButtons

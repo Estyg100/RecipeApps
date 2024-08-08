@@ -8,15 +8,18 @@ namespace RecipeWinForms
         int cookbookid = 0;
         DataTable dtCookbook = new();
         BindingSource bindsource = new();
+        DataTable dtCookbookRecipe = new();
         
         public frmCookbookDetails()
         {
             InitializeComponent();
+            this.Activated += FrmCookbookDetails_Activated;
+            this.Shown += FrmCookbookDetails_Shown;
         }
 
-        public void LoadCookbookDetailsForm(int recipeval)
+        public void LoadCookbookDetailsForm(int cookval)
         {
-            cookbookid = recipeval;
+            cookbookid = cookval;
             this.Tag = cookbookid;
             dtCookbook = Cookbook.Load(cookbookid);
             bindsource.DataSource = dtCookbook;
@@ -32,6 +35,26 @@ namespace RecipeWinForms
             WindowsFormsUtility.SetControlBinding(txtPrice, bindsource);
             //this.Text = GetRecipeDesc();
             //SetButtonsEnabledBasedOnNewRecord();
+        }
+
+        private void LoadCookbookRecipes()
+        {
+            dtCookbookRecipe = CookbookRecipe.LoadByCookbookId(cookbookid, "CookbookRecipe");
+            gCookbookRecipe.Columns.Clear();
+            gCookbookRecipe.DataSource = dtCookbookRecipe;
+            WindowsFormsUtility.AddComboBoxToGrid(gCookbookRecipe, DataMaintenance.GetDataList("Recipe"), "Recipe", "RecipeName");
+            WindowsFormsUtility.FormatGridForEdit(gCookbookRecipe, "CookbookRecipe");
+            WindowsFormsUtility.AddDeleteButtonToGrid(gCookbookRecipe, "Delete");
+        }
+
+        private void FrmCookbookDetails_Activated(object? sender, EventArgs e)
+        {
+            LoadCookbookDetailsForm(cookbookid);
+        }
+
+        private void FrmCookbookDetails_Shown(object? sender, EventArgs e)
+        {
+            LoadCookbookRecipes();
         }
 
     }

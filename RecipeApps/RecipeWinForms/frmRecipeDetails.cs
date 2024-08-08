@@ -77,8 +77,6 @@
         {
             LoadRecipeIngredients();
             LoadRecipeSteps();
-            //gIngredients.AutoGenerateColumns = false;
-            //gSteps.AutoGenerateColumns = false;
         }
 
         private string GetRecipeDesc()
