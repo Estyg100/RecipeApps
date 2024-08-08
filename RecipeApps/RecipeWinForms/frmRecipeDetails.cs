@@ -1,4 +1,6 @@
-﻿namespace RecipeWinForms
+﻿using RecipeSystem;
+
+namespace RecipeWinForms
 {
 
     public partial class frmRecipeDetails : Form
@@ -19,9 +21,10 @@
             btnStepsSave.Click += BtnStepsSave_Click;
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
+            btnChangeStatus.Click += BtnChangeStatus_Click;
         }
 
-        public void LoadForm(int recipeval)
+        public void LoadRecipeDetailsForm(int recipeval)
         {
             recipeid = recipeval;
             this.Tag = recipeid;
@@ -73,6 +76,7 @@
             gIngredients.AutoGenerateColumns = false;
             gSteps.AutoGenerateColumns = false;
         }
+
         private string GetRecipeDesc()
         {
             string value = "New Recipe";
@@ -83,6 +87,7 @@
             }
             return value;
         }
+
         private void SetButtonsEnabledBasedOnNewRecord()
         {
             bool b = recipeid == 0 ? false : true;
@@ -90,6 +95,7 @@
             btnIngredientSave.Enabled = b;
             btnStepsSave.Enabled = b;
         }
+
         private bool Save()
         {
             bool b = false;
@@ -99,12 +105,11 @@
                 if (lblDateDraft.Text == "" && recipeid == 0)
                 {
                     lblDateDraft.Text = DateTime.Now.ToString("MMM d yyyy");
-                    lblCurrentStatus.Text = "Draft";
                 }
                 Recipe.Save(dtRecipe);
                 b = true;
-                bindsource.ResetBindings(false);
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+                LoadRecipeDetailsForm(recipeid);
                 this.Tag = recipeid;
                 this.Text = GetRecipeDesc();
                 SetButtonsEnabledBasedOnNewRecord();
@@ -209,6 +214,14 @@
             }
         }
 
+        public void ShowRecipeChangeStatusForm(int recipeid)
+        {
+            if (this.MdiParent != null && this.MdiParent is frmMain)
+            {
+                ((frmMain)this.MdiParent).OpenForm(typeof(frmChangeRecipeStatus), recipeid);
+            }
+        }
+
         private void BtnDelete_Click(object? sender, EventArgs e)
         {
             Delete();
@@ -237,6 +250,11 @@
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             DeleteRecipeSteps(e.RowIndex);
+        }
+
+        private void BtnChangeStatus_Click(object? sender, EventArgs e)
+        {
+            ShowRecipeChangeStatusForm(recipeid);
         }
 
         private void FrmRecipeDetails_FormClosing(object? sender, FormClosingEventArgs e)

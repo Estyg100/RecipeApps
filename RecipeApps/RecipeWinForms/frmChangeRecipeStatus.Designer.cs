@@ -31,16 +31,16 @@
             tblMain = new TableLayoutPanel();
             lblRecipeName = new Label();
             tblCurrentStatusInfo = new TableLayoutPanel();
+            lblCurrentStatusText = new Label();
             lblCurrentStatus = new Label();
-            lblCurrentStatusResults = new Label();
             tblStatusDates = new TableLayoutPanel();
             lblStatusDates = new Label();
             lblDrafted = new Label();
             lblPublished = new Label();
             lblArchived = new Label();
-            txtDateDraft = new TextBox();
-            txtDatePublished = new TextBox();
-            txtDateArchived = new TextBox();
+            lblDateDraft = new Label();
+            lblDatePublished = new Label();
+            lblDateArchived = new Label();
             tblButtons = new TableLayoutPanel();
             btnPublish = new Button();
             btnDraft = new Button();
@@ -73,12 +73,12 @@
             // 
             // lblRecipeName
             // 
+            lblRecipeName.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblRecipeName.AutoSize = true;
-            lblRecipeName.Dock = DockStyle.Fill;
-            lblRecipeName.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRecipeName.Location = new Point(3, 0);
+            lblRecipeName.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRecipeName.Location = new Point(3, 34);
             lblRecipeName.Name = "lblRecipeName";
-            lblRecipeName.Size = new Size(626, 80);
+            lblRecipeName.Size = new Size(626, 46);
             lblRecipeName.TabIndex = 0;
             lblRecipeName.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -87,8 +87,8 @@
             tblCurrentStatusInfo.ColumnCount = 2;
             tblCurrentStatusInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblCurrentStatusInfo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblCurrentStatusInfo.Controls.Add(lblCurrentStatus, 0, 0);
-            tblCurrentStatusInfo.Controls.Add(lblCurrentStatusResults, 1, 0);
+            tblCurrentStatusInfo.Controls.Add(lblCurrentStatusText, 0, 0);
+            tblCurrentStatusInfo.Controls.Add(lblCurrentStatus, 1, 0);
             tblCurrentStatusInfo.Dock = DockStyle.Fill;
             tblCurrentStatusInfo.Location = new Point(3, 83);
             tblCurrentStatusInfo.Name = "tblCurrentStatusInfo";
@@ -98,27 +98,28 @@
             tblCurrentStatusInfo.Size = new Size(626, 74);
             tblCurrentStatusInfo.TabIndex = 1;
             // 
+            // lblCurrentStatusText
+            // 
+            lblCurrentStatusText.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblCurrentStatusText.AutoSize = true;
+            lblCurrentStatusText.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCurrentStatusText.Location = new Point(150, 43);
+            lblCurrentStatusText.Margin = new Padding(3, 0, 0, 0);
+            lblCurrentStatusText.Name = "lblCurrentStatusText";
+            lblCurrentStatusText.Size = new Size(163, 31);
+            lblCurrentStatusText.TabIndex = 0;
+            lblCurrentStatusText.Text = "Current Status:";
+            // 
             // lblCurrentStatus
             // 
-            lblCurrentStatus.Anchor = AnchorStyles.Right;
+            lblCurrentStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblCurrentStatus.AutoSize = true;
-            lblCurrentStatus.Location = new Point(174, 23);
-            lblCurrentStatus.Margin = new Padding(3, 0, 0, 0);
+            lblCurrentStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCurrentStatus.Location = new Point(313, 43);
+            lblCurrentStatus.Margin = new Padding(0, 0, 3, 0);
             lblCurrentStatus.Name = "lblCurrentStatus";
-            lblCurrentStatus.Size = new Size(139, 28);
-            lblCurrentStatus.TabIndex = 0;
-            lblCurrentStatus.Text = "Current Status:";
-            // 
-            // lblCurrentStatusResults
-            // 
-            lblCurrentStatusResults.Anchor = AnchorStyles.Left;
-            lblCurrentStatusResults.AutoSize = true;
-            lblCurrentStatusResults.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCurrentStatusResults.Location = new Point(313, 23);
-            lblCurrentStatusResults.Margin = new Padding(0, 0, 3, 0);
-            lblCurrentStatusResults.Name = "lblCurrentStatusResults";
-            lblCurrentStatusResults.Size = new Size(0, 28);
-            lblCurrentStatusResults.TabIndex = 1;
+            lblCurrentStatus.Size = new Size(0, 31);
+            lblCurrentStatus.TabIndex = 1;
             // 
             // tblStatusDates
             // 
@@ -132,24 +133,23 @@
             tblStatusDates.Controls.Add(lblDrafted, 1, 0);
             tblStatusDates.Controls.Add(lblPublished, 2, 0);
             tblStatusDates.Controls.Add(lblArchived, 3, 0);
-            tblStatusDates.Controls.Add(txtDateDraft, 1, 1);
-            tblStatusDates.Controls.Add(txtDatePublished, 2, 1);
-            tblStatusDates.Controls.Add(txtDateArchived, 3, 1);
+            tblStatusDates.Controls.Add(lblDateDraft, 1, 1);
+            tblStatusDates.Controls.Add(lblDatePublished, 2, 1);
+            tblStatusDates.Controls.Add(lblDateArchived, 3, 1);
             tblStatusDates.Dock = DockStyle.Fill;
-            tblStatusDates.Location = new Point(3, 175);
-            tblStatusDates.Margin = new Padding(3, 15, 3, 3);
+            tblStatusDates.Location = new Point(3, 163);
             tblStatusDates.Name = "tblStatusDates";
             tblStatusDates.RowCount = 2;
             tblStatusDates.RowStyles.Add(new RowStyle(SizeType.Percent, 49.1124268F));
             tblStatusDates.RowStyles.Add(new RowStyle(SizeType.Percent, 50.8875732F));
-            tblStatusDates.Size = new Size(626, 107);
+            tblStatusDates.Size = new Size(626, 119);
             tblStatusDates.TabIndex = 2;
             // 
             // lblStatusDates
             // 
-            lblStatusDates.Anchor = AnchorStyles.Right;
+            lblStatusDates.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblStatusDates.AutoSize = true;
-            lblStatusDates.Location = new Point(13, 65);
+            lblStatusDates.Location = new Point(13, 58);
             lblStatusDates.Name = "lblStatusDates";
             lblStatusDates.Size = new Size(119, 28);
             lblStatusDates.TabIndex = 0;
@@ -157,9 +157,9 @@
             // 
             // lblDrafted
             // 
-            lblDrafted.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblDrafted.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblDrafted.AutoSize = true;
-            lblDrafted.Location = new Point(138, 12);
+            lblDrafted.Location = new Point(138, 30);
             lblDrafted.Name = "lblDrafted";
             lblDrafted.Size = new Size(116, 28);
             lblDrafted.TabIndex = 1;
@@ -168,9 +168,9 @@
             // 
             // lblPublished
             // 
-            lblPublished.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblPublished.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblPublished.AutoSize = true;
-            lblPublished.Location = new Point(260, 12);
+            lblPublished.Location = new Point(260, 30);
             lblPublished.Name = "lblPublished";
             lblPublished.Size = new Size(116, 28);
             lblPublished.TabIndex = 2;
@@ -179,44 +179,47 @@
             // 
             // lblArchived
             // 
-            lblArchived.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblArchived.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblArchived.AutoSize = true;
-            lblArchived.Location = new Point(382, 12);
+            lblArchived.Location = new Point(382, 30);
             lblArchived.Name = "lblArchived";
             lblArchived.Size = new Size(116, 28);
             lblArchived.TabIndex = 3;
             lblArchived.Text = "Archived";
             lblArchived.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtDateDraft
+            // lblDateDraft
             // 
-            txtDateDraft.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtDateDraft.Location = new Point(138, 62);
-            txtDateDraft.Name = "txtDateDraft";
-            txtDateDraft.ReadOnly = true;
-            txtDateDraft.Size = new Size(116, 34);
-            txtDateDraft.TabIndex = 4;
-            txtDateDraft.TextAlign = HorizontalAlignment.Center;
+            lblDateDraft.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblDateDraft.AutoSize = true;
+            lblDateDraft.BorderStyle = BorderStyle.FixedSingle;
+            lblDateDraft.Location = new Point(138, 58);
+            lblDateDraft.Name = "lblDateDraft";
+            lblDateDraft.Size = new Size(116, 30);
+            lblDateDraft.TabIndex = 4;
+            lblDateDraft.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtDatePublished
+            // lblDatePublished
             // 
-            txtDatePublished.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtDatePublished.Location = new Point(260, 62);
-            txtDatePublished.Name = "txtDatePublished";
-            txtDatePublished.ReadOnly = true;
-            txtDatePublished.Size = new Size(116, 34);
-            txtDatePublished.TabIndex = 5;
-            txtDatePublished.TextAlign = HorizontalAlignment.Center;
+            lblDatePublished.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblDatePublished.AutoSize = true;
+            lblDatePublished.BorderStyle = BorderStyle.FixedSingle;
+            lblDatePublished.Location = new Point(260, 58);
+            lblDatePublished.Name = "lblDatePublished";
+            lblDatePublished.Size = new Size(116, 30);
+            lblDatePublished.TabIndex = 5;
+            lblDatePublished.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtDateArchived
+            // lblDateArchived
             // 
-            txtDateArchived.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtDateArchived.Location = new Point(382, 62);
-            txtDateArchived.Name = "txtDateArchived";
-            txtDateArchived.ReadOnly = true;
-            txtDateArchived.Size = new Size(116, 34);
-            txtDateArchived.TabIndex = 6;
-            txtDateArchived.TextAlign = HorizontalAlignment.Center;
+            lblDateArchived.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblDateArchived.AutoSize = true;
+            lblDateArchived.BorderStyle = BorderStyle.FixedSingle;
+            lblDateArchived.Location = new Point(382, 58);
+            lblDateArchived.Name = "lblDateArchived";
+            lblDateArchived.Size = new Size(116, 30);
+            lblDateArchived.TabIndex = 6;
+            lblDateArchived.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tblButtons
             // 
@@ -238,9 +241,9 @@
             // 
             // btnPublish
             // 
-            btnPublish.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnPublish.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnPublish.AutoSize = true;
-            btnPublish.Location = new Point(227, 61);
+            btnPublish.Location = new Point(227, 3);
             btnPublish.Margin = new Padding(15, 3, 15, 3);
             btnPublish.Name = "btnPublish";
             btnPublish.Size = new Size(170, 38);
@@ -250,9 +253,9 @@
             // 
             // btnDraft
             // 
-            btnDraft.Anchor = AnchorStyles.Right;
+            btnDraft.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDraft.AutoSize = true;
-            btnDraft.Location = new Point(39, 61);
+            btnDraft.Location = new Point(39, 3);
             btnDraft.Name = "btnDraft";
             btnDraft.Size = new Size(170, 38);
             btnDraft.TabIndex = 1;
@@ -261,9 +264,8 @@
             // 
             // btnArchive
             // 
-            btnArchive.Anchor = AnchorStyles.Left;
             btnArchive.AutoSize = true;
-            btnArchive.Location = new Point(415, 61);
+            btnArchive.Location = new Point(415, 3);
             btnArchive.Name = "btnArchive";
             btnArchive.Size = new Size(170, 38);
             btnArchive.TabIndex = 2;
@@ -277,7 +279,7 @@
             ClientSize = new Size(632, 451);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmChangeRecipeStatus";
             Text = "Recipe - Change Status";
             tblMain.ResumeLayout(false);
@@ -296,19 +298,19 @@
         private TableLayoutPanel tblMain;
         private Label lblRecipeName;
         private TableLayoutPanel tblCurrentStatusInfo;
+        private Label lblCurrentStatusText;
         private Label lblCurrentStatus;
-        private Label lblCurrentStatusResults;
         private TableLayoutPanel tblStatusDates;
         private Label lblStatusDates;
         private Label lblDrafted;
         private Label lblPublished;
         private Label lblArchived;
-        private TextBox txtDateDraft;
-        private TextBox txtDatePublished;
-        private TextBox txtDateArchived;
         private TableLayoutPanel tblButtons;
         private Button btnPublish;
         private Button btnDraft;
         private Button btnArchive;
+        private Label lblDateDraft;
+        private Label lblDatePublished;
+        private Label lblDateArchived;
     }
 }

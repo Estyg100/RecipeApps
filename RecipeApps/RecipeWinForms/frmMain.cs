@@ -28,7 +28,13 @@
                 {
                     frmRecipeDetails f = new();
                     frm = f;
-                    f.LoadForm(pkvalue);
+                    f.LoadRecipeDetailsForm(pkvalue);
+                }
+                if (frmtype == typeof(frmChangeRecipeStatus))
+                {
+                    frmChangeRecipeStatus f = new();
+                    frm = f;
+                    f.LoadChangeRecipeStatusForm(pkvalue);
                 }
                 if (frmtype == typeof(frmRecipeList))
                 {
