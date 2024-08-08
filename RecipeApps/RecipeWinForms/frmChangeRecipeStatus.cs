@@ -39,13 +39,13 @@
                     break;
                 case "Published":
                     btnPublish.Enabled = false;
-                    btnDraft.Enabled = true;
+                    btnDraft.Enabled = false;
                     btnArchive.Enabled = true;
                     break;
                 case "Archived":
                     btnArchive.Enabled = false;
                     btnDraft.Enabled = true;
-                    btnPublish.Enabled = true;
+                    btnPublish.Enabled = false;
                     break;
             }
         }
@@ -53,6 +53,14 @@
         private void ArchiveRecipe()
         {
             SQLUtility.SaveDataRow(dtRecipe.Rows[0], "ArchiveRecipe", true);
+            dtRecipe = Recipe.Load(recipeid);
+            bindsource.DataSource = dtRecipe;
+            SetButtonsEnabledBasedOnCurrentStatus();
+        }
+
+        private void DraftRecipe()
+        {
+            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "DraftRecipe", true);
             dtRecipe = Recipe.Load(recipeid);
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
@@ -70,7 +78,7 @@
 
         private void BtnDraft_Click(object? sender, EventArgs e)
         {
-            
+            DraftRecipe();
         }
 
     }
