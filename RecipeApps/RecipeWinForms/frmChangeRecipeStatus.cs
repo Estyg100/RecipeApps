@@ -66,6 +66,14 @@
             SetButtonsEnabledBasedOnCurrentStatus();
         }
 
+        private void PublishRecipe()
+        {
+            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "PublishRecipe", true);
+            dtRecipe = Recipe.Load(recipeid);
+            bindsource.DataSource = dtRecipe;
+            SetButtonsEnabledBasedOnCurrentStatus();
+        }
+
         private void BtnArchive_Click(object? sender, EventArgs e)
         {
             ArchiveRecipe();
@@ -73,7 +81,7 @@
 
         private void BtnPublish_Click(object? sender, EventArgs e)
         {
-            
+            PublishRecipe();
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
