@@ -26,6 +26,7 @@ namespace RecipeWinForms
             if (cookbookid == 0)
             {
                 dtCookbook.Rows.Add();
+                dtCookbook.Rows[0]["CookbookActive"] = 0;
             }
             DataTable dtUserName = Recipe.GetUserList();
             WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtCookbook, "Users");
@@ -34,8 +35,8 @@ namespace RecipeWinForms
             WindowsFormsUtility.SetControlBinding(txtPrice, bindsource);
             WindowsFormsUtility.SetControlBinding(ckActive, bindsource);
             ckActive.Checked = (bool)dtCookbook.Rows[0]["CookbookActive"];
-            //this.Text = GetRecipeDesc();
-            //SetButtonsEnabledBasedOnNewRecord();
+            this.Text = GetCookbookName();
+            SetButtonsEnabledBasedOnNewRecord();
         }
 
         private void LoadCookbookRecipes()
@@ -47,6 +48,25 @@ namespace RecipeWinForms
             WindowsFormsUtility.FormatGridForEdit(gCookbookRecipe, "CookbookRecipe");
             WindowsFormsUtility.AddDeleteButtonToGrid(gCookbookRecipe, "Delete");
         }
+
+        private string GetCookbookName()
+        {
+            string value = "New Cookbook";
+            int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
+            if (pkvalue > 0)
+            {
+                value = SQLUtility.GetValueFromFirstRowAsString(dtCookbook, "CookbookName");
+            }
+            return value;
+        }
+
+        private void SetButtonsEnabledBasedOnNewRecord()
+        {
+            bool b = cookbookid == 0 ? false : true;
+            btnDelete.Enabled = b;
+            btnCookbookRecipeSave.Enabled = b;
+        }
+
 
         private void FrmCookbookDetails_Activated(object? sender, EventArgs e)
         {
