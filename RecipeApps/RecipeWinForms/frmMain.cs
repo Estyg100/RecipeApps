@@ -11,6 +11,7 @@
             mnuMealList.Click += MnuMealList_Click;
             mnuCookbookList.Click += MnuCookbookList_Click;
             mnuNewRecipe.Click += MnuNewRecipe_Click;
+            mnuNewCookbook.Click += MnuNewCookbook_Click;
         }
 
         private void FrmMain_Shown(object? sender, EventArgs e)
@@ -35,6 +36,12 @@
                     frmChangeRecipeStatus f = new();
                     frm = f;
                     f.LoadChangeRecipeStatusForm(pkvalue);
+                }
+                if (frmtype == typeof(frmCookbookDetails))
+                {
+                    frmCookbookDetails f = new();
+                    frm = f;
+                    f.LoadCookbookDetailsForm(pkvalue);
                 }
                 if (frmtype == typeof(frmRecipeList))
                 {
@@ -106,6 +113,11 @@
         private void MnuNewRecipe_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmRecipeDetails));
+        }
+
+        private void MnuNewCookbook_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmCookbookDetails));
         }
 
     }
