@@ -12,7 +12,6 @@
             btnDraft.Click += BtnDraft_Click;
             btnPublish.Click += BtnPublish_Click;
             btnArchive.Click += BtnArchive_Click;
-            this.FormClosing += FrmChangeRecipeStatus_FormClosing;
         }
 
         public void LoadChangeRecipeStatusForm(int recipeval)
@@ -31,16 +30,22 @@
 
         private void SetButtonsEnabledBasedOnCurrentStatus()
         {
-            switch (lblCurrentStatus.Text)
+            switch (dtRecipe.Rows[0]["CurrentStatus"])
             {
                 case "Draft":
                     btnDraft.Enabled = false;
+                    btnPublish.Enabled = true;
+                    btnArchive.Enabled = true;
                     break;
                 case "Published":
                     btnPublish.Enabled = false;
+                    btnDraft.Enabled = true;
+                    btnArchive.Enabled = true;
                     break;
                 case "Archived":
                     btnArchive.Enabled = false;
+                    btnDraft.Enabled = true;
+                    btnPublish.Enabled = true;
                     break;
             }
         }
@@ -48,7 +53,9 @@
         private void ArchiveRecipe()
         {
             SQLUtility.SaveDataRow(dtRecipe.Rows[0], "ArchiveRecipe", true);
-            LoadChangeRecipeStatusForm(recipeid);
+            dtRecipe = Recipe.Load(recipeid);
+            bindsource.DataSource = dtRecipe;
+            SetButtonsEnabledBasedOnCurrentStatus();
         }
 
         private void BtnArchive_Click(object? sender, EventArgs e)
@@ -65,12 +72,6 @@
         {
             
         }
-
-        private void FrmChangeRecipeStatus_FormClosing(object? sender, FormClosingEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
 
     }
 }

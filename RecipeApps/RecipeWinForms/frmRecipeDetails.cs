@@ -20,6 +20,7 @@
             gIngredients.CellContentClick += GIngredients_CellContentClick;
             gSteps.CellContentClick += GSteps_CellContentClick;
             btnChangeStatus.Click += BtnChangeStatus_Click;
+            this.Shown += FrmRecipeDetails_Shown;
         }
 
         public void LoadRecipeDetailsForm(int recipeval)
@@ -43,7 +44,6 @@
             WindowsFormsUtility.SetControlBinding(lblDatePublished, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateArchived, bindsource);
             this.Text = GetRecipeDesc();
-            LoadRecipeChildRecord();
             SetButtonsEnabledBasedOnNewRecord();
         }
 
@@ -71,8 +71,8 @@
         {
             LoadRecipeIngredients();
             LoadRecipeSteps();
-            gIngredients.AutoGenerateColumns = false;
-            gSteps.AutoGenerateColumns = false;
+            //gIngredients.AutoGenerateColumns = false;
+            //gSteps.AutoGenerateColumns = false;
         }
 
         private string GetRecipeDesc()
@@ -239,12 +239,20 @@
 
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipeIngredients(e.RowIndex);
+            var sendergrid = (DataGridView)sender;
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DeleteRecipeIngredients(e.RowIndex);
+            }
         }
 
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
-            DeleteRecipeSteps(e.RowIndex);
+            var sendergrid = (DataGridView)sender;
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DeleteRecipeSteps(e.RowIndex);
+            }
         }
 
         private void BtnChangeStatus_Click(object? sender, EventArgs e)
@@ -275,5 +283,11 @@
                 }
             }
         }
+
+        private void FrmRecipeDetails_Shown(object? sender, EventArgs e)
+        {
+            LoadRecipeChildRecord();
+        }
+
     }
 }

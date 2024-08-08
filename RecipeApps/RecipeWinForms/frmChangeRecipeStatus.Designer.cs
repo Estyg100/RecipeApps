@@ -75,10 +75,10 @@
             // 
             lblRecipeName.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblRecipeName.AutoSize = true;
-            lblRecipeName.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRecipeName.Location = new Point(3, 34);
+            lblRecipeName.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRecipeName.Location = new Point(3, 20);
             lblRecipeName.Name = "lblRecipeName";
-            lblRecipeName.Size = new Size(626, 46);
+            lblRecipeName.Size = new Size(626, 60);
             lblRecipeName.TabIndex = 0;
             lblRecipeName.TextAlign = ContentAlignment.MiddleCenter;
             // 

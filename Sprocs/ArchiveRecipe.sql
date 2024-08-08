@@ -1,13 +1,16 @@
 create or alter proc dbo.ArchiveRecipe(
-    @RecipeId int output
+    @RecipeId int output,
+    @DateArchived datetime output
 )
 as 
 begin 
     declare @return int 
 
+    select @DateArchived = cast(getdate() as date)
+
     update Recipe 
     set 
-    DateArchived = cast(getdate() as date)
+    DateArchived = @DateArchived
     where RecipeId = @RecipeId
 
     return @return
