@@ -2,7 +2,7 @@ create or alter procedure dbo.UsersGet(@UsersId int = 0, @All bit = 0, @UserName
 as 
 begin 
     select @UserName = nullif(@UserName, '')
-    select u.UsersId, u.UserName
+    select u.UsersId, u.FirstName, u.LastName, u.UserName
     from Users u 
     where u.UsersId = @UsersId
     or @All = 1
