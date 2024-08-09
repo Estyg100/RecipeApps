@@ -1,4 +1,5 @@
 create or alter procedure dbo.CookbookRecipeGet(
+	@CookbookRecipeId int = 0 output,
 	@CookbookId int = 0,
 	@All bit = 0,
 	@Message varchar(500) = ''  output
@@ -7,7 +8,7 @@ as
 begin
 	declare @return int = 0
 
-	select @All = isnull(@All, 0), @CookbookId = isnull(@CookbookId, 0)
+	select @All = isnull(@All, 0), @CookbookId = isnull(@CookbookId, 0), @CookbookRecipeId = isnull(@CookbookRecipeId, 0)
 
 	select cr.CookbookRecipeId, cr.CookbookId, cr.RecipeId, RecipeSequence = cr.ISequence
     from CookbookRecipe cr 

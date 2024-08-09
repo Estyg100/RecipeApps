@@ -15,6 +15,8 @@
             this.Shown += FrmCookbookDetails_Shown;
             btnSave.Click += BtnSave_Click;
             btnDelete.Click += BtnDelete_Click;
+            btnCookbookRecipeSave.Click += BtnCookbookRecipeSave_Click;
+            gCookbookRecipe.CellContentClick += GCookbookRecipe_CellContentClick;
         }
 
         public void LoadCookbookDetailsForm(int cookval)
@@ -93,6 +95,40 @@
             return b;
         }
 
+        private void SaveCookbookRecipe()
+        {
+            try
+            {
+                ChildRecords.SaveTable(dtCookbookRecipe, cookbookid, "CookbookRecipe", "Cookbook");
+                LoadCookbookRecipes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+        }
+
+        private void DeleteCookbookRecipe(int rowIndex)
+        {
+            int id = WindowsFormsUtility.GetIdFromGrid(gCookbookRecipe, rowIndex, "CookbookRecipeId");
+            if (id > 0)
+            {
+                try
+                {
+                    ChildRecords.Delete(id, "CookbookRecipe");
+                    LoadCookbookRecipes();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id < gCookbookRecipe.Rows.Count)
+            {
+                gCookbookRecipe.Rows.RemoveAt(rowIndex);
+            }
+        }
+
         private void Delete()
         {
             var response = MessageBox.Show("Are you sure you want to permenantly delete this cookbook with all its related records?!", Application.ProductName, MessageBoxButtons.YesNo);
@@ -141,6 +177,20 @@
         private void BtnSave_Click(object? sender, EventArgs e)
         {
             Save();
+        }
+
+        private void BtnCookbookRecipeSave_Click(object? sender, EventArgs e)
+        {
+            SaveCookbookRecipe();
+        }
+
+        private void GCookbookRecipe_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            var sendergrid = (DataGridView)sender;
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                DeleteCookbookRecipe(e.RowIndex);
+            }
         }
 
     }

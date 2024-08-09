@@ -55,7 +55,7 @@
 
         private void LoadRecipeIngredients()
         {
-            dtRecipeIngredient = RecipeChildRecords.LoadByRecipeId(recipeid, "RecipeIngredient");
+            dtRecipeIngredient = ChildRecords.LoadByRecipeId(recipeid, "RecipeIngredient");
             gIngredients.Columns.Clear();
             gIngredients.DataSource = dtRecipeIngredient;
             WindowsFormsUtility.AddComboBoxToGrid(gIngredients, DataMaintenance.GetDataList("MeasurementType"), "MeasurementType", "MeasurementTypeName");
@@ -66,7 +66,7 @@
 
         private void LoadRecipeSteps()
         {
-            dtRecipeSteps = RecipeChildRecords.LoadByRecipeId(recipeid, "RecipeDirections");
+            dtRecipeSteps = ChildRecords.LoadByRecipeId(recipeid, "RecipeDirections");
             gSteps.Columns.Clear();
             gSteps.DataSource = dtRecipeSteps;
             WindowsFormsUtility.FormatGridForEdit(gSteps, "RecipeDirections");
@@ -151,7 +151,8 @@
         {
             try
             {
-                RecipeChildRecords.SaveTable(dtRecipeIngredient, recipeid, "RecipeIngredient");
+                ChildRecords.SaveTable(dtRecipeIngredient, recipeid, "RecipeIngredient", "Recipe");
+                LoadRecipeIngredients();
             }
             catch (Exception ex)
             {
@@ -163,7 +164,7 @@
         {
             try
             {
-                RecipeChildRecords.SaveTable(dtRecipeSteps, recipeid, "RecipeDirections");
+                ChildRecords.SaveTable(dtRecipeSteps, recipeid, "RecipeDirections", "Recipe");
             }
             catch (Exception ex)
             {
@@ -178,7 +179,7 @@
             {
                 try
                 {
-                    RecipeChildRecords.Delete(id, "RecipeIngredient");
+                    ChildRecords.Delete(id, "RecipeIngredient");
                     LoadRecipeIngredients();
                 }
                 catch (Exception ex)
@@ -199,7 +200,7 @@
             {
                 try
                 {
-                    RecipeChildRecords.Delete(id, "RecipeDirections");
+                    ChildRecords.Delete(id, "RecipeDirections");
                     LoadRecipeSteps();
                 }
                 catch (Exception ex)

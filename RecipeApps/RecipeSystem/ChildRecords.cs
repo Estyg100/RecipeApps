@@ -1,6 +1,6 @@
 ﻿namespace RecipeSystem
 {
-    public class RecipeChildRecords
+    public class ChildRecords
     {
         public static DataTable LoadByRecipeId(int recipeid, string sprocprefix)
         {
@@ -11,11 +11,11 @@
             return dt;
         }
 
-        public static void SaveTable(DataTable dt, int recipeid, string sprocprefix)
+        public static void SaveTable(DataTable dt, int id, string sprocprefix, string subject)
         {
             foreach (DataRow r in dt.Select("", "", DataViewRowState.Added))
             {
-                r["RecipeId"] = recipeid;
+                r[subject + "Id"] = id;
             }
             SQLUtility.SaveDataTable(dt, sprocprefix + "Update");
         }
