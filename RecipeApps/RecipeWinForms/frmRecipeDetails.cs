@@ -33,14 +33,14 @@
         {
             recipeid = recipeval;
             this.Tag = recipeid;
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             if (recipeid == 0)
             {
                 dtRecipe.Rows.Add();
             }
-            DataTable dtUserName = Recipe.GetUserList();
-            DataTable dtCuisineName = Recipe.GetCuisineList();
+            DataTable dtUserName = HeartyHearthGeneral.GetUserList();
+            DataTable dtCuisineName = HeartyHearthGeneral.GetCuisineList();
             WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtRecipe, "Users");
             WindowsFormsUtility.SetControlBinding(txtRecipeName, bindsource);
             WindowsFormsUtility.SetListBinding(lstCuisineName, dtCuisineName, dtRecipe, "Cuisine");
@@ -105,7 +105,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Save(dtRecipe);
+                HeartyHearthGeneral.Save(dtRecipe, "Recipe");
                 b = true;
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
                 LoadRecipeDetailsForm(recipeid);
@@ -134,7 +134,7 @@
             Application.UseWaitCursor = true;
             try
             {
-                Recipe.Delete(dtRecipe);
+                HeartyHearthGeneral.Delete(dtRecipe, "Recipe");
                 this.Close();
             }
             catch (Exception ex)

@@ -18,7 +18,7 @@
         {
             recipeid = recipeval;
             this.Tag = recipeid;
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             WindowsFormsUtility.SetControlBinding(lblRecipeName, bindsource);
             WindowsFormsUtility.SetControlBinding(lblCurrentStatus, bindsource);
@@ -53,7 +53,7 @@
         private void ArchiveRecipe()
         {
             SQLUtility.SaveDataRow(dtRecipe.Rows[0], "ArchiveRecipe", true);
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
         }
@@ -61,7 +61,7 @@
         private void DraftRecipe()
         {
             SQLUtility.SaveDataRow(dtRecipe.Rows[0], "DraftRecipe", true);
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
         }
@@ -69,7 +69,7 @@
         private void PublishRecipe()
         {
             SQLUtility.SaveDataRow(dtRecipe.Rows[0], "PublishRecipe", true);
-            dtRecipe = Recipe.Load(recipeid);
+            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
         }

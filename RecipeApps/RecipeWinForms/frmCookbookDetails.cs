@@ -19,14 +19,14 @@
         {
             cookbookid = cookval;
             this.Tag = cookbookid;
-            dtCookbook = Cookbook.Load(cookbookid);
+            dtCookbook = HeartyHearthGeneral.Load(cookbookid, "Cookbook");
             bindsource.DataSource = dtCookbook;
             if (cookbookid == 0)
             {
                 dtCookbook.Rows.Add();
                 dtCookbook.Rows[0]["CookbookActive"] = 0;
             }
-            DataTable dtUserName = Recipe.GetUserList();
+            DataTable dtUserName = HeartyHearthGeneral.GetUserList();
             WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtCookbook, "Users");
             WindowsFormsUtility.SetControlBinding(txtCookbookName, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateCreated, bindsource);
@@ -57,6 +57,54 @@
             }
             return value;
         }
+
+        //private bool Save()
+        //{
+        //    bool b = false;
+        //    Application.UseWaitCursor = true;
+        //    try
+        //    {
+        //        HeartyHearthGeneral.Save(dtRecipe, "Recipe");
+        //        b = true;
+        //        recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
+        //        LoadRecipeDetailsForm(recipeid);
+        //        this.Tag = recipeid;
+        //        this.Text = GetRecipeDesc();
+        //        SetButtonsEnabledBasedOnNewRecord();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, Application.ProductName);
+        //    }
+        //    finally
+        //    {
+        //        Application.UseWaitCursor = false;
+        //    }
+        //    return b;
+        //}
+
+        //private void Delete()
+        //{
+        //    var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe with all its related records?!", Application.ProductName, MessageBoxButtons.YesNo);
+        //    if (response == DialogResult.No)
+        //    {
+        //        return;
+        //    }
+        //    Application.UseWaitCursor = true;
+        //    try
+        //    {
+        //        HeartyHearthGeneral.Delete(dtRecipe, "Recipe");
+        //        this.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, Application.ProductName);
+        //    }
+        //    finally
+        //    {
+        //        Application.UseWaitCursor = false;
+        //    }
+        //}
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {

@@ -29,7 +29,7 @@ namespace RecipeTest
             r["CuisineId"] = cuisineid;
             r["CaloriesPerServing"] = calories;
             r["DateDraft"] = datedraft;
-            Recipe.Save(dt);
+            HeartyHearthGeneral.Save(dt, "Recipe");
             int newid = SQLUtility.GetFirstColumnFirstRowValue("select * from Recipe where RecipeName = " + "'" + recipename + "'");
             int pkid = 0;
             if (r["RecipeId"] != DBNull.Value)
@@ -65,13 +65,13 @@ namespace RecipeTest
             calories = calories + 1;
             datedraft = "1800-01-01 12:00:00 AM";
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
             dt.Rows[0]["RecipeName"] = recipename;
             dt.Rows[0]["CuisineId"] = cuisineid;
             dt.Rows[0]["CaloriesPerServing"] = calories;
             dt.Rows[0]["DateDraft"] = datedraft;
-            Recipe.Save(dt);
+            HeartyHearthGeneral.Save(dt, "Recipe");
             DataTable newdtRecipe = SQLUtility.GetDataTable("select * from Recipe r join Users u on u.UsersId = r.UsersId join Cuisine c on c.CuisineId = r.CuisineId where RecipeId = " + recipeid.ToString());
             int newuserid = (int)newdtRecipe.Rows[0]["UsersId"];
             string newrecipename = newdtRecipe.Rows[0]["RecipeName"].ToString();
@@ -105,13 +105,13 @@ namespace RecipeTest
             calories = -1;
             datedraft = "1800-01-01 12:00:00 AM";
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
             dt.Rows[0]["RecipeName"] = recipename;
             dt.Rows[0]["CuisineId"] = cuisineid;
             dt.Rows[0]["CaloriesPerServing"] = calories;
             dt.Rows[0]["DateDraft"] = datedraft;
-            Exception ex = Assert.Throws<Exception>(()=> Recipe.Save(dt));
+            Exception ex = Assert.Throws<Exception>(()=> HeartyHearthGeneral.Save(dt, "Recipe"));
             TestContext.WriteLine(ex.Message);
         }
 
@@ -134,13 +134,13 @@ namespace RecipeTest
             calories = calories + 1;
             datedraft = "1800-01-01 12:00:00 AM";
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
             dt.Rows[0]["RecipeName"] = recipename;
             dt.Rows[0]["CuisineId"] = cuisineid;
             dt.Rows[0]["CaloriesPerServing"] = calories;
             dt.Rows[0]["DateDraft"] = datedraft;
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Save(dt));
+            Exception ex = Assert.Throws<Exception>(() => HeartyHearthGeneral.Save(dt, "Recipe"));
             TestContext.WriteLine(ex.Message);
         }
 
@@ -175,7 +175,7 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes without ingrideients and cookbooks in DB that are either in draft or archived for over 30 days, can't run test");
             TestContext.WriteLine("Existing recipe without ingridients and cookbooks that is in draft or archived for over 30 days, with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app can delete " + recipeid);
-            Recipe.Delete(dt);
+            HeartyHearthGeneral.Delete(dt, "Recipe");
             DataTable dtafterdelete = SQLUtility.GetDataTable("select * from Recipe where RecipeId = " + recipeid);
             Assert.IsTrue(dtafterdelete.Rows.Count == 0, "Record with RecipeId " + recipeid + " exists in DB");
             TestContext.WriteLine("Record with RecipeId " + recipeid + " does not exist in DB");
@@ -201,7 +201,7 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes in DB are published or archived for under 30 days, can't run test");
             TestContext.WriteLine("Existing recipe published or archived for under 30 days, with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app cannot delete " + recipeid);
-            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            Exception ex = Assert.Throws<Exception>(() => HeartyHearthGeneral.Delete(dt, "Recipe"));
             TestContext.WriteLine(ex.Message);
         }
 
@@ -212,7 +212,7 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes in DB, can't run test");
             TestContext.WriteLine("Existing recipe with id = " + recipeid);
             TestContext.WriteLine("Ensure that app loads recipe " + recipeid);
-            DataTable dt = Recipe.Load(recipeid);
+            DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             int loadedid = (int)dt.Rows[0]["RecipeId"];
             Assert.IsTrue(loadedid == recipeid, loadedid + " <> " + recipeid);
             TestContext.WriteLine("Loaded recipe (" + recipeid + ")" + recipeid);
@@ -226,7 +226,7 @@ namespace RecipeTest
             Assume.That(num > 0, "Can't run test, there are no recipes that match the search for " + num);
             TestContext.WriteLine(num + " recipes that match " + criteria);
             TestContext.WriteLine("Ensure that recipe search returns  " + num + " rows");
-            DataTable dt = Recipe.SearchRecipe(criteria);
+            DataTable dt = HeartyHearthGeneral.SearchRecipe(criteria);
             int results = dt.Rows.Count;
             Assert.IsTrue(results == num, "Results of recipe search does not match num of recipes, " + results + " is not equal to " + num);
             TestContext.WriteLine("Num of rows returned by recipe search is " + results);
@@ -240,7 +240,7 @@ namespace RecipeTest
             Assume.That(usercount > 0, "No users in DB, can't test");
             TestContext.WriteLine("Number of Rows in DB = " + usercount);
             TestContext.WriteLine("Ensure that num of rows return by app matches " + usercount);
-            DataTable dt = Recipe.GetUserList();
+            DataTable dt = HeartyHearthGeneral.GetUserList();
             Assert.IsTrue(dt.Rows.Count == usercount, "num rows returned by app (" + dt.Rows.Count + ") <> " + usercount);
             TestContext.WriteLine("Number of Rows in Users returned by app =  " + dt.Rows.Count);
         }
@@ -252,7 +252,7 @@ namespace RecipeTest
             Assume.That(cuisinecount > 0, "No cuisines in DB, can't test");
             TestContext.WriteLine("Number of Rows in DB = " + cuisinecount);
             TestContext.WriteLine("Ensure that num of rows return by app matches " + cuisinecount);
-            DataTable dt = Recipe.GetCuisineList();
+            DataTable dt = HeartyHearthGeneral.GetCuisineList();
             Assert.IsTrue(dt.Rows.Count == cuisinecount, "num rows returned by app (" + dt.Rows.Count + ") <> " + cuisinecount);
             TestContext.WriteLine("Number of Rows in Cuisine returned by app =  " + dt.Rows.Count);
         }

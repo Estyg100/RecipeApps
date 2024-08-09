@@ -15,7 +15,7 @@
         {
             try
             {
-                DataTable dt = Recipe.GetRecipeList();
+                DataTable dt = HeartyHearthGeneral.GetList("Recipe");
                 gRecipes.DataSource = dt;
                 WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
                 if (gRecipes.Rows.Count > 0)

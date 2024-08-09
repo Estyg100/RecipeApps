@@ -17,7 +17,7 @@ namespace RecipeWinForms
         {
             try
             {
-                DataTable dt = Cookbook.GetCookbookList();
+                DataTable dt = HeartyHearthGeneral.GetList("Cookbook");
                 gCookbookList.DataSource = dt;
                 WindowsFormsUtility.FormatGridForSearchResults(gCookbookList, "Cookbooks");
                 if (gCookbookList.Rows.Count > 0)

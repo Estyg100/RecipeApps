@@ -1,24 +1,20 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-
-namespace RecipeSystem
+﻿namespace RecipeSystem
 {
-    public class Recipe
+    public class HeartyHearthGeneral
     {
-        public static DataTable GetRecipeList()
+        public static DataTable GetList(string subject)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeListGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand(subject + "ListGet");
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
 
-        public static DataTable Load(int recipeid)
+        public static DataTable Load(int recipeid, string subject)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeGet");
-            cmd.Parameters["@RecipeId"].Value = recipeid;
+            SqlCommand cmd = SQLUtility.GetSqlCommand(subject + "Get");
+            cmd.Parameters["@" + subject + "Id"].Value = recipeid;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }
@@ -41,22 +37,22 @@ namespace RecipeSystem
             return dt;
         }
 
-        public static void Save(DataTable dtRecipe)
+        public static void Save(DataTable dtRecipe, string subject)
         {
             if (dtRecipe.Rows.Count == 0)
             {
-                throw new Exception("Cannot call recipe save method because there are no rows in the table.");
+                throw new Exception("Cannot call " +  subject  + "save method because there are no rows in the table.");
             }
             DataRow r = dtRecipe.Rows[0];
-            SQLUtility.SaveDataRow(r, "RecipeUpdate");
+            SQLUtility.SaveDataRow(r, subject + "Update");
             Debug.Print("-----------------");
         }
 
-        public static void Delete(DataTable dtRecipe)
+        public static void Delete(DataTable dtRecipe, string subject)
         {
-            int id = (int)dtRecipe.Rows[0]["RecipeId"];
-            SqlCommand cmd = SQLUtility.GetSqlCommand("RecipeDelete");
-            SQLUtility.SetParamValue(cmd, "@RecipeId", id);
+            int id = (int)dtRecipe.Rows[0][subject + "Id"];
+            SqlCommand cmd = SQLUtility.GetSqlCommand(subject + "Delete");
+            SQLUtility.SetParamValue(cmd, "@" + subject + "Id", id);
             SQLUtility.ExecuteSQL(cmd);
         }
     }
