@@ -7,12 +7,14 @@
         DataTable dtCookbook = new();
         BindingSource bindsource = new();
         DataTable dtCookbookRecipe = new();
-        
+
         public frmCookbookDetails()
         {
             InitializeComponent();
             this.Activated += FrmCookbookDetails_Activated;
             this.Shown += FrmCookbookDetails_Shown;
+            btnSave.Click += BtnSave_Click;
+            btnDelete.Click += BtnDelete_Click;
         }
 
         public void LoadCookbookDetailsForm(int cookval)
@@ -58,53 +60,61 @@
             return value;
         }
 
-        //private bool Save()
-        //{
-        //    bool b = false;
-        //    Application.UseWaitCursor = true;
-        //    try
-        //    {
-        //        HeartyHearthGeneral.Save(dtRecipe, "Recipe");
-        //        b = true;
-        //        recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
-        //        LoadRecipeDetailsForm(recipeid);
-        //        this.Tag = recipeid;
-        //        this.Text = GetRecipeDesc();
-        //        SetButtonsEnabledBasedOnNewRecord();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, Application.ProductName);
-        //    }
-        //    finally
-        //    {
-        //        Application.UseWaitCursor = false;
-        //    }
-        //    return b;
-        //}
+        private bool Save()
+        {
+            bool b = false;
+            Application.UseWaitCursor = true;
+            try
+            {
+                if (ckActive.Checked)
+                {
+                    dtCookbook.Rows[0]["CookbookActive"] = 1;
+                }
+                else
+                {
+                    dtCookbook.Rows[0]["CookbookActive"] = 0;
+                }
+                HeartyHearthGeneral.Save(dtCookbook, "Cookbook");
+                b = true;
+                cookbookid = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
+                LoadCookbookDetailsForm(cookbookid);
+                this.Tag = cookbookid;
+                this.Text = GetCookbookName();
+                SetButtonsEnabledBasedOnNewRecord();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+            return b;
+        }
 
-        //private void Delete()
-        //{
-        //    var response = MessageBox.Show("Are you sure you want to permenantly delete this recipe with all its related records?!", Application.ProductName, MessageBoxButtons.YesNo);
-        //    if (response == DialogResult.No)
-        //    {
-        //        return;
-        //    }
-        //    Application.UseWaitCursor = true;
-        //    try
-        //    {
-        //        HeartyHearthGeneral.Delete(dtRecipe, "Recipe");
-        //        this.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, Application.ProductName);
-        //    }
-        //    finally
-        //    {
-        //        Application.UseWaitCursor = false;
-        //    }
-        //}
+        private void Delete()
+        {
+            var response = MessageBox.Show("Are you sure you want to permenantly delete this cookbook with all its related records?!", Application.ProductName, MessageBoxButtons.YesNo);
+            if (response == DialogResult.No)
+            {
+                return;
+            }
+            Application.UseWaitCursor = true;
+            try
+            {
+                HeartyHearthGeneral.Delete(dtCookbook, "Cookbook");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            finally
+            {
+                Application.UseWaitCursor = false;
+            }
+        }
 
         private void SetButtonsEnabledBasedOnNewRecord()
         {
@@ -112,7 +122,6 @@
             btnDelete.Enabled = b;
             btnCookbookRecipeSave.Enabled = b;
         }
-
 
         private void FrmCookbookDetails_Activated(object? sender, EventArgs e)
         {
@@ -122,6 +131,16 @@
         private void FrmCookbookDetails_Shown(object? sender, EventArgs e)
         {
             LoadCookbookRecipes();
+        }
+
+        private void BtnDelete_Click(object? sender, EventArgs e)
+        {
+            Delete();
+        }
+
+        private void BtnSave_Click(object? sender, EventArgs e)
+        {
+            Save();
         }
 
     }
