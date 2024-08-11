@@ -43,7 +43,7 @@
 
         private void LoadCookbookRecipes()
         {
-            dtCookbookRecipe = CookbookRecipe.LoadByCookbookId(cookbookid, "CookbookRecipe");
+            dtCookbookRecipe = ChildRecords.LoadByCookbookId(cookbookid, "CookbookRecipe");
             gCookbookRecipe.Columns.Clear();
             gCookbookRecipe.DataSource = dtCookbookRecipe;
             WindowsFormsUtility.AddComboBoxToGrid(gCookbookRecipe, DataMaintenance.GetDataList("Recipe"), "Recipe", "RecipeName");

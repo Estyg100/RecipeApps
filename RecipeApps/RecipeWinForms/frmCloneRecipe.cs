@@ -2,25 +2,51 @@
 {
     public partial class frmCloneRecipe : Form
     {
-        DataTable dtRecipe = new();
-        BindingSource bindsource = new();
 
         public frmCloneRecipe()
         {
             InitializeComponent();
             this.Shown += FrmCloneRecipe_Shown;
+            btnClone.Click += BtnClone_Click;
         }
 
-        public void LoadCloneRecipeForm()
+        private void BindData()
         {
-            dtRecipe = DataMaintenance.GetDataList("Recipe");
-            bindsource.DataSource = dtRecipe;
-            WindowsFormsUtility.SetListBinding(lstRecipeName, dtRecipe, dtRecipe, "Recipe");
+            WindowsFormsUtility.SetListBinding(lstRecipeName, DataMaintenance.GetDataList("Recipe"), null, "Recipe");
+        }
+
+        private void CloneRecipe()
+        {
+            int basedonid = WindowsFormsUtility.GetIdFromComboBox(lstRecipeName);
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                int recipeid = Recipe.CloneRecipe(basedonid);
+                if (this.MdiParent != null && this.MdiParent is frmMain)
+                {
+                    ((frmMain)this.MdiParent).OpenForm(typeof(frmRecipeDetails), recipeid);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
         private void FrmCloneRecipe_Shown(object? sender, EventArgs e)
         {
-            LoadCloneRecipeForm();
+            BindData();
         }
+
+        private void BtnClone_Click(object? sender, EventArgs e)
+        {
+            CloneRecipe();
+        }
+
     }
 }
