@@ -7,8 +7,6 @@ as
 begin 
     declare @return int
 
-    select @RecipeId = isnull(@RecipeId, 0)
-
     insert Recipe (RecipeName, UsersId, CuisineId, CaloriesPerServing, DateDraft, DatePublished, DateArchived)
     select concat(r.RecipeName, ' - clone'), r.UsersId, r.CuisineId, r.CaloriesPerServing, r.DateDraft, r.DatePublished, r.DateArchived
     from Recipe r 
@@ -51,12 +49,12 @@ end
 go
 
 /*
-declare @RecipeId int 
-select top 1 @RecipeId = r.RecipeId from Recipe r 
+declare @BaseRecipeId int 
+select top 1 @BaseRecipeId = r.RecipeId from Recipe r 
 
-select @RecipeId 
+select @BaseRecipeId 
 
-exec RecipeClone @RecipeId = @RecipeId 
+exec RecipeClone @BaseRecipeId = @BaseRecipeId 
 
 select * from Recipe
 */

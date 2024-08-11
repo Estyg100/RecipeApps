@@ -14,6 +14,7 @@
             mnuNewCookbook.Click += MnuNewCookbook_Click;
             mnuEditData.Click += MnuDataMaintenance_Click;
             mnuCloneRecipe.Click += MnuCloneRecipe_Click;
+            mnuAutoCreateCookbook.Click += MnuAutoCreateCookbook_Click;
         }
 
         private void FrmMain_Shown(object? sender, EventArgs e)
@@ -73,6 +74,11 @@
                 else if (frmtype == typeof(frmCloneRecipe))
                 {
                     frmCloneRecipe f = new();
+                    frm = f;
+                }
+                else if (frmtype == typeof(frmAutoCreateCookbook))
+                {
+                    frmAutoCreateCookbook f = new();
                     frm = f;
                 }
                 if (frm != null)
@@ -135,6 +141,11 @@
         private void MnuCloneRecipe_Click(object? sender, EventArgs e)
         {
             OpenForm(typeof(frmCloneRecipe));
+        }
+
+        private void MnuAutoCreateCookbook_Click(object? sender, EventArgs e)
+        {
+            OpenForm(typeof(frmAutoCreateCookbook));
         }
 
     }
