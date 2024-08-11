@@ -2,16 +2,17 @@
 {
     public partial class frmDataMaintenance : Form
     {
-        
-        private enum TableTypeEnum { Users, Cuisine, Ingredient, MeasurementType, Course}
+
+        private enum TableTypeEnum { Users, Cuisine, Ingredient, MeasurementType, Course }
         TableTypeEnum currenttabletype = TableTypeEnum.Users;
         DataTable dtlist = new();
-        
+
         public frmDataMaintenance()
         {
             InitializeComponent();
             this.Shown += FrmDataMaintenance_Shown;
             btnSave.Click += BtnSave_Click;
+            gData.CellContentClick += GData_CellContentClick;
         }
 
         private void FrmDataMaintenance_Shown(object? sender, EventArgs e)
@@ -66,6 +67,27 @@
             return b;
         }
 
+        private void Delete(int rowindex)
+        {
+            int id = WindowsFormsUtility.GetIdFromGrid(gData, rowindex, currenttabletype.ToString() + "Id");
+            if (id != 0)
+            {
+                try
+                {
+                    DataMaintenance.DeleteRow(currenttabletype.ToString(), id);
+                    BindData(currenttabletype);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+            }
+            else if (id == 0 && rowindex < gData.Rows.Count)
+            {
+                gData.Rows.Remove(gData.Rows[rowindex]);
+            }
+        }
+
         private void C_Click(object? sender, EventArgs e)
         {
             if (sender is Control && ((Control)sender).Tag is TableTypeEnum)
@@ -79,5 +101,45 @@
             Save();
         }
 
+        private void GData_CellContentClick(object? sender, DataGridViewCellEventArgs e)
+        {
+            var sendergrid = (DataGridView)sender;
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                string message = "";
+                switch (currenttabletype)
+                {
+                    case TableTypeEnum.Users:
+                        message = "Are you sure you want to delete this User and all related recipes, meals, and cookbooks?!";
+                        break;
+                    case TableTypeEnum.Course:
+                        message = "Are you sure you want to delete this Course and all related meal course records?";
+                        break;
+                    case TableTypeEnum.Cuisine:
+                    case TableTypeEnum.Ingredient:
+                    case TableTypeEnum.MeasurementType:
+                        message = "Are you sure you want to delete this " + currenttabletype.ToString() + " and all its recipe records?";
+                        break;
+                }
+                var response = MessageBox.Show(message, Application.ProductName, MessageBoxButtons.YesNo);
+                if (response == DialogResult.No)
+                {
+                    return;
+                }
+                Application.UseWaitCursor = true;
+                try
+                {
+                    Delete(e.RowIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Application.ProductName);
+                }
+                finally
+                {
+                    Application.UseWaitCursor = false;
+                }
+            }
+        }
     }
 }
