@@ -11,6 +11,7 @@
         {
             InitializeComponent();
             this.Shown += FrmDataMaintenance_Shown;
+            btnSave.Click += BtnSave_Click;
         }
 
         private void FrmDataMaintenance_Shown(object? sender, EventArgs e)
@@ -45,6 +46,26 @@
             optCourses.Tag = TableTypeEnum.Course;
         }
 
+        private bool Save()
+        {
+            bool b = false;
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                DataMaintenance.SaveDataList(dtlist, currenttabletype.ToString());
+                b = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+            return b;
+        }
+
         private void C_Click(object? sender, EventArgs e)
         {
             if (sender is Control && ((Control)sender).Tag is TableTypeEnum)
@@ -52,5 +73,11 @@
                 BindData((TableTypeEnum)((Control)sender).Tag);
             }
         }
+
+        private void BtnSave_Click(object? sender, EventArgs e)
+        {
+            Save();
+        }
+
     }
 }
