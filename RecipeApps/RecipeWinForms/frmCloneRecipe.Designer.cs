@@ -45,7 +45,7 @@
             tblMain.Location = new Point(0, 0);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 2;
-            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblMain.RowStyles.Add(new RowStyle());
             tblMain.RowStyles.Add(new RowStyle());
             tblMain.Size = new Size(473, 163);
             tblMain.TabIndex = 0;
@@ -54,8 +54,8 @@
             // 
             lstRecipeName.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lstRecipeName.FormattingEnabled = true;
-            lstRecipeName.Location = new Point(15, 52);
-            lstRecipeName.Margin = new Padding(15, 3, 3, 15);
+            lstRecipeName.Location = new Point(15, 30);
+            lstRecipeName.Margin = new Padding(15, 30, 3, 15);
             lstRecipeName.Name = "lstRecipeName";
             lstRecipeName.Size = new Size(289, 36);
             lstRecipeName.TabIndex = 0;
@@ -64,8 +64,8 @@
             // 
             btnClone.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClone.AutoSize = true;
-            btnClone.Location = new Point(173, 110);
-            btnClone.Margin = new Padding(15);
+            btnClone.Location = new Point(185, 96);
+            btnClone.Margin = new Padding(15, 15, 3, 15);
             btnClone.Name = "btnClone";
             btnClone.Size = new Size(119, 38);
             btnClone.TabIndex = 1;

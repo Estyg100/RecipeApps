@@ -13,6 +13,7 @@
             this.Shown += FrmDataMaintenance_Shown;
             btnSave.Click += BtnSave_Click;
             gData.CellContentClick += GData_CellContentClick;
+            this.FormClosing += FrmDataMaintenance_FormClosing;
         }
 
         private void FrmDataMaintenance_Shown(object? sender, EventArgs e)
@@ -141,5 +142,29 @@
                 }
             }
         }
+
+        private void FrmDataMaintenance_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            if (SQLUtility.TableHasChanges(dtlist))
+            {
+                var res = MessageBox.Show($"Do you want to save changes to {this.Text} before closing ?", Application.ProductName, MessageBoxButtons.YesNoCancel);
+                switch (res)
+                {
+                    case DialogResult.Yes:
+                        bool b = Save();
+                        if (b == false)
+                        {
+                            e.Cancel = true;
+                            this.Activate();
+                        }
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        this.Activate();
+                        break;
+                }
+            }
+        }
+
     }
 }
