@@ -15,6 +15,8 @@
             mnuEditData.Click += MnuDataMaintenance_Click;
             mnuCloneRecipe.Click += MnuCloneRecipe_Click;
             mnuAutoCreateCookbook.Click += MnuAutoCreateCookbook_Click;
+            mnuWindowsTile.Click += MnuWindowsTile_Click;
+            mnuWindowsCascade.Click += MnuWindowsCascade_Click;
         }
 
         private void FrmMain_Shown(object? sender, EventArgs e)
@@ -148,5 +150,14 @@
             OpenForm(typeof(frmAutoCreateCookbook));
         }
 
+        private void MnuWindowsCascade_Click(object? sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.Cascade);
+        }
+
+        private void MnuWindowsTile_Click(object? sender, EventArgs e)
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
     }
 }

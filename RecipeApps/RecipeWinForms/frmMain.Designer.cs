@@ -44,6 +44,8 @@
             mnuDataMaintenance = new ToolStripMenuItem();
             mnuEditData = new ToolStripMenuItem();
             mnuWindows = new ToolStripMenuItem();
+            mnuWindowsTile = new ToolStripMenuItem();
+            mnuWindowsCascade = new ToolStripMenuItem();
             tsMain = new ToolStrip();
             mnuMain.SuspendLayout();
             SuspendLayout();
@@ -151,9 +153,22 @@
             // 
             // mnuWindows
             // 
+            mnuWindows.DropDownItems.AddRange(new ToolStripItem[] { mnuWindowsTile, mnuWindowsCascade });
             mnuWindows.Name = "mnuWindows";
             mnuWindows.Size = new Size(107, 32);
             mnuWindows.Text = "Windows";
+            // 
+            // mnuWindowsTile
+            // 
+            mnuWindowsTile.Name = "mnuWindowsTile";
+            mnuWindowsTile.Size = new Size(224, 32);
+            mnuWindowsTile.Text = "Tile";
+            // 
+            // mnuWindowsCascade
+            // 
+            mnuWindowsCascade.Name = "mnuWindowsCascade";
+            mnuWindowsCascade.Size = new Size(224, 32);
+            mnuWindowsCascade.Text = "Cascade";
             // 
             // tsMain
             // 
@@ -203,5 +218,7 @@
         private ToolStripMenuItem mnuEditData;
         private ToolStripMenuItem mnuWindows;
         private ToolStrip tsMain;
+        private ToolStripMenuItem mnuWindowsTile;
+        private ToolStripMenuItem mnuWindowsCascade;
     }
 }
