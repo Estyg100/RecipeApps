@@ -11,7 +11,7 @@
 
         private void BindData()
         {
-            WindowsFormsUtility.SetListBinding(lstUserName, DataMaintenance.GetDataList("Users"), null, "Users");
+            WindowsFormsUtility.SetListBinding(lstUserName, DataMaintenance.GetDataList("Users"), null, "Users", true);
         }
 
         private void AutoCreateCookbook()

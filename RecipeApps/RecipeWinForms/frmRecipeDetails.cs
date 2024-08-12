@@ -41,9 +41,9 @@
             }
             DataTable dtUserName = HeartyHearthGeneral.GetUserList();
             DataTable dtCuisineName = HeartyHearthGeneral.GetCuisineList();
-            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtRecipe, "Users");
+            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtRecipe, "Users", true);
             WindowsFormsUtility.SetControlBinding(txtRecipeName, bindsource);
-            WindowsFormsUtility.SetListBinding(lstCuisineName, dtCuisineName, dtRecipe, "Cuisine");
+            WindowsFormsUtility.SetListBinding(lstCuisineName, dtCuisineName, dtRecipe, "Cuisine", true);
             WindowsFormsUtility.SetControlBinding(txtCaloriesPerServing, bindsource);
             WindowsFormsUtility.SetControlBinding(lblCurrentStatus, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateDraft, bindsource);

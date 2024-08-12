@@ -31,7 +31,7 @@
                 dtCookbook.Rows[0]["CookbookActive"] = 0;
             }
             DataTable dtUserName = HeartyHearthGeneral.GetUserList();
-            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtCookbook, "Users");
+            WindowsFormsUtility.SetListBinding(lstUserName, dtUserName, dtCookbook, "Users", true);
             WindowsFormsUtility.SetControlBinding(txtCookbookName, bindsource);
             WindowsFormsUtility.SetControlBinding(lblDateCreated, bindsource);
             WindowsFormsUtility.SetControlBinding(txtPrice, bindsource);

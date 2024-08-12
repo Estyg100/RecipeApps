@@ -12,7 +12,7 @@
 
         private void BindData()
         {
-            WindowsFormsUtility.SetListBinding(lstRecipeName, DataMaintenance.GetDataList("Recipe"), null, "Recipe");
+            WindowsFormsUtility.SetListBinding(lstRecipeName, DataMaintenance.GetDataList("Recipe"), null, "Recipe", true);
         }
 
         private void CloneRecipe()
