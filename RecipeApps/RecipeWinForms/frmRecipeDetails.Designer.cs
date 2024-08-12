@@ -412,7 +412,6 @@
             btnIngredientSave.TabIndex = 1;
             btnIngredientSave.Text = "Save";
             btnIngredientSave.UseVisualStyleBackColor = true;
-            btnIngredientSave.Click += btnIngredientSave_Click_1;
             // 
             // gIngredients
             // 
