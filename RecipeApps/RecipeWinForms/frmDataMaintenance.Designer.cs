@@ -64,7 +64,7 @@
             // tblRadioButtons
             // 
             tblRadioButtons.ColumnCount = 1;
-            tblRadioButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblRadioButtons.ColumnStyles.Add(new ColumnStyle());
             tblRadioButtons.Controls.Add(optUsers, 0, 0);
             tblRadioButtons.Controls.Add(optCuisines, 0, 1);
             tblRadioButtons.Controls.Add(optIngredients, 0, 2);
@@ -168,16 +168,18 @@
             // 
             btnSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSave.AutoSize = true;
+            btnSave.ForeColor = Color.DarkSlateBlue;
             btnSave.Location = new Point(323, 590);
             btnSave.Margin = new Padding(3, 15, 15, 15);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 38);
-            btnSave.TabIndex = 0;
+            btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             // 
             // gData
             // 
+            gData.BackgroundColor = Color.Lavender;
             gData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gData.Dock = DockStyle.Fill;
             gData.Location = new Point(3, 3);
@@ -185,12 +187,13 @@
             gData.RowHeadersVisible = false;
             gData.RowHeadersWidth = 51;
             gData.Size = new Size(426, 569);
-            gData.TabIndex = 1;
+            gData.TabIndex = 0;
             // 
             // frmDataMaintenance
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(644, 649);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

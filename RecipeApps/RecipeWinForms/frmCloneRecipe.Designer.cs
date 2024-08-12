@@ -64,18 +64,21 @@
             // 
             btnClone.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnClone.AutoSize = true;
+            btnClone.BackColor = SystemColors.Window;
+            btnClone.ForeColor = Color.DarkSlateBlue;
             btnClone.Location = new Point(185, 96);
             btnClone.Margin = new Padding(15, 15, 3, 15);
             btnClone.Name = "btnClone";
             btnClone.Size = new Size(119, 38);
             btnClone.TabIndex = 1;
             btnClone.Text = "Clone";
-            btnClone.UseVisualStyleBackColor = true;
+            btnClone.UseVisualStyleBackColor = false;
             // 
             // frmCloneRecipe
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(473, 163);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

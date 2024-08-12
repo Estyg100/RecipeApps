@@ -192,7 +192,9 @@
             // 
             lblDateDraft.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblDateDraft.AutoSize = true;
+            lblDateDraft.BackColor = SystemColors.Window;
             lblDateDraft.BorderStyle = BorderStyle.FixedSingle;
+            lblDateDraft.ForeColor = Color.DarkSlateBlue;
             lblDateDraft.Location = new Point(138, 58);
             lblDateDraft.Name = "lblDateDraft";
             lblDateDraft.Size = new Size(116, 30);
@@ -203,7 +205,9 @@
             // 
             lblDatePublished.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblDatePublished.AutoSize = true;
+            lblDatePublished.BackColor = SystemColors.Window;
             lblDatePublished.BorderStyle = BorderStyle.FixedSingle;
+            lblDatePublished.ForeColor = Color.DarkSlateBlue;
             lblDatePublished.Location = new Point(260, 58);
             lblDatePublished.Name = "lblDatePublished";
             lblDatePublished.Size = new Size(116, 30);
@@ -214,7 +218,9 @@
             // 
             lblDateArchived.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblDateArchived.AutoSize = true;
+            lblDateArchived.BackColor = SystemColors.Window;
             lblDateArchived.BorderStyle = BorderStyle.FixedSingle;
+            lblDateArchived.ForeColor = Color.DarkSlateBlue;
             lblDateArchived.Location = new Point(382, 58);
             lblDateArchived.Name = "lblDateArchived";
             lblDateArchived.Size = new Size(116, 30);
@@ -243,11 +249,12 @@
             // 
             btnPublish.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnPublish.AutoSize = true;
+            btnPublish.ForeColor = Color.DarkSlateBlue;
             btnPublish.Location = new Point(227, 3);
             btnPublish.Margin = new Padding(15, 3, 15, 3);
             btnPublish.Name = "btnPublish";
             btnPublish.Size = new Size(170, 38);
-            btnPublish.TabIndex = 0;
+            btnPublish.TabIndex = 1;
             btnPublish.Text = "Publish";
             btnPublish.UseVisualStyleBackColor = true;
             // 
@@ -255,16 +262,18 @@
             // 
             btnDraft.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnDraft.AutoSize = true;
+            btnDraft.ForeColor = Color.DarkSlateBlue;
             btnDraft.Location = new Point(39, 3);
             btnDraft.Name = "btnDraft";
             btnDraft.Size = new Size(170, 38);
-            btnDraft.TabIndex = 1;
+            btnDraft.TabIndex = 0;
             btnDraft.Text = "Draft";
             btnDraft.UseVisualStyleBackColor = true;
             // 
             // btnArchive
             // 
             btnArchive.AutoSize = true;
+            btnArchive.ForeColor = Color.DarkSlateBlue;
             btnArchive.Location = new Point(415, 3);
             btnArchive.Name = "btnArchive";
             btnArchive.Size = new Size(170, 38);
@@ -276,6 +285,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(632, 451);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

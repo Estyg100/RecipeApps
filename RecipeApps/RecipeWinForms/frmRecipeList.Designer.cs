@@ -54,26 +54,29 @@
             // 
             // gRecipes
             // 
+            gRecipes.BackgroundColor = Color.Lavender;
+            gRecipes.BorderStyle = BorderStyle.None;
             gRecipes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gRecipes.Dock = DockStyle.Fill;
-            gRecipes.Location = new Point(4, 74);
-            gRecipes.Margin = new Padding(4);
+            gRecipes.Location = new Point(30, 74);
+            gRecipes.Margin = new Padding(30, 4, 30, 4);
             gRecipes.Name = "gRecipes";
             gRecipes.RowHeadersVisible = false;
             gRecipes.RowHeadersWidth = 51;
-            gRecipes.Size = new Size(742, 593);
-            gRecipes.TabIndex = 1;
+            gRecipes.Size = new Size(690, 593);
+            gRecipes.TabIndex = 0;
             // 
             // btnNewRecipe
             // 
             btnNewRecipe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             btnNewRecipe.AutoSize = true;
             btnNewRecipe.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNewRecipe.Location = new Point(14, 7);
-            btnNewRecipe.Margin = new Padding(14, 7, 4, 7);
+            btnNewRecipe.ForeColor = Color.DarkSlateBlue;
+            btnNewRecipe.Location = new Point(30, 7);
+            btnNewRecipe.Margin = new Padding(30, 7, 4, 7);
             btnNewRecipe.Name = "btnNewRecipe";
             btnNewRecipe.Size = new Size(169, 56);
-            btnNewRecipe.TabIndex = 2;
+            btnNewRecipe.TabIndex = 1;
             btnNewRecipe.Text = "New Recipe";
             btnNewRecipe.UseVisualStyleBackColor = true;
             // 
@@ -81,6 +84,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(750, 671);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

@@ -55,6 +55,7 @@
             // 
             // tblMain
             // 
+            tblMain.BackColor = SystemColors.Window;
             tblMain.ColumnCount = 2;
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.3684216F));
             tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 72.63158F));
@@ -70,6 +71,7 @@
             tblMain.Controls.Add(tblButtons, 0, 0);
             tblMain.Dock = DockStyle.Fill;
             tblMain.Location = new Point(0, 0);
+            tblMain.Margin = new Padding(30, 3, 30, 3);
             tblMain.Name = "tblMain";
             tblMain.RowCount = 7;
             tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 8.389716F));
@@ -90,7 +92,7 @@
             lblCookbookName.Margin = new Padding(15, 0, 3, 0);
             lblCookbookName.Name = "lblCookbookName";
             lblCookbookName.Size = new Size(161, 28);
-            lblCookbookName.TabIndex = 2;
+            lblCookbookName.TabIndex = 0;
             lblCookbookName.Text = "Cookbook Name";
             // 
             // txtCookbookName
@@ -100,7 +102,7 @@
             txtCookbookName.Margin = new Padding(3, 3, 15, 3);
             txtCookbookName.Name = "txtCookbookName";
             txtCookbookName.Size = new Size(465, 34);
-            txtCookbookName.TabIndex = 3;
+            txtCookbookName.TabIndex = 2;
             // 
             // lblUser
             // 
@@ -110,7 +112,7 @@
             lblUser.Margin = new Padding(15, 0, 3, 0);
             lblUser.Name = "lblUser";
             lblUser.Size = new Size(51, 28);
-            lblUser.TabIndex = 4;
+            lblUser.TabIndex = 3;
             lblUser.Text = "User";
             // 
             // lstUserName
@@ -121,7 +123,7 @@
             lstUserName.Margin = new Padding(3, 3, 15, 3);
             lstUserName.Name = "lstUserName";
             lstUserName.Size = new Size(465, 36);
-            lstUserName.TabIndex = 5;
+            lstUserName.TabIndex = 4;
             // 
             // tblInfo
             // 
@@ -149,7 +151,7 @@
             lblDateCreatedText.Location = new Point(105, 0);
             lblDateCreatedText.Name = "lblDateCreatedText";
             lblDateCreatedText.Size = new Size(130, 28);
-            lblDateCreatedText.TabIndex = 0;
+            lblDateCreatedText.TabIndex = 1;
             lblDateCreatedText.Text = "Date Created:";
             lblDateCreatedText.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -159,13 +161,15 @@
             txtPrice.Margin = new Padding(3, 3, 30, 3);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(69, 34);
-            txtPrice.TabIndex = 1;
+            txtPrice.TabIndex = 0;
             // 
             // lblDateCreated
             // 
             lblDateCreated.AutoSize = true;
+            lblDateCreated.BackColor = Color.Lavender;
             lblDateCreated.BorderStyle = BorderStyle.FixedSingle;
             lblDateCreated.Dock = DockStyle.Fill;
+            lblDateCreated.ForeColor = Color.DarkSlateBlue;
             lblDateCreated.Location = new Point(105, 33);
             lblDateCreated.Margin = new Padding(3, 5, 3, 0);
             lblDateCreated.Name = "lblDateCreated";
@@ -181,7 +185,7 @@
             lblPrice.Margin = new Padding(15, 0, 3, 15);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(54, 28);
-            lblPrice.TabIndex = 7;
+            lblPrice.TabIndex = 5;
             lblPrice.Text = "Price";
             // 
             // lblActive
@@ -192,21 +196,23 @@
             lblActive.Margin = new Padding(15, 0, 3, 0);
             lblActive.Name = "lblActive";
             lblActive.Size = new Size(66, 28);
-            lblActive.TabIndex = 8;
+            lblActive.TabIndex = 7;
             lblActive.Text = "Active";
             // 
             // ckActive
             // 
             ckActive.Anchor = AnchorStyles.Left;
             ckActive.AutoSize = true;
+            ckActive.ForeColor = Color.SlateBlue;
             ckActive.Location = new Point(185, 265);
             ckActive.Name = "ckActive";
             ckActive.Size = new Size(18, 17);
-            ckActive.TabIndex = 9;
+            ckActive.TabIndex = 8;
             ckActive.UseVisualStyleBackColor = true;
             // 
             // tblCookbookRecipeRecords
             // 
+            tblCookbookRecipeRecords.BackColor = Color.Lavender;
             tblCookbookRecipeRecords.ColumnCount = 1;
             tblMain.SetColumnSpan(tblCookbookRecipeRecords, 2);
             tblCookbookRecipeRecords.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -226,45 +232,53 @@
             // btnCookbookRecipeSave
             // 
             btnCookbookRecipeSave.AutoSize = true;
+            btnCookbookRecipeSave.ForeColor = Color.DarkSlateBlue;
             btnCookbookRecipeSave.Location = new Point(30, 15);
             btnCookbookRecipeSave.Margin = new Padding(30, 15, 3, 3);
             btnCookbookRecipeSave.Name = "btnCookbookRecipeSave";
             btnCookbookRecipeSave.Size = new Size(132, 38);
-            btnCookbookRecipeSave.TabIndex = 0;
+            btnCookbookRecipeSave.TabIndex = 1;
             btnCookbookRecipeSave.Text = "Save";
             btnCookbookRecipeSave.UseVisualStyleBackColor = true;
             // 
             // gCookbookRecipe
             // 
+            gCookbookRecipe.BackgroundColor = Color.Lavender;
+            gCookbookRecipe.BorderStyle = BorderStyle.None;
             gCookbookRecipe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gCookbookRecipe.Dock = DockStyle.Fill;
+            gCookbookRecipe.GridColor = Color.Lavender;
             gCookbookRecipe.Location = new Point(30, 59);
-            gCookbookRecipe.Margin = new Padding(30, 3, 30, 30);
+            gCookbookRecipe.Margin = new Padding(30, 3, 30, 0);
             gCookbookRecipe.Name = "gCookbookRecipe";
             gCookbookRecipe.RowHeadersVisible = false;
             gCookbookRecipe.RowHeadersWidth = 51;
-            gCookbookRecipe.Size = new Size(599, 227);
-            gCookbookRecipe.TabIndex = 1;
+            gCookbookRecipe.Size = new Size(599, 257);
+            gCookbookRecipe.TabIndex = 0;
             // 
             // tblButtons
             // 
-            tblButtons.ColumnCount = 2;
-            tblButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblButtons.BackColor = Color.Lavender;
+            tblButtons.ColumnCount = 3;
+            tblMain.SetColumnSpan(tblButtons, 2);
+            tblButtons.ColumnStyles.Add(new ColumnStyle());
+            tblButtons.ColumnStyles.Add(new ColumnStyle());
+            tblButtons.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tblButtons.Controls.Add(btnDelete, 1, 0);
             tblButtons.Controls.Add(btnSave, 0, 0);
+            tblButtons.Dock = DockStyle.Fill;
             tblButtons.Location = new Point(3, 3);
             tblButtons.Name = "tblButtons";
             tblButtons.RowCount = 1;
             tblButtons.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblButtons.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblButtons.Size = new Size(176, 48);
-            tblButtons.TabIndex = 11;
+            tblButtons.Size = new Size(659, 48);
+            tblButtons.TabIndex = 9;
             // 
             // btnDelete
             // 
             btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             btnDelete.AutoSize = true;
+            btnDelete.ForeColor = Color.DarkSlateBlue;
             btnDelete.Location = new Point(91, 5);
             btnDelete.Margin = new Padding(3, 5, 3, 5);
             btnDelete.Name = "btnDelete";
@@ -276,6 +290,7 @@
             // btnSave
             // 
             btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btnSave.ForeColor = Color.DarkSlateBlue;
             btnSave.Location = new Point(3, 5);
             btnSave.Margin = new Padding(3, 5, 3, 5);
             btnSave.Name = "btnSave";
@@ -288,6 +303,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(665, 647);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

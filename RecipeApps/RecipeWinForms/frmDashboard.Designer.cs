@@ -97,7 +97,7 @@
             gData.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             gData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gData.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            gData.BackgroundColor = SystemColors.Control;
+            gData.BackgroundColor = Color.Lavender;
             gData.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -148,6 +148,7 @@
             // 
             btnRecipeList.Anchor = AnchorStyles.Top;
             btnRecipeList.AutoSize = true;
+            btnRecipeList.ForeColor = Color.SlateBlue;
             btnRecipeList.Location = new Point(3, 3);
             btnRecipeList.Name = "btnRecipeList";
             btnRecipeList.Size = new Size(148, 73);
@@ -159,6 +160,7 @@
             // 
             btnMealList.Anchor = AnchorStyles.Top;
             btnMealList.AutoSize = true;
+            btnMealList.ForeColor = Color.SlateBlue;
             btnMealList.Location = new Point(157, 3);
             btnMealList.Name = "btnMealList";
             btnMealList.Size = new Size(148, 73);
@@ -170,6 +172,7 @@
             // 
             btnCookbookList.Anchor = AnchorStyles.Top;
             btnCookbookList.AutoSize = true;
+            btnCookbookList.ForeColor = Color.SlateBlue;
             btnCookbookList.Location = new Point(311, 3);
             btnCookbookList.Name = "btnCookbookList";
             btnCookbookList.Size = new Size(149, 73);
@@ -181,9 +184,11 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(675, 625);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = SystemColors.ControlText;
             Margin = new Padding(4);
             Name = "frmDashboard";
             Text = "Dashboard";

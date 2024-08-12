@@ -63,6 +63,7 @@
             // btnCreateCookbook
             // 
             btnCreateCookbook.AutoSize = true;
+            btnCreateCookbook.ForeColor = Color.DarkSlateBlue;
             btnCreateCookbook.Location = new Point(277, 30);
             btnCreateCookbook.Margin = new Padding(30, 30, 30, 3);
             btnCreateCookbook.Name = "btnCreateCookbook";
@@ -75,6 +76,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(489, 131);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

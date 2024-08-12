@@ -17,6 +17,7 @@
             mnuAutoCreateCookbook.Click += MnuAutoCreateCookbook_Click;
             mnuWindowsTile.Click += MnuWindowsTile_Click;
             mnuWindowsCascade.Click += MnuWindowsCascade_Click;
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.Lavender;
         }
 
         private void FrmMain_Shown(object? sender, EventArgs e)

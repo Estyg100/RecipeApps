@@ -294,5 +294,9 @@
             LoadRecipeChildRecord();
         }
 
+        private void btnIngredientSave_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

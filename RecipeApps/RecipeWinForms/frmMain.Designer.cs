@@ -65,6 +65,7 @@
             // mnuFile
             // 
             mnuFile.DropDownItems.AddRange(new ToolStripItem[] { mnuDashboard });
+            mnuFile.ForeColor = Color.DarkSlateBlue;
             mnuFile.Name = "mnuFile";
             mnuFile.Size = new Size(56, 32);
             mnuFile.Text = "File";
@@ -72,12 +73,13 @@
             // mnuDashboard
             // 
             mnuDashboard.Name = "mnuDashboard";
-            mnuDashboard.Size = new Size(194, 32);
+            mnuDashboard.Size = new Size(224, 32);
             mnuDashboard.Text = "Dashboard";
             // 
             // mnuRecipes
             // 
             mnuRecipes.DropDownItems.AddRange(new ToolStripItem[] { mnuRecipeList, mnuNewRecipe, mnuCloneRecipe });
+            mnuRecipes.ForeColor = Color.DarkSlateBlue;
             mnuRecipes.Name = "mnuRecipes";
             mnuRecipes.Size = new Size(91, 32);
             mnuRecipes.Text = "Recipes";
@@ -103,6 +105,7 @@
             // mnuMeals
             // 
             mnuMeals.DropDownItems.AddRange(new ToolStripItem[] { mnuMealList });
+            mnuMeals.ForeColor = Color.DarkSlateBlue;
             mnuMeals.Name = "mnuMeals";
             mnuMeals.Size = new Size(77, 32);
             mnuMeals.Text = "Meals";
@@ -116,6 +119,7 @@
             // mnuCookbooks
             // 
             mnuCookbooks.DropDownItems.AddRange(new ToolStripItem[] { mnuCookbookList, mnuNewCookbook, mnuAutoCreateCookbook });
+            mnuCookbooks.ForeColor = Color.DarkSlateBlue;
             mnuCookbooks.Name = "mnuCookbooks";
             mnuCookbooks.Size = new Size(126, 32);
             mnuCookbooks.Text = "Cookbooks";
@@ -141,6 +145,7 @@
             // mnuDataMaintenance
             // 
             mnuDataMaintenance.DropDownItems.AddRange(new ToolStripItem[] { mnuEditData });
+            mnuDataMaintenance.ForeColor = Color.DarkSlateBlue;
             mnuDataMaintenance.Name = "mnuDataMaintenance";
             mnuDataMaintenance.Size = new Size(184, 32);
             mnuDataMaintenance.Text = "Data Maintenance";
@@ -154,6 +159,7 @@
             // mnuWindows
             // 
             mnuWindows.DropDownItems.AddRange(new ToolStripItem[] { mnuWindowsTile, mnuWindowsCascade });
+            mnuWindows.ForeColor = Color.DarkSlateBlue;
             mnuWindows.Name = "mnuWindows";
             mnuWindows.Size = new Size(107, 32);
             mnuWindows.Text = "Windows";
@@ -161,13 +167,13 @@
             // mnuWindowsTile
             // 
             mnuWindowsTile.Name = "mnuWindowsTile";
-            mnuWindowsTile.Size = new Size(224, 32);
+            mnuWindowsTile.Size = new Size(169, 32);
             mnuWindowsTile.Text = "Tile";
             // 
             // mnuWindowsCascade
             // 
             mnuWindowsCascade.Name = "mnuWindowsCascade";
-            mnuWindowsCascade.Size = new Size(224, 32);
+            mnuWindowsCascade.Size = new Size(169, 32);
             mnuWindowsCascade.Text = "Cascade";
             // 
             // tsMain
@@ -184,10 +190,12 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(971, 831);
             Controls.Add(tsMain);
             Controls.Add(mnuMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = SystemColors.ControlText;
             IsMdiContainer = true;
             MainMenuStrip = mnuMain;
             Margin = new Padding(4);

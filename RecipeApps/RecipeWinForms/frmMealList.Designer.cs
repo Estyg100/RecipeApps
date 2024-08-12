@@ -34,10 +34,12 @@
             // 
             // gMealList
             // 
+            gMealList.BackgroundColor = Color.Lavender;
+            gMealList.BorderStyle = BorderStyle.None;
             gMealList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gMealList.Dock = DockStyle.Fill;
             gMealList.Location = new Point(0, 0);
-            gMealList.Margin = new Padding(21);
+            gMealList.Margin = new Padding(30, 30, 3, 30);
             gMealList.Name = "gMealList";
             gMealList.RowHeadersVisible = false;
             gMealList.RowHeadersWidth = 51;
@@ -48,6 +50,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Lavender;
             ClientSize = new Size(665, 625);
             Controls.Add(gMealList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
