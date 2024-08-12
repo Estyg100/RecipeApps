@@ -50,25 +50,9 @@
             }
         }
 
-        private void ArchiveRecipe()
+        private void ChangeRecipeStatus(string action)
         {
-            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "ArchiveRecipe", true);
-            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
-            bindsource.DataSource = dtRecipe;
-            SetButtonsEnabledBasedOnCurrentStatus();
-        }
-
-        private void DraftRecipe()
-        {
-            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "DraftRecipe", true);
-            dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
-            bindsource.DataSource = dtRecipe;
-            SetButtonsEnabledBasedOnCurrentStatus();
-        }
-
-        private void PublishRecipe()
-        {
-            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "PublishRecipe", true);
+            SQLUtility.SaveDataRow(dtRecipe.Rows[0], action + "Recipe", true);
             dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
@@ -81,7 +65,7 @@
             {
                 return;
             }
-            ArchiveRecipe();
+            ChangeRecipeStatus("Archive");
         }
 
         private void BtnPublish_Click(object? sender, EventArgs e)
@@ -91,7 +75,7 @@
             {
                 return;
             }
-            PublishRecipe();
+            ChangeRecipeStatus("Publish");
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
@@ -101,7 +85,7 @@
             {
                 return;
             }
-            DraftRecipe();
+            ChangeRecipeStatus("Draft");
         }
 
     }

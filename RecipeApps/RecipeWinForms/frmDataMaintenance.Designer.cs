@@ -150,6 +150,7 @@
             // 
             // tblData
             // 
+            tblData.BackColor = Color.Lavender;
             tblData.ColumnCount = 1;
             tblData.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblData.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
@@ -180,6 +181,7 @@
             // gData
             // 
             gData.BackgroundColor = Color.Lavender;
+            gData.BorderStyle = BorderStyle.None;
             gData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gData.Dock = DockStyle.Fill;
             gData.Location = new Point(3, 3);
@@ -193,7 +195,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Lavender;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(644, 649);
             Controls.Add(tblMain);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);

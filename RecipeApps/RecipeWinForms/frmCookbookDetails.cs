@@ -187,7 +187,7 @@
         private void GCookbookRecipe_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             var sendergrid = (DataGridView)sender;
-            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && sendergrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 DeleteCookbookRecipe(e.RowIndex);
             }

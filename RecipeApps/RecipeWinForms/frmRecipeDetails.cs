@@ -75,7 +75,7 @@
             WindowsFormsUtility.AddDeleteButtonToGrid(gSteps, "Delete");
         }
 
-        private void LoadRecipeChildRecord()
+        private void LoadRecipeChildRecords()
         {
             LoadRecipeIngredients();
             LoadRecipeSteps();
@@ -149,24 +149,12 @@
             }
         }
 
-        private void SaveRecipeIngredients()
+        private void SaveRecipeChildRecords(DataTable dt, string childtype)
         {
             try
             {
-                ChildRecords.SaveTable(dtRecipeIngredient, recipeid, "RecipeIngredient", "Recipe");
-                LoadRecipeIngredients();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName);
-            }
-        }
-
-        private void SaveRecipeSteps()
-        {
-            try
-            {
-                ChildRecords.SaveTable(dtRecipeSteps, recipeid, "RecipeDirections", "Recipe");
+                ChildRecords.SaveTable(dt, recipeid, "Recipe" + childtype, "Recipe");
+                LoadRecipeChildRecords();
             }
             catch (Exception ex)
             {
@@ -236,18 +224,18 @@
 
         private void BtnIngredientSave_Click(object? sender, EventArgs e)
         {
-            SaveRecipeIngredients();
+            SaveRecipeChildRecords(dtRecipeIngredient, "Ingredient");
         }
 
         private void BtnStepsSave_Click(object? sender, EventArgs e)
         {
-            SaveRecipeSteps();
+            SaveRecipeChildRecords(dtRecipeSteps, "Directions");
         }
-
+        
         private void GIngredients_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             var sendergrid = (DataGridView)sender;
-            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && sendergrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 DeleteRecipeIngredients(e.RowIndex);
             }
@@ -256,7 +244,7 @@
         private void GSteps_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             var sendergrid = (DataGridView)sender;
-            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && sendergrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 DeleteRecipeSteps(e.RowIndex);
             }
@@ -293,7 +281,7 @@
 
         private void FrmRecipeDetails_Shown(object? sender, EventArgs e)
         {
-            LoadRecipeChildRecord();
+            LoadRecipeChildRecords();
         }
     }
 }
