@@ -58,12 +58,12 @@
             gRecipes.BorderStyle = BorderStyle.None;
             gRecipes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gRecipes.Dock = DockStyle.Fill;
-            gRecipes.Location = new Point(30, 74);
-            gRecipes.Margin = new Padding(30, 4, 30, 4);
+            gRecipes.Location = new Point(15, 74);
+            gRecipes.Margin = new Padding(15, 4, 15, 4);
             gRecipes.Name = "gRecipes";
             gRecipes.RowHeadersVisible = false;
             gRecipes.RowHeadersWidth = 51;
-            gRecipes.Size = new Size(690, 593);
+            gRecipes.Size = new Size(720, 593);
             gRecipes.TabIndex = 0;
             // 
             // btnNewRecipe

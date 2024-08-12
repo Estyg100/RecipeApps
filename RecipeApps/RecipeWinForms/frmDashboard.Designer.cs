@@ -80,10 +80,10 @@
             // 
             lblDescription.AutoSize = true;
             lblDescription.Dock = DockStyle.Fill;
-            lblDescription.Location = new Point(50, 164);
-            lblDescription.Margin = new Padding(50, 0, 50, 0);
+            lblDescription.Location = new Point(100, 164);
+            lblDescription.Margin = new Padding(100, 0, 100, 0);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(575, 173);
+            lblDescription.Size = new Size(475, 173);
             lblDescription.TabIndex = 1;
             lblDescription.Text = "Welcome to the Hearty Hearth desktop app. In this app you can create recipes and cookbooks. You can also......";
             lblDescription.TextAlign = ContentAlignment.MiddleCenter;
@@ -102,7 +102,7 @@
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = Color.DarkSlateBlue;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;

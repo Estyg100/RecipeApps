@@ -84,11 +84,12 @@
 
         private string GetRecipeDesc()
         {
-            string value = "New Recipe";
+            string value = "Recipe - New Recipe";
             int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
             if (pkvalue > 0)
             {
-                value = SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+                value = "Recipe - " + SQLUtility.GetValueFromFirstRowAsString(dtRecipe, "RecipeName");
+                
             }
             return value;
         }

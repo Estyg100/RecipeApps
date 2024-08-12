@@ -53,11 +53,11 @@
 
         private string GetCookbookName()
         {
-            string value = "New Cookbook";
+            string value = "Cookbook - New Cookbook";
             int pkvalue = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
             if (pkvalue > 0)
             {
-                value = SQLUtility.GetValueFromFirstRowAsString(dtCookbook, "CookbookName");
+                value = "Cookbook - " + SQLUtility.GetValueFromFirstRowAsString(dtCookbook, "CookbookName");
             }
             return value;
         }
