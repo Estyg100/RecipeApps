@@ -51,6 +51,7 @@
             WindowsFormsUtility.SetControlBinding(lblDateArchived, bindsource);
             this.Text = GetRecipeDesc();
             SetButtonsEnabledBasedOnNewRecord();
+            dtRecipe.AcceptChanges();
         }
 
         private void LoadRecipeIngredients()
