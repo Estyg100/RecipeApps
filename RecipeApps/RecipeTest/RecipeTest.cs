@@ -219,14 +219,13 @@ namespace RecipeTest
         }
 
         [Test]
-        public void SearchRecipes()
+        public void LoadRecipes()
         {
-            string criteria = "a";
-            int num = SQLUtility.GetFirstColumnFirstRowValue("select total  = count(*) from Recipe where RecipeName like '%" + criteria + "%' ");
-            Assume.That(num > 0, "Can't run test, there are no recipes that match the search for " + num);
-            TestContext.WriteLine(num + " recipes that match " + criteria);
+            int num = SQLUtility.GetFirstColumnFirstRowValue("select total = count(*) from Recipe");
+            Assume.That(num > 0, "Can't run test, there are no recipes in DB.");
+            TestContext.WriteLine(num + " recipes in DB.");
             TestContext.WriteLine("Ensure that recipe search returns  " + num + " rows");
-            DataTable dt = HeartyHearthGeneral.SearchRecipe(criteria);
+            DataTable dt = HeartyHearthGeneral.GetList("Recipe");
             int results = dt.Rows.Count;
             Assert.IsTrue(results == num, "Results of recipe search does not match num of recipes, " + results + " is not equal to " + num);
             TestContext.WriteLine("Num of rows returned by recipe search is " + results);
