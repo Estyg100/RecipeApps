@@ -62,6 +62,8 @@
             WindowsFormsUtility.AddComboBoxToGrid(gIngredients, DataMaintenance.GetDataList("Ingredient"), "Ingredient", "IngredientName");
             WindowsFormsUtility.FormatGridForEdit(gIngredients, "RecipeIngredient");
             WindowsFormsUtility.AddDeleteButtonToGrid(gIngredients, "Delete");
+            gIngredients.CurrentCell = gIngredients[0, 0];
+            gIngredients.CurrentCell.Selected = false;
         }
 
         private void LoadRecipeSteps()

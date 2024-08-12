@@ -409,7 +409,7 @@
             btnIngredientSave.Location = new Point(3, 3);
             btnIngredientSave.Name = "btnIngredientSave";
             btnIngredientSave.Size = new Size(94, 38);
-            btnIngredientSave.TabIndex = 1;
+            btnIngredientSave.TabIndex = 0;
             btnIngredientSave.Text = "Save";
             btnIngredientSave.UseVisualStyleBackColor = true;
             // 
@@ -424,15 +424,15 @@
             gIngredients.RowHeadersVisible = false;
             gIngredients.RowHeadersWidth = 51;
             gIngredients.Size = new Size(651, 164);
-            gIngredients.TabIndex = 0;
+            gIngredients.TabIndex = 1;
             // 
             // tbcSteps
             // 
             tbcSteps.Controls.Add(tblSteps);
-            tbcSteps.Location = new Point(4, 29);
+            tbcSteps.Location = new Point(4, 37);
             tbcSteps.Name = "tbcSteps";
             tbcSteps.Padding = new Padding(3);
-            tbcSteps.Size = new Size(663, 228);
+            tbcSteps.Size = new Size(663, 220);
             tbcSteps.TabIndex = 1;
             tbcSteps.Text = "Steps";
             tbcSteps.UseVisualStyleBackColor = true;
@@ -451,7 +451,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(657, 222);
+            tblSteps.Size = new Size(657, 214);
             tblSteps.TabIndex = 0;
             // 
             // btnStepsSave
@@ -475,7 +475,7 @@
             gSteps.Name = "gSteps";
             gSteps.RowHeadersVisible = false;
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(651, 172);
+            gSteps.Size = new Size(651, 164);
             gSteps.TabIndex = 1;
             // 
             // lblCurrentStatus
