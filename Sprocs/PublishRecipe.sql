@@ -1,6 +1,7 @@
 create or alter proc dbo.PublishRecipe(
     @RecipeId int output,
     @DateDraft datetime output,
+--LB: Remove the parameters that are not being used.
     @DatePublished datetime output,
     @DateArchived datetime output
 )

@@ -10,6 +10,8 @@ begin
 		select @return = 1, @Message = 'Cannot delete Recipe that is currently published, or either archived for under 30 days.'
 		goto finished
 	end 
+
+--LB: All delete statements should be inside a transaction.
 		delete MealCourseRecipe where RecipeId = @RecipeId
 		delete CookbookRecipe where RecipeId = @RecipeId
 		delete RecipeIngredient where RecipeId = @RecipeId

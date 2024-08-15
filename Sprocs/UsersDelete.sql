@@ -7,11 +7,12 @@ begin
 	declare @return int = 0
 
 	select @UsersId = isnull(@UsersId,0)
-
+--LB: All delete statements should be inside a transaction in case one of them fails.
 	delete cr 
     from CookbookRecipe cr
     join cookbook c  
     on c.CookbookId = cr.CookbookId 
+--LB: It's unnecessary to join the user table. You can get the UserId from the cookbook table. Please fix all statements below.
     join Users u 
     on c.UsersId = u.UsersId 
     where u.UsersId = @UsersId

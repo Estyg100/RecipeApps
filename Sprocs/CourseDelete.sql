@@ -12,6 +12,7 @@ begin
     from MealCourseRecipe mcr 
     join MealCourse mc 
     on mc.MealCourseId = mcr.MealcourseId
+--LB: Unnecessary to join the course table. You can get the CourseId from the MealCourse table. Same for the statement below.
     join Course c 
     on c.CourseId = mc.CourseId
     where c.CourseId = @CourseId

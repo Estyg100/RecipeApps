@@ -21,6 +21,7 @@ begin
         begin 
         select @DateDraft = cast(getdate() as date)
         end
+--LB: No need to inlcude the DateDraft, DatePublished and DateArchived in the insert statement. They all have defaulted values. 
         insert Recipe (UsersId, CuisineId, RecipeName, CaloriesPerServing, DateDraft, DatePublished, DateArchived)
         values (@UsersId, @CuisineId, @RecipeName, @CaloriesPerServing, @DateDraft, @DatePublished, @DateArchived)
         select @RecipeId = scope_identity()

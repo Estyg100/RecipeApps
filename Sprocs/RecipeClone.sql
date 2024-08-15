@@ -14,6 +14,7 @@ begin
 
     select @RecipeId = scope_identity()
 
+--LB: There is no need to use a CTE. The code should be simplified to a regular insert statement. i.e. use @RecipeId in the insert statement and the @BaseRecipeId in the where condition.
     ;with x as (
 	    select r.RecipeId, ri.IngredientId, ri.MeasurementTypeId, ri.Quantity, ri.ISequence, r.UsersId
 	    from Recipe r

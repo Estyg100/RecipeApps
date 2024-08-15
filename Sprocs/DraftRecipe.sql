@@ -1,4 +1,5 @@
 create or alter proc dbo.DraftRecipe(
+--LB: Remove parameters that are not being used.
     @RecipeId int output,
     @DateDraft datetime output,
     @DatePublished datetime output,

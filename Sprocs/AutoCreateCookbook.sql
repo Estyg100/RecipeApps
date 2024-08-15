@@ -22,7 +22,7 @@ begin
     	from Cookbook c 
     	where c.CookbookId = @CookbookId
     )
-
+--LB: The CTE is unnecessary. You can use the @CookbookId in the insert statement directly and the @BaseUsersId in the where condition.
     insert CookbookRecipe (CookbookId, RecipeId, ISequence)
     select x.CookbookId, r.RecipeId, row_number() over (order by r.RecipeName)
     from x 

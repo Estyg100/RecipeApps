@@ -19,6 +19,8 @@ begin
         begin 
         select @DateCreated = cast(getdate() as date)
         end
+--LB: The DateCreated column should be set to default to GETDATE() in the table. This way, you won’t need to include it in the insert statement at all.
+
         insert Cookbook (UsersId, CookbookName, Price, DateCreated, CookbookActive)
         values (@UsersId, @CookbookName, @Price, @DateCreated, @CookbookActive)
         select @CookbookId = scope_identity()
