@@ -22,6 +22,9 @@
             btnChangeStatus.Click += BtnChangeStatus_Click;
             this.Shown += FrmRecipeDetails_Shown;
             this.Activated += FrmRecipeDetails_Activated;
+            gIngredients.DataError += GIngredients_DataError;
+            gSteps.DataError += GSteps_DataError;
+            txtCaloriesPerServing.Validating += TxtCaloriesPerServing_Validating;
         }
 
         private void FrmRecipeDetails_Activated(object? sender, EventArgs e)
@@ -101,6 +104,20 @@
             btnIngredientSave.Enabled = b;
             btnStepsSave.Enabled = b;
             btnChangeStatus.Enabled = b;
+            if (b == false)
+            {
+                btnDelete.FlatStyle = FlatStyle.System;
+                btnIngredientSave.FlatStyle = FlatStyle.System;
+                btnStepsSave.FlatStyle = FlatStyle.System;
+                btnChangeStatus.FlatStyle = FlatStyle.System;
+            }
+            else
+            {
+                btnDelete.FlatStyle = FlatStyle.Standard;
+                btnIngredientSave.FlatStyle = FlatStyle.Standard;
+                btnStepsSave.FlatStyle = FlatStyle.Standard;
+                btnChangeStatus.FlatStyle = FlatStyle.Standard;
+            }
         }
 
         private bool Save()
@@ -112,7 +129,6 @@
                 HeartyHearthGeneral.Save(dtRecipe, "Recipe");
                 b = true;
                 recipeid = SQLUtility.GetValueFromFirstRowAsInt(dtRecipe, "RecipeId");
-                LoadRecipeDetailsForm(recipeid);
                 this.Tag = recipeid;
                 this.Text = GetRecipeDesc();
                 SetButtonsEnabledBasedOnNewRecord();
@@ -285,5 +301,36 @@
         {
             LoadRecipeChildRecords();
         }
+
+        private void GSteps_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            DataGridView view = (DataGridView)sender;
+            if (view.Columns[e.ColumnIndex].Name == "DirectionStepNum")
+            {
+                MessageBox.Show("You've entered a non numeric Direction Step Number.");
+            }
+        }
+
+        private void GIngredients_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            DataGridView view = (DataGridView)sender;
+            if (view.Columns[e.ColumnIndex].Name == "Quantity")
+            {
+                MessageBox.Show("Cannot enter a non numeric Quantity.");
+            }
+            if (view.Columns[e.ColumnIndex].Name == "IngredientSequence")
+            {
+                MessageBox.Show("Cannot enter a non numeric Ingredient Sequence.");
+            }
+        }
+
+        private void TxtCaloriesPerServing_Validating(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (int.TryParse(txtCaloriesPerServing.Text, out int n) == false)
+            {
+                MessageBox.Show("Cannot enter a non numeric value for Number of Calories");
+            }
+        }
+
     }
 }

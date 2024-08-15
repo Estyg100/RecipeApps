@@ -1,4 +1,6 @@
-﻿namespace RecipeWinForms
+﻿using System.Windows.Forms;
+
+namespace RecipeWinForms
 {
     public partial class frmCookbookDetails : Form
     {
@@ -17,6 +19,8 @@
             btnDelete.Click += BtnDelete_Click;
             btnCookbookRecipeSave.Click += BtnCookbookRecipeSave_Click;
             gCookbookRecipe.CellContentClick += GCookbookRecipe_CellContentClick;
+            gCookbookRecipe.DataError += GCookbookRecipe_DataError;
+            txtPrice.Validating += TxtPrice_Validating;
         }
 
         public void LoadCookbookDetailsForm(int cookval)
@@ -79,7 +83,6 @@
                 HeartyHearthGeneral.Save(dtCookbook, "Cookbook");
                 b = true;
                 cookbookid = SQLUtility.GetValueFromFirstRowAsInt(dtCookbook, "CookbookId");
-                LoadCookbookDetailsForm(cookbookid);
                 this.Tag = cookbookid;
                 this.Text = GetCookbookName();
                 SetButtonsEnabledBasedOnNewRecord();
@@ -157,6 +160,16 @@
             bool b = cookbookid == 0 ? false : true;
             btnDelete.Enabled = b;
             btnCookbookRecipeSave.Enabled = b;
+            if (b == false)
+            {
+                btnDelete.FlatStyle = FlatStyle.System;
+                btnCookbookRecipeSave.FlatStyle = FlatStyle.System;
+            }
+            else
+            {
+                btnDelete.FlatStyle = FlatStyle.Standard;
+                btnCookbookRecipeSave.FlatStyle = FlatStyle.Standard;
+            }
         }
 
         private void FrmCookbookDetails_Activated(object? sender, EventArgs e)
@@ -190,6 +203,23 @@
             if (sendergrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0 && sendergrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 DeleteCookbookRecipe(e.RowIndex);
+            }
+        }
+
+        private void TxtPrice_Validating(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (int.TryParse(txtPrice.Text, out int n) == false)
+            {
+                MessageBox.Show("Cannot enter a non numeric value for Price.");
+            }
+        }
+
+        private void GCookbookRecipe_DataError(object? sender, DataGridViewDataErrorEventArgs e)
+        {
+            DataGridView view = (DataGridView)sender;
+            if (view.Columns[e.ColumnIndex].Name == "RecipeSequence")
+            {
+                MessageBox.Show("Cannot enter a non numeric Recipe Sequence.");
             }
         }
 

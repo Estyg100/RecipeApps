@@ -429,10 +429,10 @@
             // tbcSteps
             // 
             tbcSteps.Controls.Add(tblSteps);
-            tbcSteps.Location = new Point(4, 37);
+            tbcSteps.Location = new Point(4, 29);
             tbcSteps.Name = "tbcSteps";
             tbcSteps.Padding = new Padding(3);
-            tbcSteps.Size = new Size(663, 220);
+            tbcSteps.Size = new Size(663, 228);
             tbcSteps.TabIndex = 1;
             tbcSteps.Text = "Steps";
             tbcSteps.UseVisualStyleBackColor = true;
@@ -451,7 +451,7 @@
             tblSteps.RowCount = 2;
             tblSteps.RowStyles.Add(new RowStyle());
             tblSteps.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblSteps.Size = new Size(657, 214);
+            tblSteps.Size = new Size(657, 222);
             tblSteps.TabIndex = 0;
             // 
             // btnStepsSave
@@ -475,7 +475,7 @@
             gSteps.Name = "gSteps";
             gSteps.RowHeadersVisible = false;
             gSteps.RowHeadersWidth = 51;
-            gSteps.Size = new Size(651, 164);
+            gSteps.Size = new Size(651, 172);
             gSteps.TabIndex = 1;
             // 
             // lblCurrentStatus
