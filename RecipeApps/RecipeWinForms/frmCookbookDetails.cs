@@ -103,7 +103,6 @@ namespace RecipeWinForms
             try
             {
                 ChildRecords.SaveTable(dtCookbookRecipe, cookbookid, "CookbookRecipe", "Cookbook");
-                LoadCookbookRecipes();
             }
             catch (Exception ex)
             {

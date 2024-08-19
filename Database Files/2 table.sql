@@ -52,9 +52,9 @@ create table dbo.Recipe (
     RecipeName varchar (30) not null constraint u_Recipe_RecipeName unique
         constraint ck_Recipe_RecipeName_cannot_be_blank check(RecipeName <> ''),
     CaloriesPerServing int not null constraint ck_Recipe_Calories_cannot_be_negative check(CaloriesPerServing >= 0),
-    DateDraft datetime not null default getdate() constraint ck_Recipe_DateDrafted_cannot_be_future check(DateDraft <= getdate()),
-    DatePublished datetime constraint ck_Recipe_DatePublished_cannot_be_future check(DatePublished <= getdate()),
-    DateArchived datetime constraint ck_Recipe_DateArchived_cannot_be_future check(DateArchived <= getdate()),
+    DateDraft datetime not null default convert(varchar(10), getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time') constraint ck_Recipe_DateDrafted_cannot_be_future check(DateDraft <= getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'),
+    DatePublished datetime constraint ck_Recipe_DatePublished_cannot_be_future check(DatePublished <= getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'),
+    DateArchived datetime constraint ck_Recipe_DateArchived_cannot_be_future check(DateArchived <= getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'),
 -- SM Dates must always be in order Draft -> Publish -> Archive. Adjust computed column.
     CurrentStatus as 
         case 
@@ -110,7 +110,7 @@ create table dbo.Meal (
     UsersId int not null constraint f_Users_Meal foreign key references Users(UsersId),
     MealName varchar (20) constraint u_Meal_MealName unique
         constraint ck_Meal_MealName_cannot_be_blank check(MealName <> ''),
-    DateCreated date not null default getdate() constraint ck_Meal_DateCreated_cannot_be_future check(DateCreated <= getdate()),
+    DateCreated date not null default convert(varchar(10), getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time') constraint ck_Meal_DateCreated_cannot_be_future check(DateCreated <= getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'),
     MealActive bit not null default 1,
     MealPicture as concat('Meal_', replace(MealName, ' ', '_'), '.jpg')
 )
@@ -148,7 +148,7 @@ create table dbo.Cookbook (
     CookbookName varchar (40) constraint u_Cookbook_CookbookName unique
         constraint ck_Cookbook_CookbookName_cannot_be_blank check(CookbookName <> ''),
     Price decimal(5,2) not null constraint ck_Cookbook_Price_must_be_greater_than_zero check(Price > 0),
-    DateCreated date not null default getdate() constraint ck_Cookbook_DateCreated_cannot_be_future check(DateCreated <= getdate()),
+    DateCreated date not null default convert(varchar(10), getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time') constraint ck_Cookbook_DateCreated_cannot_be_future check(DateCreated <= getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'),
     CookbookActive bit not null default 1,
     CookbookPicture as concat('Cookbook_', replace(CookbookName, ' ', '_'), '.jpg')
 )

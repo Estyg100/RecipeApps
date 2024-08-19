@@ -10,11 +10,19 @@ begin
 		select @return = 1, @Message = 'Cannot delete Recipe that is currently published, or either archived for under 30 days.'
 		goto finished
 	end 
-		delete MealCourseRecipe where RecipeId = @RecipeId
-		delete CookbookRecipe where RecipeId = @RecipeId
-		delete RecipeIngredient where RecipeId = @RecipeId
-		delete RecipeDirections where RecipeId = @RecipeId
-        delete Recipe where RecipeId = @RecipeId
+	begin try
+		begin tran 
+			delete MealCourseRecipe where RecipeId = @RecipeId
+			delete CookbookRecipe where RecipeId = @RecipeId
+			delete RecipeIngredient where RecipeId = @RecipeId
+			delete RecipeDirections where RecipeId = @RecipeId
+    	    delete Recipe where RecipeId = @RecipeId
+		commit 
+	end try 
+	begin catch 
+		rollback;
+		throw
+	end catch
 	finished:
 	return @return
 end

@@ -172,7 +172,6 @@
             try
             {
                 ChildRecords.SaveTable(dt, recipeid, "Recipe" + childtype, "Recipe");
-                LoadRecipeChildRecords();
             }
             catch (Exception ex)
             {

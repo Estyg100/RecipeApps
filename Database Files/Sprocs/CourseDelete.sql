@@ -12,15 +12,11 @@ begin
     from MealCourseRecipe mcr 
     join MealCourse mc 
     on mc.MealCourseId = mcr.MealcourseId
-    join Course c 
-    on c.CourseId = mc.CourseId
-    where c.CourseId = @CourseId
+    where mc.CourseId = @CourseId
 
     delete mc 
     from MealCourse mc 
-    join Course c 
-    on c.CourseId = mc.CourseId 
-    where c.CourseId = @CourseId
+    where mc.CourseId = @CourseId
 
     delete Course 
     where CourseId = @CourseId

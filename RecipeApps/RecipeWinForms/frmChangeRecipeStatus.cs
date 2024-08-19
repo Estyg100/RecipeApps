@@ -50,9 +50,9 @@
             }
         }
 
-        private void ChangeRecipeStatus(string action)
+        private void ChangeRecipeStatus()
         {
-            SQLUtility.SaveDataRow(dtRecipe.Rows[0], action + "Recipe", true);
+            SQLUtility.SaveDataRow(dtRecipe.Rows[0], "RecipeUpdate", true);
             dtRecipe = HeartyHearthGeneral.Load(recipeid, "Recipe");
             bindsource.DataSource = dtRecipe;
             SetButtonsEnabledBasedOnCurrentStatus();
@@ -65,7 +65,8 @@
             {
                 return;
             }
-            ChangeRecipeStatus("Archive");
+            dtRecipe.Rows[0]["DateArchived"] = DateTime.Now.ToLongDateString();
+            ChangeRecipeStatus();
         }
 
         private void BtnPublish_Click(object? sender, EventArgs e)
@@ -75,7 +76,8 @@
             {
                 return;
             }
-            ChangeRecipeStatus("Publish");
+            dtRecipe.Rows[0]["DatePublished"] = DateTime.Now.ToLongDateString();
+            ChangeRecipeStatus();
         }
 
         private void BtnDraft_Click(object? sender, EventArgs e)
@@ -85,7 +87,7 @@
             {
                 return;
             }
-            ChangeRecipeStatus("Draft");
+            ChangeRecipeStatus();
         }
 
     }

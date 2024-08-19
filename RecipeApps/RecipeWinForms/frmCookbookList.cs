@@ -19,6 +19,13 @@ namespace RecipeWinForms
             {
                 DataTable dt = HeartyHearthGeneral.GetList("Cookbook");
                 gCookbookList.DataSource = dt;
+                foreach (DataGridViewColumn c in gCookbookList.Columns)
+                {
+                    if (c.Name.Equals("DateCreated") || c.Name.Equals("CookbookActive"))
+                    {
+                        c.Visible = false;
+                    }
+                }
                 WindowsFormsUtility.FormatGridForSearchResults(gCookbookList, "Cookbooks");
                 if (gCookbookList.Rows.Count > 0)
                 {

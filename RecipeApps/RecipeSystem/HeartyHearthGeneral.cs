@@ -5,7 +5,8 @@
         public static DataTable GetList(string subject)
         {
             DataTable dt = new();
-            SqlCommand cmd = SQLUtility.GetSqlCommand(subject + "ListGet");
+            SqlCommand cmd = SQLUtility.GetSqlCommand(subject + "Get");
+            cmd.Parameters["@All"].Value = 1;
             dt = SQLUtility.GetDataTable(cmd);
             return dt;
         }

@@ -7,6 +7,7 @@ create or alter proc dbo.RecipeUpdate(
     @DateDraft datetime output,
     @DatePublished datetime output,
     @DateArchived datetime output,
+    @CurrentStatus varchar(20) output,
     @Message varchar (500) = '' output
 )
 as 
@@ -17,16 +18,21 @@ begin
 
     if @RecipeId = 0
     begin 
-        if @DateDraft is null 
-        begin 
-        select @DateDraft = cast(getdate() as date)
-        end
-        insert Recipe (UsersId, CuisineId, RecipeName, CaloriesPerServing, DateDraft, DatePublished, DateArchived)
-        values (@UsersId, @CuisineId, @RecipeName, @CaloriesPerServing, @DateDraft, @DatePublished, @DateArchived)
+        insert Recipe (UsersId, CuisineId, RecipeName, CaloriesPerServing)
+        values (@UsersId, @CuisineId, @RecipeName, @CaloriesPerServing)
+        
         select @RecipeId = scope_identity()
+
+        select @DateDraft = r.DateDraft, @CurrentStatus = r.CurrentStatus 
+        from Recipe r 
+        where r.RecipeId = @RecipeId
     end
     else 
-    begin 
+    begin
+        if @CurrentStatus = 'Archived'
+        begin 
+            select @DateDraft = convert(varchar(10), getutcdate() at time zone 'UTC' at time zone 'Eastern Standard Time'), @DatePublished = null, @DateArchived = null
+        end
         update Recipe 
         set 
         UsersId = @UsersId,

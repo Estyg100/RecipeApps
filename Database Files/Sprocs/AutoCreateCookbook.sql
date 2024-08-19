@@ -17,20 +17,21 @@ begin
 
     select @CookbookId = scope_identity()
 
-    ;with x as (
-    	select c.CookbookId, c.UsersId 
-    	from Cookbook c 
-    	where c.CookbookId = @CookbookId
-    )
-
     insert CookbookRecipe (CookbookId, RecipeId, ISequence)
-    select x.CookbookId, r.RecipeId, row_number() over (order by r.RecipeName)
-    from x 
-    join Users u 
-    on x.UsersId = u.UsersId
+    select @CookbookId, r.RecipeId, row_number() over (order by r.RecipeName)
+    from Users u
     join Recipe r 
     on u.UsersId = r.UsersId 
     where u.UsersId = @BaseUsersId
 
     return @return
 end
+go 
+
+/*
+declare @BaseUsersId int
+select top 1 @BaseUsersId = UsersId from Users u
+select @BaseUsersId 
+
+exec AutoCreateCookbook @BaseUsersId = @BaseUsersId
+*/

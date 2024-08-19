@@ -3,7 +3,7 @@ create or alter proc dbo.CookbookUpdate(
     @UsersId int,
     @CookbookName varchar (40),
     @Price int = 0,
-    @DateCreated datetime output,
+    @DateCreated datetime = null output,
     @CookbookActive bit,
     @Message varchar (500) = '' output
 )
@@ -15,13 +15,15 @@ begin
 
     if @CookbookId = 0
     begin 
-        if @DateCreated is null 
-        begin 
-        select @DateCreated = cast(getdate() as date)
-        end
-        insert Cookbook (UsersId, CookbookName, Price, DateCreated, CookbookActive)
-        values (@UsersId, @CookbookName, @Price, @DateCreated, @CookbookActive)
+        insert Cookbook (UsersId, CookbookName, Price, CookbookActive)
+        values (@UsersId, @CookbookName, @Price, @CookbookActive)
+        
         select @CookbookId = scope_identity()
+
+        select @DateCreated = DateCreated 
+        from Cookbook c 
+        where c.CookbookId = @CookbookId
+
     end
     else 
     begin 
@@ -36,3 +38,4 @@ begin
     return @return
 end
 go
+

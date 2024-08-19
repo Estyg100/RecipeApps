@@ -15,8 +15,15 @@
         {
             try
             {
-                DataTable dt = HeartyHearthGeneral.GetList("Recipe");
-                gRecipes.DataSource = dt;
+                DataTable dtRecipe = HeartyHearthGeneral.GetList("Recipe");
+                gRecipes.DataSource = dtRecipe;
+                foreach (DataGridViewColumn c in gRecipes.Columns)
+                {
+                    if (c.Name.StartsWith("Date"))
+                    {
+                        c.Visible = false;
+                    }
+                }
                 WindowsFormsUtility.FormatGridForSearchResults(gRecipes, "Recipes");
                 if (gRecipes.Rows.Count > 0)
                 {
