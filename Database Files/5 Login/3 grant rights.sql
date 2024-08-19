@@ -1,0 +1,39 @@
+use HeartyHearthDB
+go 
+
+grant execute on AutoCreateCookbook to approle
+grant execute on UsersUpdate to approle
+grant execute on UsersGet to approle
+grant execute on UsersDelete to approle
+grant execute on RecipeUpdate to approle
+grant execute on RecipeIngredientUpdate to approle
+grant execute on RecipeIngredientGet to approle
+grant execute on RecipeIngredientDelete to approle
+grant execute on RecipeGet to approle
+grant execute on RecipeDirectionsUpdate to approle
+grant execute on RecipeDirectionsGet to approle
+grant execute on RecipeDirectionsDelete to approle
+grant execute on RecipeDelete to approle
+grant execute on RecipeClone to approle
+grant execute on MeasurementTypeUpdate to approle
+grant execute on MeasurementTypeGet to approle
+grant execute on MeasurementTypeDelete to approle
+grant execute on MealListGet to approle
+grant execute on IngredientUpdate to approle
+grant execute on IngredientGet to approle
+grant execute on IngredientDelete to approle
+grant execute on DashboardGet to approle
+grant execute on CuisineUpdate to approle
+grant execute on CuisineGet to approle
+grant execute on CuisineDelete to approle
+grant execute on CourseUpdate to approle
+grant execute on CourseGet to approle
+grant execute on CourseDelete to approle
+grant execute on CookbookUpdate to approle
+grant execute on CookbookRecipeUpdate to approle
+grant execute on CookbookRecipeGet to approle
+grant execute on CookbookRecipeDelete to approle
+grant execute on CookbookGet to approle
+grant execute on CookbookDelete to approle
+grant execute on NumOfCaloriesPerMeal to approle
+grant execute on RecipeDesc to approle

@@ -34,18 +34,27 @@
             {
                 case "Draft":
                     btnDraft.Enabled = false;
+                    btnDraft.FlatStyle = FlatStyle.System;
                     btnPublish.Enabled = true;
                     btnArchive.Enabled = true;
+                    btnPublish.FlatStyle = FlatStyle.Standard;
+                    btnArchive.FlatStyle = FlatStyle.Standard;
                     break;
                 case "Published":
                     btnPublish.Enabled = false;
+                    btnPublish.FlatStyle = FlatStyle.System;
                     btnDraft.Enabled = false;
                     btnArchive.Enabled = true;
+                    btnDraft.FlatStyle = FlatStyle.Standard;
+                    btnArchive.FlatStyle = FlatStyle.Standard;
                     break;
                 case "Archived":
                     btnArchive.Enabled = false;
+                    btnArchive.FlatStyle = FlatStyle.System;
                     btnDraft.Enabled = true;
                     btnPublish.Enabled = false;
+                    btnDraft.FlatStyle = FlatStyle.Standard;
+                    btnPublish.FlatStyle = FlatStyle.Standard;
                     break;
             }
         }
