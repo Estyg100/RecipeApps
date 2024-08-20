@@ -9,13 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="App.config" />
     <None Remove="App.secret.config" />
+    <None Remove="LoginInfo.secret.config" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="App.config" />
     <Content Include="App.secret.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LoginInfo.secret.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

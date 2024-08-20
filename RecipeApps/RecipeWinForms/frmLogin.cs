@@ -20,8 +20,8 @@ namespace RecipeWinForms
 #if DEBUG
             this.Text = this.Text + " - DEV";
 #endif
-            txtUserId.Text = Settings.Default.userid;
-            txtPassword.Text = Settings.Default.password;
+            txtUserId.Text = ConfigurationManager.AppSettings["userid"].ToString();
+            txtPassword.Text = ConfigurationManager.AppSettings["password"].ToString();
             this.ShowDialog();
             return loginsuccess;
         }
@@ -44,9 +44,6 @@ namespace RecipeWinForms
                 string connstring = ConfigurationManager.ConnectionStrings[connstingkey].ConnectionString;
                 DBManager.SetConnectionString(connstring, true, txtUserId.Text, txtPassword.Text);
                 loginsuccess = true;
-                Settings.Default.userid = txtUserId.Text;
-                Settings.Default.password = txtPassword.Text;
-                Settings.Default.Save();
                 this.Close();
             }
             catch (Exception ex)
