@@ -6,37 +6,37 @@ namespace RecipeTest
     public class Tests
     {
 
-        string connstring = ConfigurationManager.ConnectionStrings["devconn"].ConnectionString;
+        //string connstring = ConfigurationManager.ConnectionStrings["devconn"].ConnectionString;
         string testconnstring = ConfigurationManager.ConnectionStrings["unittestconn"].ConnectionString;
 
         [SetUp]
         public void Setup()
         {
-            DBManager.SetConnectionString(connstring, true);
+            DBManager.SetConnectionString(testconnstring, true);
         }
 
         private DataTable GetDataTable(string sql)
         {
             DataTable dt = new();
-            DBManager.SetConnectionString(testconnstring);
+            //DBManager.SetConnectionString(testconnstring);
             dt = SQLUtility.GetDataTable(sql);
-            DBManager.SetConnectionString(connstring);
+            //DBManager.SetConnectionString(connstring);
             return dt;
         }
 
         private int GetFirstColumnFirstRowValueAsInt(string sql)
         {
             int n = new();
-            DBManager.SetConnectionString(testconnstring);
+            //DBManager.SetConnectionString(testconnstring);
             n = SQLUtility.GetFirstColumnFirstRowValue(sql);
-            DBManager.SetConnectionString(connstring);
+            //DBManager.SetConnectionString(connstring);
             return n;
         }
 
         private string GetFirstColumnFirstRowValueAsString(string sql)
         {
             string s = "";
-            DBManager.SetConnectionString(testconnstring);
+            //DBManager.SetConnectionString(testconnstring);
             DataTable dt = SQLUtility.GetDataTable(sql);
             if (dt.Rows.Count > 0 && dt.Columns.Count > 0)
             {
@@ -45,7 +45,7 @@ namespace RecipeTest
                     s = dt.Rows[0][0].ToString();
                 }
             }
-            DBManager.SetConnectionString(connstring);
+            //DBManager.SetConnectionString(connstring);
             return s;
         }
 

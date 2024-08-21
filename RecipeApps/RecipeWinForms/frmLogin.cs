@@ -20,8 +20,8 @@ namespace RecipeWinForms
 #if DEBUG
             this.Text = this.Text + " - DEV";
 #endif
-            txtUserId.Text = ConfigurationManager.AppSettings["userid"].ToString();
-            txtPassword.Text = ConfigurationManager.AppSettings["password"].ToString();
+            txtUserId.Text = ConfigurationManager.ConnectionStrings["userid"].ToString();
+            txtPassword.Text = ConfigurationManager.ConnectionStrings["password"].ToString();
             this.ShowDialog();
             return loginsuccess;
         }
