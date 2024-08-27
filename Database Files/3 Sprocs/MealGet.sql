@@ -1,4 +1,6 @@
-create or alter procedure dbo.MealListGet
+create or alter procedure dbo.MealGet(
+    @All bit = 1
+)
 as 
 begin
     select m.MealName, UserName = concat(u.FirstName, ' ', u.LastName), NumOfCalories = sum(r.CaloriesPerServing), NumOfCourses = count(distinct mc.CourseId), NumOfRecipes = count(distinct r.RecipeId)
@@ -16,4 +18,4 @@ begin
 end
 go 
 
-exec MealListGet
+exec MealGet

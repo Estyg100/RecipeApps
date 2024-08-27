@@ -1,5 +1,4 @@
-﻿using RecipeWinForms.Properties;
-using System.Configuration;
+﻿using System.Configuration;
 
 namespace RecipeWinForms
 {
@@ -20,8 +19,6 @@ namespace RecipeWinForms
 #if DEBUG
             this.Text = this.Text + " - DEV";
 #endif
-            txtUserId.Text = ConfigurationManager.ConnectionStrings["userid"].ToString();
-            txtPassword.Text = ConfigurationManager.ConnectionStrings["password"].ToString();
             this.ShowDialog();
             return loginsuccess;
         }

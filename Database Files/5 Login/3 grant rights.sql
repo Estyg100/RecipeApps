@@ -18,7 +18,7 @@ grant execute on RecipeClone to approle
 grant execute on MeasurementTypeUpdate to approle
 grant execute on MeasurementTypeGet to approle
 grant execute on MeasurementTypeDelete to approle
-grant execute on MealListGet to approle
+grant execute on MealGet to approle
 grant execute on IngredientUpdate to approle
 grant execute on IngredientGet to approle
 grant execute on IngredientDelete to approle

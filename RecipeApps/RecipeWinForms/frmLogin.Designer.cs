@@ -77,6 +77,7 @@
             txtUserId.Name = "txtUserId";
             txtUserId.Size = new Size(230, 34);
             txtUserId.TabIndex = 1;
+            txtUserId.Text = "appadmin";
             // 
             // lblPassword
             // 
@@ -96,6 +97,7 @@
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(230, 34);
             txtPassword.TabIndex = 3;
+            txtPassword.Text = "HELlo753(!)";
             // 
             // tblButtons
             // 
