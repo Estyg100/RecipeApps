@@ -24,7 +24,7 @@
         <Border Padding="20">
             <Grid ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto" HorizontalOptions="Center" ColumnSpacing="10" RowSpacing="10">
                 <Label Text="User Name" Grid.Column="0" Grid.Row="1"/>
-                <Entry Grid.Column="1" Grid.Row="1" x:Name="UserNametxt" Text="appadmin"/>
+                <Entry Grid.Column="1" Grid.Row="1" x:Name="UserNametxt" Text="estygrunwaldadmin"/>
                 <Label Text="Password" Grid.Column="0" Grid.Row="2"/>
                 <Entry Grid.Column="1" Grid.Row="2" x:Name="Passwordtxt" IsPassword="true"/>
                 <Button x:Name="Loginbtn" Text="Login" Grid.Row="3" Grid.Column="0" Margin="5" Clicked="Loginbtn_Clicked"/>
