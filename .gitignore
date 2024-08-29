@@ -16,6 +16,7 @@
 #SecretFiles
 *create-login.sql
 *secret.config
+*secret-appsettings.json
 
 # Mono auto generated files
 mono_crash.*

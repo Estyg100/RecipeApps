@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUFramework", "..\..\CPUFr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPUWindowsFormsFramework", "..\..\CPUWindowsFormsFramework\CPUWindowsFormsFramework.csproj", "{9087329E-2986-414C-B273-53D8B2D0C4D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeSystem", "RecipeSystem\RecipeSystem.csproj", "{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeSystem", "RecipeSystem\RecipeSystem.csproj", "{F3BBA324-2DB6-41FC-AD21-4A7ED1BC2D54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTest", "RecipeTest\RecipeTest.csproj", "{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeTest", "RecipeTest\RecipeTest.csproj", "{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeMAUI", "RecipeMAUI\RecipeMAUI.csproj", "{71A95F36-E8D6-4D93-A2ED-39F55A37E762}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAFD4920-BE99-4281-9BF5-FC8CD6236F80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A95F36-E8D6-4D93-A2ED-39F55A37E762}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
