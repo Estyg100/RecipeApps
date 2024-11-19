@@ -68,7 +68,8 @@ namespace RecipeTest
             r["CuisineId"] = cuisineid;
             r["CaloriesPerServing"] = calories;
             r["DateDraft"] = datedraft;
-            HeartyHearthGeneral.Save(dt, "Recipe");
+            bizRecipe rec = new();
+            rec.Save(dt);
             int newid = GetFirstColumnFirstRowValueAsInt("select * from Recipe where RecipeName = " + "'" + recipename + "'");
             int pkid = 0;
             if (r["RecipeId"] != DBNull.Value)
@@ -214,7 +215,8 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes without ingrideients and cookbooks in DB that are either in draft or archived for over 30 days, can't run test");
             TestContext.WriteLine("Existing recipe without ingridients and cookbooks that is in draft or archived for over 30 days, with id = " + recipeid + " " + recipename);
             TestContext.WriteLine("Ensure that app can delete " + recipeid);
-            HeartyHearthGeneral.Delete(dt, "Recipe");
+            bizRecipe rec = new();
+            rec.Delete(dt);
             DataTable dtafterdelete = GetDataTable("select * from Recipe where RecipeId = " + recipeid);
             Assert.IsTrue(dtafterdelete.Rows.Count == 0, "Record with RecipeId " + recipeid + " exists in DB");
             TestContext.WriteLine("Record with RecipeId " + recipeid + " does not exist in DB");
@@ -251,7 +253,8 @@ namespace RecipeTest
             Assume.That(recipeid > 0, "No recipes in DB, can't run test");
             TestContext.WriteLine("Existing recipe with id = " + recipeid);
             TestContext.WriteLine("Ensure that app loads recipe " + recipeid);
-            DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
+            bizRecipe rec = new();
+            DataTable dt = rec.Load(recipeid);
             int loadedid = (int)dt.Rows[0]["RecipeId"];
             Assert.IsTrue(loadedid == recipeid, loadedid + " <> " + recipeid);
             TestContext.WriteLine("Loaded recipe (" + recipeid + ")" + recipeid);
