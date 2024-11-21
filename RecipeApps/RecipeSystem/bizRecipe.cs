@@ -2,7 +2,7 @@
 {
     public class bizRecipe : bizObject
     {
-        public bizRecipe() : base("Recipe")
+        public bizRecipe()
         {
 
         }
