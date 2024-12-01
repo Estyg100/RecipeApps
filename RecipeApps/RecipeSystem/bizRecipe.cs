@@ -2,7 +2,7 @@
 
 namespace RecipeSystem
 {
-    public class bizRecipe : bizObject
+    public class bizRecipe : bizObject<bizRecipe>
     {
         public bizRecipe()
         {
@@ -18,6 +18,14 @@ namespace RecipeSystem
         private DateTime? _datepublished;
         private DateTime? _datearchived;
         private string _currentstatus;
+
+        public List<bizRecipe> Search(string recipenameval)
+        {
+            SqlCommand cmd = SQLUtility.GetSqlCommand(this.GetsprocName);
+            SQLUtility.SetParamValue(cmd, "RecipeName", recipenameval);
+            DataTable dt = SQLUtility.GetDataTable(cmd);
+            return this.GetListFromDataTable(dt);
+        }
 
         public int RecipeId
         {
