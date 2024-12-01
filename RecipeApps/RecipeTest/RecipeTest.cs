@@ -87,7 +87,7 @@ namespace RecipeTest
             string recipename = dtRecipe.Rows[0]["RecipeName"].ToString();
             int cuisineid = (int)dtRecipe.Rows[0]["CuisineId"];
             int calories = (int)dtRecipe.Rows[0]["CaloriesPerServing"];
-            string datedraft = dtRecipe.Rows[0]["DateDraft"].ToString();
+            DateTime datedraft = (DateTime)dtRecipe.Rows[0]["DateDraft"];
             TestContext.WriteLine("Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + userid + Environment.NewLine + "RecipeName = " + recipename + Environment.NewLine + "CuisineId = " + cuisineid + Environment.NewLine + "CaloriesPerServing = " + calories + Environment.NewLine + "DateDraft = " + datedraft);
             userid = GetFirstColumnFirstRowValueAsInt("select top 1 UsersId from Users where UsersId <> " + userid);
             int recipenamelength = recipename.Length;
@@ -98,7 +98,7 @@ namespace RecipeTest
             recipename = recipename.Substring(0, recipenamelength) + " - m";
             cuisineid = GetFirstColumnFirstRowValueAsInt("select top 1 CuisineId from Cuisine where CuisineId <> " + cuisineid);
             calories = calories + 1;
-            datedraft = "1800-01-01 12:00:00 AM";
+            datedraft = datedraft.AddDays(-2);
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
             DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
@@ -112,7 +112,7 @@ namespace RecipeTest
             string newrecipename = newdtRecipe.Rows[0]["RecipeName"].ToString();
             int newcuisineid = (int)newdtRecipe.Rows[0]["CuisineId"];
             int newcalories = (int)newdtRecipe.Rows[0]["CaloriesPerServing"];
-            string newdatedraft = newdtRecipe.Rows[0]["DateDraft"].ToString();
+            DateTime newdatedraft = (DateTime)newdtRecipe.Rows[0]["DateDraft"];
             Assert.IsTrue(newuserid == userid && newrecipename == recipename && newcuisineid == cuisineid && newcalories == calories && newdatedraft == datedraft, "Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + userid + Environment.NewLine + "RecipeName = " + recipename + Environment.NewLine + "CuisineId = " + cuisineid + Environment.NewLine + "CaloriesPerServing = " + calories + Environment.NewLine + "DateDraft = " + datedraft);
             TestContext.WriteLine("Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + newuserid + Environment.NewLine + "RecipeName = " + newrecipename + Environment.NewLine + "CuisineId = " + newcuisineid + Environment.NewLine + "CaloriesPerServing = " + newcalories + Environment.NewLine + "DateDraft = " + newdatedraft);
         }
@@ -127,7 +127,7 @@ namespace RecipeTest
             string recipename = dtRecipe.Rows[0]["RecipeName"].ToString();
             int cuisineid = (int)dtRecipe.Rows[0]["CuisineId"];
             int calories = (int)dtRecipe.Rows[0]["CaloriesPerServing"];
-            string datedraft = dtRecipe.Rows[0]["DateDraft"].ToString();
+            DateTime datedraft = (DateTime)dtRecipe.Rows[0]["DateDraft"];
             TestContext.WriteLine("Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + userid + Environment.NewLine + "RecipeName = " + recipename + Environment.NewLine + "CuisineId = " + cuisineid + Environment.NewLine + "CaloriesPerServing = " + calories + Environment.NewLine + "DateDraft = " + datedraft);
             userid = GetFirstColumnFirstRowValueAsInt("select top 1 UsersId from Users where UsersId <> " + userid);
             int recipenamelength = recipename.Length;
@@ -138,7 +138,7 @@ namespace RecipeTest
             recipename = recipename.Substring(0, recipenamelength) + " - m";
             cuisineid = GetFirstColumnFirstRowValueAsInt("select top 1 CuisineId from Cuisine where CuisineId <> " + cuisineid);
             calories = -1;
-            datedraft = "1800-01-01 12:00:00 AM";
+            datedraft = datedraft.AddDays(-2);
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
             DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
@@ -160,14 +160,14 @@ namespace RecipeTest
             string recipename = dtRecipe.Rows[0]["RecipeName"].ToString();
             int cuisineid = (int)dtRecipe.Rows[0]["CuisineId"];
             int calories = (int)dtRecipe.Rows[0]["CaloriesPerServing"];
-            string datedraft = dtRecipe.Rows[0]["DateDraft"].ToString();
+            DateTime datedraft = (DateTime)dtRecipe.Rows[0]["DateDraft"];
             TestContext.WriteLine("Info for recipe with RecipeId " + recipeid + " is: " + Environment.NewLine + "UserId = " + userid + Environment.NewLine + "RecipeName = " + recipename + Environment.NewLine + "CuisineId = " + cuisineid + Environment.NewLine + "CaloriesPerServing = " + calories + Environment.NewLine + "DateDraft = " + datedraft);
             userid = GetFirstColumnFirstRowValueAsInt("select top 1 UsersId from Users where UsersId <> " + userid);
             string otherrecipename = GetFirstColumnFirstRowValueAsString("select top 1 r.RecipeName from Recipe r where r.RecipeId<> " + recipeid);
             recipename = otherrecipename;
             cuisineid = GetFirstColumnFirstRowValueAsInt("select top 1 CuisineId from Cuisine where CuisineId <> " + cuisineid);
             calories = calories + 1;
-            datedraft = "1800-01-01 12:00:00 AM";
+            datedraft = datedraft.AddDays(-2);
             TestContext.WriteLine(Environment.NewLine + "Change UsersId to " + userid + Environment.NewLine + "RecipeName to " + recipename + Environment.NewLine + "CuisineId to " + cuisineid + Environment.NewLine + "CaloriesPerServing to " + calories + Environment.NewLine + "DateDraft to " + datedraft);
             DataTable dt = HeartyHearthGeneral.Load(recipeid, "Recipe");
             dt.Rows[0]["UsersId"] = userid;
